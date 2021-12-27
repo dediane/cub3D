@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/12/21 01:03:51 by ddecourt         ###   ########.fr       */
+/*   Updated: 2021/12/27 02:29:27 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ int ft_store_map(char *path, t_env *env, int fd)
 	char *line;
 	
 	get_next_line(fd, line);
+	ft_check_line(env->textures, line);
 }

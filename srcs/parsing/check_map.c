@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/12/21 01:00:56 by ddecourt         ###   ########.fr       */
+/*   Updated: 2021/12/27 02:18:54 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_check_map(char *path, t_env *env)
 {
 	int fd;
 	
-	if (!ft_check_extention(path))
+	if (!ft_check_extension(path))
 		return (1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
