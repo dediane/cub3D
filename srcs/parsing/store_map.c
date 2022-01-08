@@ -17,5 +17,8 @@ int ft_store_map(char *path, t_env *env, int fd)
 	char *line;
 	
 	get_next_line(fd, line);
-	ft_check_line(env->textures, line);
+	if (!(ft_check_texture(env->textures, line)))
+		return (0);
+	if (!(ft_check_valid_files(env->textures)))
+		return (0);
 }

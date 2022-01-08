@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/12/21 00:35:23 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/08 02:32:32 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@ typedef struct s_img
 
 typedef struct s_texture
 {
-	char	*NO_path;
-	char	*SO_path;
-	char	*WE_path;
-	char	*EA_path;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	int		fd_no;
+	int		fd_so;
+	int		fd_we;
+	int		fd_ea;
 }				t_texture;
 
 typedef struct s_env
