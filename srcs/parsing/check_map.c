@@ -49,3 +49,97 @@ int	ft_check_map(char *path, t_env *env)
 		return (ft_putstr("Error\n"), 2);
 	ft_store_map(path, env, fd);
 }
+
+int check_around(char **map, int x, int y, char c)
+{
+	if ((maps[x - 1][y] && maps[x - 1][y] != '0' && maps[x - 1][y] != '1' \
+	&& maps[x - 1][y] && 'S' && maps[x - 1][y] != 'W' && maps[x - 1][y] != 'N'\
+	&& maps[x - 1][y] != 'E')) || \
+	((maps[x + 1][y] && maps[x + 1][y] != '0' && maps[x + 1][y] != '1' \
+	&& maps[x + 1][y] && 'S' && maps[x + 1][y] != 'W' && maps[x + 1][y] != 'N'\
+	&& maps[x + 1][y] != 'E')) || \
+	((maps[x][y - 1] && maps[x][y - 1] != '0' && maps[x][y - 1] != '1' \
+	&& maps[x][y - 1] && 'S' && maps[x][y - 1] != 'W' && maps[x][y - 1] != 'N'\
+	&& maps[x][y - 1] != 'E'))
+		return (0);
+	return (1);
+
+
+	return (0);
+}
+
+int	check_valid_char(t_env *env, char c, int x, int y)
+{
+	if (c == ' ')
+		return (1);
+	if (c == '0' || c == '1')
+	{
+		if (c == '0')
+		{
+			if (!(check_around(env->map, x, y, c)))
+				return (0);
+		}
+		return (1);
+	}
+	if ((c == 'N' || c == 'S' || c == 'W' || c == 'E') && env->ppos == 0))
+	{
+		env->spawn_pos[0] = x;
+		env->spawn_pos[1] = y;
+		env->ppos = 1;
+		return (1);
+	}
+	return (0);
+}
+
+int	check_wall_all_around(t_env *env, char **map)
+{
+	int x;
+	int y;
+	int map_length;
+	int buf;
+	int buf2;
+
+	x = -1;
+	map_length = 0;
+	while (map[++x])
+		map_length++;
+	 
+
+	// check si premiere et derniere lignes sont que des 1 ou des espaces.
+	// check si premiere ligne en dessous espace == 1 et a gauche et a droite :
+	// 1 1
+	// 111
+
+	// 1  1
+	// 1111
+
+	// si pos = espace et pos + 1 = espace alors:
+	//check si pos (x + 1) = 1 et si pos (x -)
+
+
+
+}
+
+//x = hauteur (ligne)  latitude
+//y = largeur (position case)  longitude
+int ft_check_walls(t_env *env, char **map)
+{
+	int x;
+	int y;
+
+	x = -1;
+	if (!check_wall_line(map[++x]))
+		return (ft_putstr("Error\nMap must be surrounded by walls.\n"), 0);
+	while (map[++x])
+	{
+		x = -1;
+		while (map[++y])
+		{
+			if (!(check_valid_char(env, map[x][y], x, y)))
+				return (ft_putstr("Error\nInvalid map, wrong caracters or open map.\n"), 0);
+		}
+	}
+	if (!(check_wall_all_around(env, map)))
+		return (ft_putstr("Error\nMap must be surrounded by walls. \n"), 0);
+	return (1);
+}

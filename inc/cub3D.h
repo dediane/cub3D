@@ -60,6 +60,8 @@ typedef struct s_env
 	int			width;
 	int			ppi;
 	int			count;
+	int			spawn_pos[2];
+	int			ppos;
 	t_params	params;
 	t_img		img;
 	t_texture	textures;
