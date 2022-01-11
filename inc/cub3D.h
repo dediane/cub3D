@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
-# include "mlx/mlx.h"
-# include "libft/libft.h"
+# include "../mlx/mlx.h"
+# include "../libft/libft.h"
 
 typedef struct s_params
 {
@@ -66,5 +66,16 @@ typedef struct s_env
 	t_img		img;
 	t_texture	textures;
 }				t_env;
+
+//PARSING
+//--check_map--
+int	check_file_extension(char *map);
+int	ft_check_map(char *path, t_env *env);
+int check_around(char **map, int x, int y, char c);
+int	check_valid_char(t_env *env, char c, int x, int y);
+int	check_wall_all_around(t_env *env, char **map);
+
+//--check_texture--
+
 
 #endif

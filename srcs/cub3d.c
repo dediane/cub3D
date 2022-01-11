@@ -21,10 +21,13 @@ int	show_image(t_env *env)
 
 int main(int ac, char **av)
 {
-	t_env env;
+	(void)ac;
+	(void)av;
+	/*t_env env;
 	
 	if (ac != 2)
 		return (ft_putstr("Usage: [./cub3D.c] [map.cub]"), 2);
 	if (!(ft_check_map(av[1], &env)))
-		return (ft_putstr("Error\nWrong file extension."), 2);
+		return (ft_putstr("Error\nWrong file extension."), 2);*/
+	printf("Hello World\n");
 }

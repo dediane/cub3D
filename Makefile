@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	srcs/cub3D.c \
+SRCS	=	srcs/cub3d.c \
 			srcs/parsing/check_map.c \
 			srcs/parsing/check_texture.c \
 			srcs/parsing/store_map.c \

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./../inc/cub3D.h"
+# include "../../inc/cub3D.h"
 
 
 //fonction pour check si map peut-etre ouverte
@@ -42,30 +42,28 @@ int	ft_check_map(char *path, t_env *env)
 {
 	int fd;
 	
-	if (!ft_check_extension(path))
+	if (!(check_file_extension(path)))
 		return (1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (ft_putstr("Error\n"), 2);
 	ft_store_map(path, env, fd);
+	return (0);
 }
 
 int check_around(char **map, int x, int y, char c)
 {
-	if ((maps[x - 1][y] && maps[x - 1][y] != '0' && maps[x - 1][y] != '1' \
-	&& maps[x - 1][y] && 'S' && maps[x - 1][y] != 'W' && maps[x - 1][y] != 'N'\
-	&& maps[x - 1][y] != 'E')) || \
-	((maps[x + 1][y] && maps[x + 1][y] != '0' && maps[x + 1][y] != '1' \
-	&& maps[x + 1][y] && 'S' && maps[x + 1][y] != 'W' && maps[x + 1][y] != 'N'\
-	&& maps[x + 1][y] != 'E')) || \
-	((maps[x][y - 1] && maps[x][y - 1] != '0' && maps[x][y - 1] != '1' \
-	&& maps[x][y - 1] && 'S' && maps[x][y - 1] != 'W' && maps[x][y - 1] != 'N'\
-	&& maps[x][y - 1] != 'E'))
+	if ((map[x - 1][y] && (map[x - 1][y] != '0') && (map[x - 1][y] != '1')\
+	&& (map[x - 1][y] != 'S') && (map[x - 1][y] != 'W') && (map[x - 1][y] != 'N')\
+	&& (map[x - 1][y] != 'E')) || \
+	(map[x + 1][y] && (map[x + 1][y] != '0') && (map[x + 1][y] != '1') \
+	&& (map[x + 1][y] != 'S') && (map[x + 1][y] != 'W') && (map[x + 1][y] != 'N')\
+	&& (map[x + 1][y] != 'E')) || \
+	(map[x][y - 1] && (map[x][y - 1] != '0') && (map[x][y - 1] != '1') \
+	&& (map[x][y - 1] != 'S') && (map[x][y - 1] != 'W') && (map[x][y - 1] != 'N')\
+	&& (map[x][y - 1] != 'E')))
 		return (0);
 	return (1);
-
-
-	return (0);
 }
 
 int	check_valid_char(t_env *env, char c, int x, int y)
