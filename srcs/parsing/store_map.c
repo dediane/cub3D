@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/12/27 02:29:27 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/11 03:06:40 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_empty(char *s)
 	if (s == '\n')
 		return (1);
 	while (s[i])
-		if ((ft_isprint(s[i]))
+		if ((ft_isprint(s[i])))
 			i++;
 	if (i == ft_strlen(s))
 		return (1);

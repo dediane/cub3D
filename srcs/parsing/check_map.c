@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/12/27 02:18:54 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/11 03:06:07 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 		}
 		return (1);
 	}
-	if ((c == 'N' || c == 'S' || c == 'W' || c == 'E') && env->ppos == 0))
+	if ((c == 'N' || c == 'S' || c == 'W' || c == 'E') && env->ppos == 0)
 	{
 		env->spawn_pos[0] = x;
 		env->spawn_pos[1] = y;
