@@ -1,0 +1,5 @@
+*.o
+*.a
+*.gen
+cub3d
+cub3D

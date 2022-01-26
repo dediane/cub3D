@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/11 03:08:22 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/26 11:17:45 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_env
 //--check_map--
 int	check_file_extension(char *map);
 int	ft_check_map(char *path, t_env *env);
-int check_around(char **map, int x, int y, char c);
+int check_around(char **map, int x, int y);
 int	check_valid_char(t_env *env, char c, int x, int y);
 int	check_wall_all_around(t_env *env, char **map);
 
