@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/26 11:17:31 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:30:40 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int	ft_check_valid_files(t_texture *texture)
 	texture->fd_ea = open(texture->ea_path, O_RDONLY);
 	if (texture->fd_no == -1 || texture->fd_so == -1 \
 	|| texture->fd_we == -1 || texture->fd_ea == -1)
-		return (ft_putstr("Error\nCannot open texture.\n"), 0);
+		return (ft_putstr("Error\nCannot open texture.\n"), 2);
 	return (1);
 }

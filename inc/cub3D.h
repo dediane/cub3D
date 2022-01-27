@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/26 11:17:45 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:30:56 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_env
 	int			ppos;
 	t_params	params;
 	t_img		img;
-	t_texture	textures;
+	t_texture	texture;
 }				t_env;
 
 //PARSING
