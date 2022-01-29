@@ -6,14 +6,14 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:16:46 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:41:44 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../inc/cub3D.h"
 
 //store textures path
-int	ft_store_texture_path(char *path, char *line)
+int	ft_store_texture(char *path, char *line)
 {
 	ft_memmove(line, line + 3, ft_strlen(line));
 	path = ft_strdup(line);
