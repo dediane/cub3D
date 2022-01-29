@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:09:03 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:38:58 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@ int	is_empty(char *s)
 int ft_store_map(char *path, t_env *env, int fd)
 {
 	char	*line;
-
+	int		flag;
+	
+	flag = 0;
 	(void)path;
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (!(ft_check_texture(&env->texture, line)))
-			return (0);
-		if (!(ft_check_valid_files(env)))
-			return (0);
+		if (flag < 4)
+		{
+			if (ft_check_texture(&env->texture, line))
+				flag++;
+		}
+		if (flag == 4)
+			load_all_textures(env);
 	}
 	return (1);
 }

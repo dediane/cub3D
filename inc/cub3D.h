@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:11:33 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:39:50 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	check_wall_all_around(t_env *env, char **map);
 //--check_texture--
 int	ft_store_texture(char *path, char *line);
 int	ft_check_texture(t_texture *texture, char *line);
-int	ft_check_valid_files(t_env *env);
+int	load_all_textures(t_env *env);
 
 //--store_map--
 int	is_empty(char *s);

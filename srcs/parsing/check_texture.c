@@ -6,14 +6,14 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:12:44 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:16:46 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../inc/cub3D.h"
 
 //store textures path
-int	ft_store_texture(char *path, char *line)
+int	ft_store_texture_path(char *path, char *line)
 {
 	ft_memmove(line, line + 3, ft_strlen(line));
 	path = ft_strdup(line);
@@ -49,11 +49,10 @@ int	ft_check_texture(t_texture *texture, char *line)
 		ft_store_texture(texture->we_path, line);
 	if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A')
 		ft_store_texture(texture->ea_path, line);
-	//else
-		//return (ft_putstr("Error: texture wrong format.\n"), 2);
 	return (1);
 }
 
+//function to load a texture
 int	load_texture(t_env *env, t_img *img, char *path)
 {
 	img->img = mlx_xpm_file_to_image(env->params.mlx, path, \
@@ -65,22 +64,12 @@ int	load_texture(t_env *env, t_img *img, char *path)
 	return (0);
 }
 
-//check if the texture can be open
-int	ft_check_valid_files(t_env *env)
+//load all textures images
+int	load_all_textures(t_env *env)
 {
 	load_texture(env, &(env->texture.no_texture), env->texture.no_path);
 	load_texture(env, &(env->texture.so_texture), env->texture.so_path);
 	load_texture(env, &(env->texture.we_texture), env->texture.we_path);
 	load_texture(env, &(env->texture.ea_texture), env->texture.ea_path);
-		//return (ft_putstr("Error\nCannot open texture.\n"), 2);
-	/*texture->fd_so = open(texture->so_path, O_RDONLY);
-	if (texture->fd_so == -1)
-		return (ft_putstr("Error\nCannot open texture.\n"), 2);
-	texture->fd_we = open(texture->we_path, O_RDONLY);
-	if (texture->fd_we == -1)
-		return (ft_putstr("Error\nCannot open texture.\n"), 2);
-	texture->fd_ea = open(texture->ea_path, O_RDONLY);
-	if (texture->fd_ea == -1)
-		return (ft_putstr("Error\nCannot open texture.\n"), 2);*/
-	return (1);
+	return (0);
 }
