@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 09:18:42 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:12:44 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,26 @@ int	ft_check_texture(t_texture *texture, char *line)
 	return (1);
 }
 
-//check if the texture can be open
-int	ft_check_valid_files(t_texture *texture)
+int	load_texture(t_env *env, t_img *img, char *path)
 {
-	texture->fd_no = open(texture->no_path, O_RDONLY);
-	if (texture->fd_no == -1) 
-		return (ft_putstr("Error\nCannot open texture.\n"), 2);
-	texture->fd_so = open(texture->so_path, O_RDONLY);
+	img->img = mlx_xpm_file_to_image(env->params.mlx, path, \
+	&(img->width), &(img->height));
+	if (img->img)
+		img->addr = mlx_get_data_addr(img->img, \
+		&(img->bits_per_pixel), &(img->line_lenght), \
+		&(img->endian));
+	return (0);
+}
+
+//check if the texture can be open
+int	ft_check_valid_files(t_env *env)
+{
+	load_texture(env, &(env->texture.no_texture), env->texture.no_path);
+	load_texture(env, &(env->texture.so_texture), env->texture.so_path);
+	load_texture(env, &(env->texture.we_texture), env->texture.we_path);
+	load_texture(env, &(env->texture.ea_texture), env->texture.ea_path);
+		//return (ft_putstr("Error\nCannot open texture.\n"), 2);
+	/*texture->fd_so = open(texture->so_path, O_RDONLY);
 	if (texture->fd_so == -1)
 		return (ft_putstr("Error\nCannot open texture.\n"), 2);
 	texture->fd_we = open(texture->we_path, O_RDONLY);
@@ -68,6 +81,6 @@ int	ft_check_valid_files(t_texture *texture)
 		return (ft_putstr("Error\nCannot open texture.\n"), 2);
 	texture->fd_ea = open(texture->ea_path, O_RDONLY);
 	if (texture->fd_ea == -1)
-		return (ft_putstr("Error\nCannot open texture.\n"), 2);
+		return (ft_putstr("Error\nCannot open texture.\n"), 2);*/
 	return (1);
 }
