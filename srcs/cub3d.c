@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/26 15:32:21 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:44:52 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int main(int ac, char **av)
 	if (ac != 2)
 		return (ft_putstr("Usage: [./cub3D.c] [map.cub]"), 2);
 	if (!(ft_check_map(av[1], &env)))
-		return (ft_putstr("Error\ncheck map invalid\n."), 2);
+		return (ft_putstr("Error\ncheck map invalid."), 2);
 	printf("Hello World\n");
 }
