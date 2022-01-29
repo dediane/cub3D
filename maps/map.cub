@@ -1,7 +1,7 @@
-NO ../assets/textures/banksy.xpm
-SO ../assets/textures/flowerwall.xpm
-WE ../assets/textures/wall.xpm
-EA ../assets/textures/banksy.xpm
+NO ./textures/banksy.xpm
+SO ./textures/flowerwall.xpm
+WE ./textures/wall.xpm
+EA ./textures/wall42.xpm
 
 F 220,100,0
 C 225,30,0
