@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/02 17:04:19 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:05:58 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	check_file_extension(char *map)
 int	ft_check_map(char *path, t_env *env)
 {
 	int fd;
+	(void) env;
 	
 	if (!(check_file_extension(path)))
 		return (1);
