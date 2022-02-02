@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:49:12 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:02:01 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int ft_store_map(char *path, t_env *env, int fd)
 {
 	char	*line;
 	int		flag;
+	int		height;
 	
 	flag = 0;
+	height = 0;
 	(void)path;
 	while (get_next_line(fd, &line) > 0)
 	{
@@ -42,10 +44,19 @@ int ft_store_map(char *path, t_env *env, int fd)
 			if (ft_check_texture(&env->texture, line))
 				flag++;
 		}
-		printf("Je suis la\n");
 		if (flag == 4)
+		{
 			load_all_textures(env);
+			flag++;
+		}
+		if (flag > 4)
+		{
+			if (!(is_empty(line)))
+				height++;
+			else
+				flag++;
+		}
+		printf("height = %i\n", height);
 	}
-	printf("Je suis la 2\n");
 	return (1);
 }
