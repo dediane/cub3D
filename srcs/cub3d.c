@@ -19,6 +19,15 @@ int	show_image(t_env *env)
 	return (1);
 }
 
+int	quit_program(t_env *env)
+{
+	mlx_destroy_window(env->params.mlx, env->params.mlx_win);
+	mlx_destroy_display(env->params.mlx);
+	free(env->params.mlx);
+	write(1, "goodbye", 7);
+	exit(1);
+}
+
 int main(int ac, char **av)
 {
 	(void)ac;
@@ -32,6 +41,7 @@ int main(int ac, char **av)
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.screen_x, &env.params.screen_y);
 	env.params.mlx_win = mlx_new_window(env.params.mlx, env.params.screen_x/1.5, env.params.screen_y/1.5, "Cub3d");
+	mlx_hook(env.params.mlx_win, 33, 1L << 17, quit_program, &env);
 	mlx_loop(env.params.mlx);
-	
+
 }
