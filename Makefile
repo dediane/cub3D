@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/21 00:03:43 by ddecourt          #+#    #+#              #
-#    Updated: 2022/02/18 16:16:03 by user42           ###   ########.fr        #
+#    Updated: 2022/02/18 17:55:13 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRCS	=	srcs/cub3d.c \
 			srcs/parsing/check_texture.c \
 			srcs/parsing/store_map.c \
 			srcs/win_utils.c \
+			srcs/raycasting.c \
+			srcs/raycasting_utils.c \
 
 OBJS	= ${SRCS:.c=.o}
 

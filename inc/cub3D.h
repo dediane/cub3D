@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/18 16:38:02 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/18 18:57:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_params
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		screen_x;
-	int		screen_y;
+	int		res_x;
+	int		res_y;
 }				t_params;
 
 typedef struct s_img
@@ -41,7 +41,7 @@ typedef struct s_img
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_lenght;
+	int		line_length;
 	int		endian;
 	int		width;
 	int		height;
@@ -84,6 +84,14 @@ typedef struct s_vecdouble
 	double x;
 	double y;
 }				t_vecdouble;
+
+typedef struct s_shape
+{
+	int x;
+	int y;
+	int width;
+	int height;
+}				t_shape;
 
 //structure d'intervalle du raycasting
 typedef struct s_ray
@@ -132,5 +140,18 @@ int ft_store_map(char *path, t_env *env, int fd);
 //--win_utils--
 int	quit_program(t_env *env);
 int keypress(int key, t_env *env);
+
+//--raycasting--
+t_ray init_ray(t_rot * rot, double x, double y);
+void	raycasting(t_env *env, t_img *img);
+int render_next_frame(t_env *env);
+void	cast_forward(t_ray *ray, t_ray step);
+
+//--raycasting_utils--
+void	get_pixel(t_img *img, int x, int y);
+void	set_pixel(t_img *img, int x, int y, int color);
+void	rect(t_img *img, t_shape shape, int color);
+double calc_sqrtlen(t_vecdouble v);
+void    draw_map(t_env *env, t_img *img);
 
 #endif
