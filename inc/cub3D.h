@@ -27,6 +27,8 @@ typedef struct s_params
 {
 	void	*mlx;
 	void	*mlx_win;
+	int		screen_x;
+	int		screen_y;
 }				t_params;
 
 typedef struct s_img

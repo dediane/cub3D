@@ -24,10 +24,14 @@ int main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	t_env env;
-	
+
 	if (ac != 2)
 		return (ft_putstr("Usage: [./cub3D.c] [map.cub]"), 2);
-	if (!(ft_check_map(av[1], &env)))
-		return (ft_putstr("Error\ncheck map invalid."), 2);
-	printf("Hello World\n");
+	//if (!(ft_check_map(av[1], &env)))
+	//	return (ft_putstr("Error\ncheck map invalid."), 2);
+	env.params.mlx = mlx_init();
+	mlx_get_screen_size(env.params.mlx, &env.params.screen_x, &env.params.screen_y);
+	env.params.mlx_win = mlx_new_window(env.params.mlx, env.params.screen_x/1.5, env.params.screen_y/1.5, "Cub3d");
+	mlx_loop(env.params.mlx);
+	
 }
