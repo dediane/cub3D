@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:39:50 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:38:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define ESC 0xff1b
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
@@ -22,6 +23,10 @@
 # include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+
+
+//maps de test avant parsing
+char map[20][20];
 
 typedef struct s_params
 {
@@ -59,6 +64,36 @@ typedef struct s_texture
 	int		fd_ea;
 }				t_texture;
 
+//pour gérer les rotations
+typedef struct s_rot
+{
+	double angle;
+	double cos;
+	double sin;
+}				t_rot;
+
+//vecteurs
+typedef struct s_vec
+{
+	int x;
+	int y;
+}				t_vec;
+
+typedef struct s_vecdouble
+{
+	double x;
+	double y;
+}				t_vecdouble;
+
+//structure d'intervalle du raycasting
+typedef struct s_ray
+{
+	t_vecdouble		cos_step;
+	t_vecdouble 	sin_step;
+	double		len_cos;
+	double		len_sin;
+}				t_ray;
+
 typedef struct s_env
 {
 	char		**map;
@@ -71,6 +106,10 @@ typedef struct s_env
 	t_params	params;
 	t_img		img;
 	t_texture	texture;
+	t_ray		ray;
+	t_rot		rot;
+	t_vec		vec;
+	t_vecdouble	vecdouble;
 }				t_env;
 
 //PARSING
@@ -89,5 +128,9 @@ int	load_all_textures(t_env *env);
 //--store_map--
 int	is_empty(char *s);
 int ft_store_map(char *path, t_env *env, int fd);
+
+//--win_utils--
+int	quit_program(t_env *env);
+int keypress(int key, t_env *env);
 
 #endif

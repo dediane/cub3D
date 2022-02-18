@@ -1,12 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   win_utils.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 00:23:08 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/12/21 00:23:14 by ddecourt         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "../inc/cub3D.h"
 
+int	quit_program(t_env *env)
+{
+	mlx_destroy_window(env->params.mlx, env->params.mlx_win);
+	mlx_destroy_display(env->params.mlx);
+	free(env->params.mlx);
+	write(1, "goodbye", 7);
+	exit(1);
+}
+
+int keypress(int key, t_env *env)
+{
+	if (key == ESC)
+		quit_program(env);
+	return(0);
+}
