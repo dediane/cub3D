@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/01/29 10:41:44 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/02/19 04:27:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	load_texture(t_env *env, t_img *img, char *path)
 	&(img->width), &(img->height));
 	if (img->img)
 		img->addr = mlx_get_data_addr(img->img, \
-		&(img->bits_per_pixel), &(img->line_lenght), \
+		&(img->bits_per_pixel), &(img->line_length), \
 		&(img->endian));
 	return (0);
 }
