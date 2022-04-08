@@ -57,10 +57,8 @@ int main(int ac, char **av)
 	(void)av;
 	t_env env;
 
-	if (ac != 2)
-		return (ft_putstr("Usage: [./cub3D.c] [map.cub]"), 2);
-	//if (!(ft_check_map(av[1], &env)))
-	//	return (ft_putstr("Error\ncheck map invalid."), 2);
+	if (!parsing(ac, av, &env))
+		return (1);
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.res_x, &env.params.res_y);
 	env.params.res_x /= 1.5;
