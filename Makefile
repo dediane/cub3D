@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: ddecourt@student.42.fr <ddecourt>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/21 00:03:43 by ddecourt          #+#    #+#              #
-#    Updated: 2022/02/18 17:55:13 by user42           ###   ########.fr        #
+#    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
+#    Updated: 2021/10/13 18:45:48 by ddecourt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	=	srcs/cub3d.c \
 			srcs/raycasting.c \
 			srcs/raycasting_utils.c \
 
+
 OBJS	= ${SRCS:.c=.o}
 
 NAME	= Cub3D
@@ -26,7 +27,7 @@ HEADER	= mlx/mlx.h
 
 CC		= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g
 
 RM = rm -f
 

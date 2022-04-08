@@ -1,6 +1,8 @@
 *.o
 *.a
 *.gen
+libft/libft.a
 cub3d
 cub3D
+Cub3D
 .DS_Store
