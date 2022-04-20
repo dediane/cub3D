@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/18 18:57:30 by user42           ###   ########.fr       */
+/*   Updated: 2022/04/08 13:17:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,11 @@ typedef struct s_env
 }				t_env;
 
 //PARSING
+//--parsing--
+int error_message(char *str, int ret);
+int	open_fd(int *fd, char **argv);
+int	parsing(int ac, char **av, t_env *env);
+
 //--check_map--
 int	check_file_extension(char *map);
 int	ft_check_map(char *path, t_env *env);

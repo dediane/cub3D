@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ddecourt@student.42.fr <ddecourt>          +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2021/10/13 18:45:48 by ddecourt         ###   ########.fr        #
+#    Updated: 2022/04/08 13:18:06 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	srcs/cub3d.c \
 			srcs/parsing/check_map.c \
+			srcs/parsing/parsing.c \
 			srcs/parsing/check_texture.c \
 			srcs/parsing/store_map.c \
 			srcs/win_utils.c \
