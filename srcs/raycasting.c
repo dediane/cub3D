@@ -39,7 +39,7 @@ void	cast_forward(t_ray *ray, t_ray step)
 	}
 }
 
-int		check_colide(t_ray ray, t_rot rot, int up)
+int		check_colide(t_ray ray, t_rot rot, int up, t_env *env)
 {
 	int posX;
 	int posY;
@@ -64,7 +64,7 @@ int		check_colide(t_ray ray, t_rot rot, int up)
 
 	if (posX < 0 || posX > 19 || posY < 0 || posY > 19)
 		return 0;
-	return (map[posX][posY] > 0);
+	return (env->map[posX][posY] > 0);
 }
 
 void raycasting(t_env *env, t_img *img)
@@ -96,7 +96,7 @@ void raycasting(t_env *env, t_img *img)
 
 		while (i < 20)
 		{
-			if (check_colide(ray, rot, ray.len_cos > ray.len_sin))
+			if (check_colide(ray, rot, ray.len_cos > ray.len_sin, env))
 			{
 				double len = fmin(ray.len_cos, ray.len_sin);
 

@@ -56,7 +56,7 @@ void    draw_map(t_env *env, t_img *img)
 		y = 0;
 		while (y < 20)
 		{
-			if (map[x][y])
+			if (env->map[x][y])
 			{
 				shape.x = 100 + x * 20;
 				shape.y = 100 + y * 20;

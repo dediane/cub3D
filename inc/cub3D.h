@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/04/08 13:17:26 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/05 13:50:33 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 
 //maps de test avant parsing
-char map[20][20];
+//char mapi[20][20];
 
 typedef struct s_params
 {
@@ -104,7 +104,7 @@ typedef struct s_ray
 
 typedef struct s_env
 {
-	char		**map;
+	char		map[20][20];
 	int			height;
 	int			width;
 	int			ppi;
@@ -129,7 +129,7 @@ int	parsing(int ac, char **av, t_env *env);
 //--check_map--
 int	check_file_extension(char *map);
 int	ft_check_map(char *path, t_env *env);
-int check_around(char **map, int x, int y);
+int check_around(char map[20][20], int x, int y);
 int	check_valid_char(t_env *env, char c, int x, int y);
 int	check_wall_all_around(t_env *env, char **map);
 
@@ -158,5 +158,6 @@ void	set_pixel(t_img *img, int x, int y, int color);
 void	rect(t_img *img, t_shape shape, int color);
 double calc_sqrtlen(t_vecdouble v);
 void    draw_map(t_env *env, t_img *img);
+
 
 #endif

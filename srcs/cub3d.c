@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/18 19:00:13 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/05 13:37:43 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	show_image(t_env *env)
 	return (1);
 }
 
-void 	randomise_map()
+void 	randomise_map(t_env *env)
 {
 	int x;
 	int y;
@@ -29,9 +29,9 @@ void 	randomise_map()
 		y = 0;
 		while (y < 20)
 		{
-			map[x][y] = 0;
+			env->map[x][y] = 0;
 			if (rand() % 5 == 4)
-				map[x][y] = 1;
+				env->map[x][y] = 1;
 			y++;
 		}
 		x++;
@@ -57,8 +57,8 @@ int main(int ac, char **av)
 	(void)av;
 	t_env env;
 
-	if (!parsing(ac, av, &env))
-		return (1);
+	//if (!parsing(ac, av, &env))
+	//	return (1);
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.res_x, &env.params.res_y);
 	env.params.res_x /= 1.5;
@@ -68,7 +68,7 @@ int main(int ac, char **av)
 	env.img = make_image(env.params.mlx, env.params.res_x, env.params.res_y);
 	mlx_hook(env.params.mlx_win, 33, 1L << 17, quit_program, &env);
 	mlx_hook(env.params.mlx_win, 2, 1L << 0, keypress, &env);
-	randomise_map();
+	randomise_map(&env);
 	mlx_loop_hook(env.params.mlx, render_next_frame, &env);
 	mlx_loop(env.params.mlx);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/02 17:05:58 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:50:06 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_check_map(char *path, t_env *env)
 	return (0);
 }
 
-int check_around(char **map, int x, int y)
+int check_around(char map[20][20], int x, int y)
 {
 	if ((map[x - 1][y] && (map[x - 1][y] != '0') && (map[x - 1][y] != '1')\
 	&& (map[x - 1][y] != 'S') && (map[x - 1][y] != 'W') && (map[x - 1][y] != 'N')\
