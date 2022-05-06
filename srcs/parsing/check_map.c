@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/05 17:18:26 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:25:39 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,12 @@
 				//fonction qui check si la map contient un seul player
 
 //fonction pour check si map a la bonne extension
-int	check_file_extension(char *map)
-{
-	int	size;
 
-	size = ft_strlen(map);
-	if (map[size - 4] != '.' || map[size - 3] != 'c' || \
-	map[size - 2] != 'u' || map[size - 1] != 'b')
-		return (printf("Error file extention\n"), 0);
-	return (1);
-}
 
-int	ft_check_file(char *path, t_env *env)
+int	ft_check_file(int fd)
 {
-	int fd;
-	(void) env;
-	
-	if (!(check_file_extension(path)))
-		return (0);
-	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (printf("Error in open file\n"), 0);
-	printf("good in file\n");
+		return (0);
 	return (1);
 }
 
