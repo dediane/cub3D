@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/06 16:59:19 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:35:48 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,10 @@ int		ft_store_map(char *path, t_env *env, int fd);
 
 //--malloc_map--
 void	secure_line(char *line);
+int		pass_text(char *line, t_env *env);
+int		pass_col(char *line, t_env *env);
 void	read_file(int fd, int *nb_line, t_env *env, int *stop);
+void	pass_space(char *line, int *i);
 
 //--init_env--
 void	init_env(t_env *env);
