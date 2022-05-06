@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/02 15:02:01 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:00:58 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int ft_store_map(char *path, t_env *env, int fd)
 			else
 				flag++;
 		}
-		printf("height = %i\n", height);
 	}
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/02/19 04:27:24 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/05 16:12:53 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_check_texture(t_texture *texture, char *line)
 
 	i = 0;
 	if (!check_texture_extension(line))
-		return (ft_putstr("Error: texture extension.\n"), 2);
+		return (ft_putstr("Error: texture is not in xpm extention.\n"), 2);
 	if (line[i] == 'N' && line[i + 1] && line[i + 1] == 'O')
 		ft_store_texture(texture->no_path, line);
 	if (line[i] == 'S' && line[i + 1] && line[i + 1] == 'O')

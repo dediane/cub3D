@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/04/08 13:21:42 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/05 17:19:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int	extention(char *ext, char *str)
 	return (1);	
 }
 
-int	open_fd(int *fd, char **argv)
+int	open_fd(int fd, char *argv)
 {
-	*fd = open(argv[1], O_RDONLY);
-	if (*fd < 0)
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
 		return (0);
-	return (1);
+	return (fd);
 }
 
 int	parsing(int ac, char **av, t_env *env)
 {
-	int	*fd;
+	int	fd;
 
 	fd = 0;
 	(void)env;
@@ -56,9 +56,11 @@ int	parsing(int ac, char **av, t_env *env)
 		return (error_message("usage: [./cub3D.c] [map.cub]", 0));
 	if (!extention(".cub", av[1]))
 		return (error_message("bad file extention", 0));
-	if (!open_fd(fd, av))
+	fd = open_fd(fd, av[1]);
+	if (fd == 0)
 		return (error_message("file doesn't open", 0));
-	/*if (!(ft_check_map(av[1], &env)))
-		return (error_message("invalid char in map.", 0));*/
+	if (!(ft_check_file(av[1], env)))
+		return (error_message(0);
+	// here check les nom (NO, SO, ...) et leur extention et si le fichier s'ouvre
 	return (1);
 }

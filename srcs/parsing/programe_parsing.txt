@@ -5,16 +5,21 @@
 		1- checker le nombre d'arguments
 		2- checker l'exention .cub
 		3- checker l'ouverture du fichier
-		4- checker les arguments passer dans le fichier
+		4- checker les arguments passer dans le fichier dans read_file
 			° checker NO "path to texeture" + checker l'exention du fichier .xpm
 			° checker SO "path to texeture" + checker l'exention du fichier .xpm
 			° checker WE "path to texeture" + checker l'exention du fichier .xpm
 			° checker EA "path to texeture" + checker l'exention du fichier .xpm
 
-			° checkerla couleur du sol F RGB range (ex: F 0,255,255)
-			° checkerla couleur du plafond C RGB range (ex: C 0,255,255)
+			° checker la couleur du sol F RGB range (ex: F 0,255,255)
+			° checker la couleur du plafond C RGB range (ex: C 0,255,255)
 
 		5- checker les caractères dans la map -> only '1', '0', 'N', 'S', 'E', 'W' et ' '
+			allouer avec le bon nombre a l'aide de get next line
+			premiere chose a allouer c'est la hauteur de la map
+			second trouver la ligne la plus longue
+			troisieme chose a allouer pour chaque ligne la taille la plus longue
+			quatrieme chose remplir la map avec des 1 quand c'est des spaces
 		6- checker map fermé  
 
 		-> ft_extension(char *ext, char *str)

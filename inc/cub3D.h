@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/05 13:50:33 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:18:36 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
+# include <stdbool.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
@@ -120,15 +121,24 @@ typedef struct s_env
 	t_vecdouble	vecdouble;
 }				t_env;
 
-//PARSING
+// GET NEXT LINE
+//--get_next_line_utils--
+char	*copy(char *s1, int *i, char *ret);
+
+//--get next line--
+int		ft_strclen(char *str, char c);
+char	*ft_ret_str(char **ret_str);
+char	*gnl(int fd, int *p, bool first_read);
+
+// PARSING
 //--parsing--
 int error_message(char *str, int ret);
-int	open_fd(int *fd, char **argv);
+int	open_fd(int fd, char *argv);
 int	parsing(int ac, char **av, t_env *env);
 
 //--check_map--
 int	check_file_extension(char *map);
-int	ft_check_map(char *path, t_env *env);
+int	ft_check_file(char *path, t_env *env);
 int check_around(char map[20][20], int x, int y);
 int	check_valid_char(t_env *env, char c, int x, int y);
 int	check_wall_all_around(t_env *env, char **map);
@@ -141,6 +151,10 @@ int	load_all_textures(t_env *env);
 //--store_map--
 int	is_empty(char *s);
 int ft_store_map(char *path, t_env *env, int fd);
+
+//--malloc_map--
+void	secure_line(char *line);
+void	read_file(int fd, int *p);
 
 //--win_utils--
 int	quit_program(t_env *env);
@@ -156,7 +170,7 @@ void	cast_forward(t_ray *ray, t_ray step);
 void	get_pixel(t_img *img, int x, int y);
 void	set_pixel(t_img *img, int x, int y, int color);
 void	rect(t_img *img, t_shape shape, int color);
-double calc_sqrtlen(t_vecdouble v);
+double	calc_sqrtlen(t_vecdouble v);
 void    draw_map(t_env *env, t_img *img);
 
 

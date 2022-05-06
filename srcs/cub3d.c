@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/05 13:37:43 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/05 15:57:49 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int main(int ac, char **av)
 	(void)av;
 	t_env env;
 
-	//if (!parsing(ac, av, &env))
-	//	return (1);
+	if (!parsing(ac, av, &env))
+		return (1);
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.res_x, &env.params.res_y);
 	env.params.res_x /= 1.5;

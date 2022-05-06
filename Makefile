@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/04/08 13:18:06 by user42           ###   ########.fr        #
+#    Updated: 2022/05/05 15:14:39 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ SRCS	=	srcs/cub3d.c \
 			srcs/win_utils.c \
 			srcs/raycasting.c \
 			srcs/raycasting_utils.c \
+			srcs/get_next_line/get_next_line.c \
+			srcs/get_next_line/get_next_line_utils.c \
 
 
 OBJS	= ${SRCS:.c=.o}
