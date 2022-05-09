@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/06 17:35:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/07 17:11:29 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct s_img
 	int		ratio;
 }			t_img;
 
+typedef struct s_rgb
+{	
+	int		r;
+	int		g;
+	int		b;
+}			t_rgb;
+
 typedef struct s_texture
 {
 	char	*no_path;
@@ -63,6 +70,10 @@ typedef struct s_texture
 	int		fd_so;
 	int		fd_we;
 	int		fd_ea;
+	bool	f;
+	t_rgb	fl;
+	bool	c;
+	t_rgb	cl;
 }				t_texture;
 
 //pour gérer les rotations
@@ -147,8 +158,11 @@ int		check_wall_all_around(t_env *env, char **map);
 
 //--check_texture--
 int		ft_store_texture(char **path, char *line);
+int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_all_textures(t_env *env);
+int		ft_store_FC(t_rgb *couleur, char *line);
+
 
 //--store_map--
 int		is_empty(char *s);

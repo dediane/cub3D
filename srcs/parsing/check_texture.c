@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/06 17:36:52 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/07 16:53:50 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,64 @@
 //store textures path
 int	ft_store_texture(char **path, char *line)
 {
-	ft_memmove(line, line + 3, ft_strlen(line));
-	*path = ft_strdup(line);
+	int	i;
+
+	i = 0;
+	ft_memmove(&line[i], &line[i] + 3, ft_strlen(&line[i]));
+	pass_space(line, &i);
+	*path = ft_strdup(&line[i]);
 	return (1);
 }
-/*
-int	ft_check_col(t_env *env)
+
+int	ft_store_FC(t_rgb *couleur, char *line)
 {
+	int		i;
+	int		col;
+	char	*buf;
 	
-}*/
+	i = 0;
+	col = 0;
+	(void)couleur;
+	buf = malloc(sizeof(char) * 4);
+	ft_memset(buf, 0, 3);
+	buf[4] = '\0';
+	printf("la line line vaut ---%s--- et i vaut %d et buf vaut %s\n", line, i, buf);
+	// ici check si F ou C
+	// pass space
+	pass_space(line, &i);
+	printf("apres avoir passer les space la line est --%s et i vaut %d\n", line, i);
+	while(line[i] != ',' && col < 3)
+	{
+		col++;
+		printf("le char -%c-\n", line[i]);
+		i++;
+	}
+	//if (col )
+	// checker la couleur existe
+	// return 1 si c'est bon et -1 si erreur
+	return (1);
+}
+
+int	ft_check_col(t_texture *texture, char *line)
+{
+	int	i;
+
+	i = 0;
+	pass_space(line, &i);
+	printf("here in check col line vaut -%s-\n", line);
+	if (line[i] == 'F' && texture->f == false)
+	{
+		texture->f = true;
+		return (ft_store_FC(&(texture->fl), &line[i + 1]));
+	}
+	else if (line[i] == 'C' && texture->c == false)
+	{
+		texture->c = true;
+		return (ft_store_FC(&(texture->cl), &line[i + 1]));
+	}
+	return (-1);
+}
+
 
 //check the if the path right formatted and store it
 int	ft_check_texture(t_texture *texture, char *line)
@@ -38,13 +87,13 @@ int	ft_check_texture(t_texture *texture, char *line)
 		if (line[i] == ' ')
 			pass_space(line, &i);	
 		if (line[i] == 'N' && line[i + 1] && line[i + 1] == 'O' && texture->no_path == NULL)
-			return (ft_store_texture(&(texture->no_path), line));
+			return (ft_store_texture(&(texture->no_path), &line[i]));
 		else if (line[i] == 'S' && line[i + 1] && line[i + 1] == 'O' && texture->so_path == NULL)
-			return (ft_store_texture(&(texture->so_path), line));
+			return (ft_store_texture(&(texture->so_path), &line[i]));
 		else if (line[i] == 'W' && line[i + 1] && line[i + 1] == 'E' && texture->we_path == NULL)
-			return (ft_store_texture(&(texture->we_path), line));
+			return (ft_store_texture(&(texture->we_path), &line[i]));
 		else if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A' && texture->ea_path == NULL)
-			return (ft_store_texture(&(texture->ea_path), line));
+			return (ft_store_texture(&(texture->ea_path), &line[i]));
 		else if (!texture->no_path && !texture->so_path && !texture->we_path && !texture->ea_path)
 			return (-1);
 	}
