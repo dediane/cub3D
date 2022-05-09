@@ -6,7 +6,7 @@
 #    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/05/06 12:04:52 by bben-yaa         ###   ########.fr        #
+#    Updated: 2022/05/09 14:22:40 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,11 @@ SRCS	=	srcs/cub3d.c \
 			srcs/parsing/check_map.c \
 			srcs/parsing/parsing.c \
 			srcs/parsing/check_texture.c \
+			srcs/parsing/check_texture_utils.c \
+			srcs/parsing/check_color.c \
 			srcs/parsing/store_map.c \
-			srcs/parsing/malloc_map.c \
+			srcs/parsing/store_params.c \
+			srcs/parsing/store_params_utils.c \
 			srcs/parsing/init_env.c \
 			srcs/win_utils.c \
 			srcs/raycasting.c \
@@ -32,7 +35,7 @@ HEADER	= mlx/mlx.h
 
 CC		= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 RM = rm -f
 

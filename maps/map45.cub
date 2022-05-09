@@ -1,10 +1,11 @@
 NO             textures/banksy.xpm
 SO     textures/flowerwall.xpm
-WE                               textures/wall.xpm
+WE     textures/wall.xpm
 EA  textures/wall42.xpm
 
-F 220,100,0
-C 225,30,0
+
+F        45, 58 ,54
+C 89,64,93
 
 		1111111111111111111111111
 		1000000000110000000000001

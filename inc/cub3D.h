@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/07 17:11:29 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:46:39 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,22 @@ typedef struct s_rgb
 
 typedef struct s_texture
 {
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	t_img	no_texture;
-	t_img	so_texture;
-	t_img	we_texture;
-	t_img	ea_texture;
-	int		fd_no;
-	int		fd_so;
-	int		fd_we;
-	int		fd_ea;
-	bool	f;
-	t_rgb	fl;
-	bool	c;
-	t_rgb	cl;
+	char			*no_path;
+	char			*so_path;
+	char			*we_path;
+	char			*ea_path;
+	t_img			no_texture;
+	t_img			so_texture;
+	t_img			we_texture;
+	t_img			ea_texture;
+	int				fd_no;
+	int				fd_so;
+	int				fd_we;
+	int				fd_ea;
+	bool			f;
+	unsigned int	fcl;
+	bool			c;
+	unsigned int	ccl;
 }				t_texture;
 
 //pour gérer les rotations
@@ -161,19 +161,37 @@ int		ft_store_texture(char **path, char *line);
 int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_all_textures(t_env *env);
-int		ft_store_FC(t_rgb *couleur, char *line);
+int		ft_store_FC(char *line, unsigned int rgb);
 
+//--check_texture_utils--
+int		len_num(char *line);
+int		recup_col(char *line, int *i, int *stop);
+void	store_rgb(int ret, int col, t_rgb *couleur);
+void	ft_check(const char *str, int *i, int *k, int *sign);
+void	ft_maxmin(long int *n);
+int		ft_check_int(char *str, int *stop);
 
 //--store_map--
 int		is_empty(char *s);
 int		ft_store_map(char *path, t_env *env, int fd);
 
-//--malloc_map--
-void	secure_line(char *line);
-int		pass_text(char *line, t_env *env);
-int		pass_col(char *line, t_env *env);
+//--store_params--
+int		pass_text(char *line, t_env *env, int *len, int *stop);
+int		pass_col(char *line, t_env *env, int *len, int *stop);
 void	read_file(int fd, int *nb_line, t_env *env, int *stop);
+int		read_line(char *line, t_env *env, int *stop);
+int		is_param(char *line);
+
+//--store_params_utils--
+void	secure_line(char *line);
 void	pass_space(char *line, int *i);
+void	finish_line(char *line, int *i);
+
+//--check_color--
+int		is_num(char *line);
+unsigned int	create_trgb(int t, int r, int g, int b);
+
+
 
 //--init_env--
 void	init_env(t_env *env);

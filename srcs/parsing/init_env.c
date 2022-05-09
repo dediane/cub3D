@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/07 15:08:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:01:38 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	init_texture(t_texture *texture)
 	texture->fd_ea = 0;
 	texture->f = false;
 	texture->c = false;
+	texture->fcl = 0;
+	texture->ccl = 0;
 	// j'ai pas init les *img des no, so, we, ea
 }
 

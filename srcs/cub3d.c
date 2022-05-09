@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/06 17:04:46 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:36:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ int main(int ac, char **av)
 	init_env(&env);
 	if (!parsing(ac, av, &env))
 	{
+		ft_free(&env);
 		printf("parsing fail\n");
 		return (1);
 	}
 	printf("parsing good\n");
+/*
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.res_x, &env.params.res_y);
 	env.params.res_x /= 1.5;
@@ -74,6 +76,7 @@ int main(int ac, char **av)
 	randomise_map(&env);
 	mlx_loop_hook(env.params.mlx, render_next_frame, &env);
 	mlx_loop(env.params.mlx);
+*/
 	ft_free(&env);
 	return (0);
 }

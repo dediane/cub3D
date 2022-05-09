@@ -6,13 +6,13 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/07 16:53:50 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:48:16 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../inc/cub3D.h"
 
-//store textures path
+//store texture path
 int	ft_store_texture(char **path, char *line)
 {
 	int	i;
@@ -24,29 +24,39 @@ int	ft_store_texture(char **path, char *line)
 	return (1);
 }
 
-int	ft_store_FC(t_rgb *couleur, char *line)
+//store color fot floor and ceiling
+int	ft_store_FC(char *line, unsigned int rgb)
 {
-	int		i;
-	int		col;
-	char	*buf;
-	
+	int	i;
+	int	col;
+	int	ret;
+	int	stop;
+	t_rgb couleur;
+	(void)rgb;
+
 	i = 0;
 	col = 0;
-	(void)couleur;
-	buf = malloc(sizeof(char) * 4);
-	ft_memset(buf, 0, 3);
-	buf[4] = '\0';
-	printf("la line line vaut ---%s--- et i vaut %d et buf vaut %s\n", line, i, buf);
-	// ici check si F ou C
-	// pass space
-	pass_space(line, &i);
-	printf("apres avoir passer les space la line est --%s et i vaut %d\n", line, i);
-	while(line[i] != ',' && col < 3)
+	stop = 0;
+	while (col < 3)
 	{
+		pass_space(line, &i);
+		ret = recup_col(line, &i, &stop);
+		i = len_num(&line[i]);
+		if (stop)
+		{
+			printf("passe ici when -----\n");
+			return (-1);
+		}
+		store_rgb(ret, col, &couleur);
 		col++;
+		printf("ret vaut -%d-\n", ret);
 		printf("le char -%c-\n", line[i]);
-		i++;
+		if (line[i] == ',')
+			i++;
+		else if (line[i] != '\n' && line[i] != '\0')
+			return (error_message("!!!il manque une couleur!!!!", 0));
 	}
+		printf("une fois fini le r = -%d- : le g = -%d- : le b = -%d-\n", couleur.r, couleur.g, couleur.b);
 	//if (col )
 	// checker la couleur existe
 	// return 1 si c'est bon et -1 si erreur
@@ -58,23 +68,24 @@ int	ft_check_col(t_texture *texture, char *line)
 	int	i;
 
 	i = 0;
-	pass_space(line, &i);
-	printf("here in check col line vaut -%s-\n", line);
+	if (!is_num(line))
+		return (error_message("Invalid caracters in colors", -1));
 	if (line[i] == 'F' && texture->f == false)
 	{
-		texture->f = true;
-		return (ft_store_FC(&(texture->fl), &line[i + 1]));
+		printf("la blou\n");
+		texture->f = true;		// le true vient apres avoir check la coul
+		//return (ft_store_FC(&line[i + 1], texture->fcl));
 	}
 	else if (line[i] == 'C' && texture->c == false)
 	{
-		texture->c = true;
-		return (ft_store_FC(&(texture->cl), &line[i + 1]));
+		printf("lou bli\n");
+		texture->c = true;		// le true vient apres avoir check la coul
+		//return (ft_store_FC(&line[i + 1], texture->ccl));
 	}
 	return (-1);
 }
 
-
-//check the if the path right formatted and store it
+//	check path texture and if texture exist
 int	ft_check_texture(t_texture *texture, char *line)
 {
 	int	i;
@@ -82,10 +93,9 @@ int	ft_check_texture(t_texture *texture, char *line)
 	i = 0;
 	if (!extension(".xpm", line, 5))
 		return (error_message("texture is not in xpm extention", -1));
-	while (line [i])
+	while (line[i])
 	{
-		if (line[i] == ' ')
-			pass_space(line, &i);	
+		pass_space(line, &i);	
 		if (line[i] == 'N' && line[i + 1] && line[i + 1] == 'O' && texture->no_path == NULL)
 			return (ft_store_texture(&(texture->no_path), &line[i]));
 		else if (line[i] == 'S' && line[i + 1] && line[i + 1] == 'O' && texture->so_path == NULL)
@@ -94,10 +104,10 @@ int	ft_check_texture(t_texture *texture, char *line)
 			return (ft_store_texture(&(texture->we_path), &line[i]));
 		else if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A' && texture->ea_path == NULL)
 			return (ft_store_texture(&(texture->ea_path), &line[i]));
-		else if (!texture->no_path && !texture->so_path && !texture->we_path && !texture->ea_path)
-			return (-1);
+		else
+			return(-1);
 	}
-	return (2);
+	return (-1);
 }
 
 //function to load a texture
