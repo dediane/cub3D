@@ -2,17 +2,17 @@
 
 		Programe parsing Cub3d
 
-		1- checker le nombre d'arguments
-		2- checker l'exention .cub
-		3- checker l'ouverture du fichier
+		1- checker le nombre d'arguments													->OKAY
+		2- checker l'exention .cub															->OKAY
+		3- checker l'ouverture du fichier													->OKAY
 		4- checker les arguments passer dans le fichier dans read_file
-			° checker NO "path to texeture" + checker l'exention du fichier .xpm
-			° checker SO "path to texeture" + checker l'exention du fichier .xpm
-			° checker WE "path to texeture" + checker l'exention du fichier .xpm
-			° checker EA "path to texeture" + checker l'exention du fichier .xpm
+			° checker NO "path to texeture" + checker l'exention du fichier .xpm			->OKAY
+			° checker SO "path to texeture" + checker l'exention du fichier .xpm			->OKAY
+			° checker WE "path to texeture" + checker l'exention du fichier .xpm			->OKAY
+			° checker EA "path to texeture" + checker l'exention du fichier .xpm			->OKAY
 
-			° checker la couleur du sol F RGB range (ex: F 0,255,255)
-			° checker la couleur du plafond C RGB range (ex: C 0,255,255)
+			° checker la couleur du sol F RGB range (ex: F 0,255,255)						->OKAY
+			° checker la couleur du plafond C RGB range (ex: C 0,255,255)					->OKAY
 
 		5- checker les caractères dans la map -> only '1', '0', 'N', 'S', 'E', 'W' et ' '
 			allouer avec le bon nombre a l'aide de get next line

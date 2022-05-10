@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 09:01:31 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:49:33 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,22 +133,27 @@ typedef struct s_env
 	t_vecdouble	vecdouble;
 }				t_env;
 
-// GET NEXT LINE
+				///////////////////
+				// GET NEXT LINE //
+				///////////////////
+
 //--get_next_line_utils--
 char	*copy(char *s1, int *i, char *ret);
 
 //--get next line--
 int		ft_strclen(char *str, char c);
+char	*ft_strndu(char *str, int n);
+char	*ft_strjoi(char *s1, char *s2);
 char	*ft_ret_str(char **ret_str);
-char	*gnl(int fd, int *p, bool first_read);
+char	*gnl(int fd);
 
 
-// PARSING
-//--parsing--
-int		error_message(char *str, int ret);
-int		extension(char *ext, char *str, int len);
-int		open_fd(int fd, char *argv);
-int		parsing(int ac, char **av, t_env *env);
+				/////////////
+				// PARSING //
+				/////////////
+
+//--check_color--
+int		is_num(char *line);
 
 //--check_map--
 int		ft_check_file(int fd);
@@ -156,24 +161,41 @@ int		check_around(char map[20][20], int x, int y);
 int		check_valid_char(t_env *env, char c, int x, int y);
 int		check_wall_all_around(t_env *env, char **map);
 
-//--check_texture--
-int		ft_store_texture(char **path, char *line);
-int		ft_check_col(t_texture *texture, char *line);
-int		ft_check_texture(t_texture *texture, char *line);
-int		load_all_textures(t_env *env);
-int		ft_store_FC(char *line, unsigned int *rgb, int i);
-
 //--check_texture_utils--
-int		len_num(char *line);
 int		recup_col(char *line, int i);
 void	store_rgb(int ret, int col, t_rgb *couleur);
 void	ft_check(const char *str, int *i, int *k, int *sign);
 void	ft_maxmin(long int *n);
 int		ft_check_int(char *str);
 
+//--check_texture--
+int		ft_store_texture(char **path, char *line);
+int		ft_store_FC(char *line, unsigned int *rgb, int i);
+int		ft_check_col(t_texture *texture, char *line);
+int		ft_check_texture(t_texture *texture, char *line);
+int		load_texture(t_env *env, t_img *img, char *path);
+
+//--init_env--
+void	init_env(t_env *env);
+void	init_texture(t_texture *texture);
+void	ft_free(t_env *env);
+
+//--parsing--
+int		error_message(char *str, int ret);
+int		extension(char *ext, char *str, int len);
+int		open_fd(int fd, char *argv);
+int		parsing(int ac, char **av, t_env *env);
+
 //--store_map--
 int		is_empty(char *s);
 int		ft_store_map(char *path, t_env *env, int fd);
+
+//--store_params_utils--
+int		len_num(char *line);
+void	secure_line(char *line);
+void	pass_space(char *line, int *i);
+void	finish_line(char *line, int *i);
+int		load_all_textures(t_env *env);
 
 //--store_params--
 int		pass_text(char *line, t_env *env, int *len, int *stop);
@@ -182,24 +204,11 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop);
 int		read_line(char *line, t_env *env, int *stop);
 int		is_param(char *line);
 
-//--store_params_utils--
-void	secure_line(char *line);
-void	pass_space(char *line, int *i);
-void	finish_line(char *line, int *i);
 
-//--check_color--
-int		is_num(char *line);
+				//////////
+				// SRCS //
+				//////////
 
-
-
-//--init_env--
-void	init_env(t_env *env);
-void	init_texture(t_texture *texture);
-void	ft_free(t_env *env);
-
-
-
-// SRCS
 //--win_utils--
 int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);

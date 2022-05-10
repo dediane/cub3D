@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 12:26:30 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:51:46 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	pass_text(char *line, t_env *env, int *len, int *stop)
 	if (text == -1)
 	{
 		(*stop) = 42;
-		return (error_message("textures are not complete", 0));
+		return (0);
 	}
 	finish_line(line, len);
 	return (1);
@@ -45,11 +45,9 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 	char	*line;
 
 	line = NULL;
-	(void)env;
-	(void)stop;
 	while (1)
 	{
-		line = gnl(fd, nb_line, true);									//je recupere la ligne
+		line = gnl(fd);													//je recupere la ligne
 		if (!line)														//je check si c'est la fin du fichier 
 			break ;
 		if (is_param(line))

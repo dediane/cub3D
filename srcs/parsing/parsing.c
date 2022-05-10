@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/10 12:19:57 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:33:46 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ int	parsing(int ac, char **av, t_env *env)
 		printf("I AM IN RETURN 0 IN PARSING\n");
 		return (0);
 	}
-	// here check les nom (NO, SO, ...) et leur extension et si le fichier s'ouvre
 	return (1);
 }

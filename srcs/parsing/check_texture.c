@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 11:51:17 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:53:26 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ int	ft_check_texture(t_texture *texture, char *line)
 		else if (line[i] == 'E' && line[i + 1] && line[i + 1] == 'A' && texture->ea_path == NULL)
 			return (ft_store_texture(&(texture->ea_path), &line[i]));
 		else
-			return(-1);
+			return(error_message("texture are not valid", -1));
 	}
-	return (-1);
+	return (error_message("texture are not valid" , -1));
 }
 
 //function to load a texture
@@ -107,12 +107,4 @@ int	load_texture(t_env *env, t_img *img, char *path)
 	return (0);
 }
 
-//load all textures images
-int	load_all_textures(t_env *env)
-{
-	load_texture(env, &(env->texture.no_texture), env->texture.no_path);
-	load_texture(env, &(env->texture.so_texture), env->texture.so_path);
-	load_texture(env, &(env->texture.we_texture), env->texture.we_path);
-	load_texture(env, &(env->texture.ea_texture), env->texture.ea_path);
-	return (0);
-}
+
