@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 11:31:24 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/05 15:54:15 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:15:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ char	*gnl(int fd, int *p, bool first_read)
 	char			buff[5 + 1];
 	int				ret;
 
+
+	(void)first_read;
+	(void)p;
 	while (ft_strclen(ret_str, '\n') == -1)
 	{
 		ret = read(fd, &buff, 5);
@@ -126,7 +129,7 @@ char	*gnl(int fd, int *p, bool first_read)
 		else
 			ret_str = ft_strjoi(ret_str, buff);
 	}
-	if (first_read)
-		(*p)++;
+	//if (first_read)
+	//	(*p)++;
 	return (ft_ret_str(&ret_str));
 }

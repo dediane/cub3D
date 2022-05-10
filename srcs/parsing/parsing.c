@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/09 16:54:56 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:19:57 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	parsing(int ac, char **av, t_env *env)
 	if (!(ft_check_file(fd)))											// check open fd
 		return (error_message("file doesn't open", 0));
 	printf("nb file before is %d\n", env->nb_lfile);
-								read_file(fd, &env->nb_lfile, env, &stop);
+	read_file(fd, &env->nb_lfile, env, &stop);
 	printf("nb file after read is %d\n\n", env->nb_lfile);
 	printf("Fin de la lecture du fichier\n");
 	printf("alors on a ->\n");
@@ -78,16 +78,12 @@ int	parsing(int ac, char **av, t_env *env)
 	printf("ceiling is  %d\n", env->texture.c);
 	printf("ceiling color is %u\n", env->texture.ccl);
 	if (stop || !env->texture.no_path || !env->texture.so_path \
-		|| !env->texture.ea_path || !env->texture.we_path || env->texture.f == 0 || env->texture.c == 0)
+		|| !env->texture.ea_path || !env->texture.we_path || env->texture.f == 0 || env->texture.c == 0 || env->nb_lfile != 6)
 	{
+		printf("nb line %d\n", env->nb_lfile);
 		printf("I AM IN RETURN 0 IN PARSING\n");
 		return (0);
-	}	
-/*	{
-		ft_free(env);
-		exit(0);
 	}
-*/
 	// here check les nom (NO, SO, ...) et leur extension et si le fichier s'ouvre
 	return (1);
 }
