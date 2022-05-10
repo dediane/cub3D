@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 14:52:40 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:11:49 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 		{
 			if (!is_map(line))
 			{
+				(*stop) = 42;
 				secure_line(line);
 				break ;
 			}

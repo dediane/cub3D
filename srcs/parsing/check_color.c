@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 15:05:40 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:22:16 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	is_num(char *line)
 			num = 0;
 		}
 		else
-			return (error_message("Wrong argument enter for color -> F or C [num][,][num][,][num]", 0));
+			return (error_message("Wrong arguments enter for color -> F or C [num][,][num][,][num]", 0));
 		if (num == 2)
 			return(error_message("miss comma between number in colors", 0));
 	}
