@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/09 18:46:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 09:01:31 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,15 +161,15 @@ int		ft_store_texture(char **path, char *line);
 int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_all_textures(t_env *env);
-int		ft_store_FC(char *line, unsigned int rgb);
+int		ft_store_FC(char *line, unsigned int *rgb, int i);
 
 //--check_texture_utils--
 int		len_num(char *line);
-int		recup_col(char *line, int *i, int *stop);
+int		recup_col(char *line, int i);
 void	store_rgb(int ret, int col, t_rgb *couleur);
 void	ft_check(const char *str, int *i, int *k, int *sign);
 void	ft_maxmin(long int *n);
-int		ft_check_int(char *str, int *stop);
+int		ft_check_int(char *str);
 
 //--store_map--
 int		is_empty(char *s);
@@ -189,7 +189,6 @@ void	finish_line(char *line, int *i);
 
 //--check_color--
 int		is_num(char *line);
-unsigned int	create_trgb(int t, int r, int g, int b);
 
 
 
@@ -217,6 +216,10 @@ void	set_pixel(t_img *img, int x, int y, int color);
 void	rect(t_img *img, t_shape shape, int color);
 double	calc_sqrtlen(t_vecdouble v);
 void    draw_map(t_env *env, t_img *img);
+
+
+//--mlx_utils--
+unsigned int	create_trgb(int t, int r, int g, int b);
 
 
 #endif

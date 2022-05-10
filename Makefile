@@ -6,7 +6,7 @@
 #    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/05/09 14:22:40 by bben-yaa         ###   ########.fr        #
+#    Updated: 2022/05/10 08:42:32 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS	=	srcs/cub3d.c \
 			srcs/raycasting_utils.c \
 			srcs/get_next_line/get_next_line.c \
 			srcs/get_next_line/get_next_line_utils.c \
+			srcs/mlx_utils.c
 
 
 OBJS	= ${SRCS:.c=.o}

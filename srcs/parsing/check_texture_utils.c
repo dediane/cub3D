@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:00:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/09 16:50:24 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 09:10:39 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,27 @@ int	len_num(char *line)
 
 	i = 0;
 	while (line[i] != ',')
-	{
-		printf("bla line [i] pour buf vaut -%c-\n", line[i]);
 		i++;
-	}
 	return (i);
 }
 
-int	recup_col(char *line, int *i, int *stop)
+int	recup_col(char *line, int i)
 {
 	char	*buf;
 	int		y;
+	int		j;
 	int		len;
 
 	y = 0;
-	len = len_num(line) - 1;
-	buf = ft_strndup(&line[(*i)], len);
-	printf("buf vaut -%s- pour line %s\n", buf, line);
-	y = ft_check_int(buf, stop);
+	j = i;
+	len = 0;
+	while((line[i] >= '0' && line[i] <= '9') || line[i] == '-')
+	{
+		i++;
+		len++;
+	}
+	buf = ft_strndup(&line[j], len);
+	y = ft_check_int(buf);
 	free(buf);
 	return (y);
 }
@@ -68,19 +71,19 @@ void	ft_maxmin(long int *n)
 {
 	if ((*n) > 255)
 	{
-		printf("The number -> %ld overtake the max of rgb value\
-		 so we fixed at the value at 255\n", (*n));
+		printf("The number : %ld overtake the max of rgb value \n \
+		so we fixed at the value at 255\n", (*n));
 		(*n) = 255;
 	}
 	if ((*n) < 0)
 	{
-		printf("The number -> %ld overtake the min of rgb value\
-		 so we fixed at the value at 0\n", (*n));
+		printf("The number : %ld overtake the min of rgb value \n \
+		so we fixed at the value at 0\n", (*n));
 		(*n) = 0;
 	}
 }
 
-int	ft_check_int(char *str, int *stop)
+int	ft_check_int(char *str)
 {
 	long int	n;
 	int			sign;
@@ -97,13 +100,7 @@ int	ft_check_int(char *str, int *stop)
 		n = n * 10 + (str[i] - 48);
 		i++;
 	}
-	if (k > 1)
-	{
-		(*stop) = 42;
-		return (0);
-	}
 	n = n * sign;
 	ft_maxmin(&n);
-	printf("before we return the n = %ld\n", n);
 	return (n);
 }

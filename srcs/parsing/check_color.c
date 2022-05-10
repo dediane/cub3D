@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/09 18:46:18 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 08:58:17 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	is_num(char *line)
 	while(line[i] && j <= 2)
 	{
 		pass_space(line, &i);
-		if (line[i] >= '0' && line[i] <= '9')
+		if ((line[i] >= '0' && line[i] <= '9') || (line[i] == '-' && line[i + 1] && line[i + 1]  >= '0' && line[i + 1] <= '9' ))
 		{
-			while(line[i] && line[i] >= '0' && line[i] <= '9')
+			while((line[i] && line[i] >= '0' && line[i] <= '9') || (line[i] == '-' && line[i + 1] && line[i + 1]  >= '0' && line[i + 1] <= '9' ))
 				i++;
 			j++;
 			num++;
@@ -48,11 +48,5 @@ int	is_num(char *line)
 	}
 	if (j < 3)
 		return (0);
-	printf("goOOOOOOOOOODDDD\n");
 	return (1);
-}
-
-unsigned int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
 }

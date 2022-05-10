@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/09 18:48:16 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 09:07:12 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,29 @@ int	ft_store_texture(char **path, char *line)
 	return (1);
 }
 
+
 //store color fot floor and ceiling
-int	ft_store_FC(char *line, unsigned int rgb)
+int	ft_store_FC(char *line, unsigned int *rgb, int i)
 {
-	int	i;
 	int	col;
 	int	ret;
-	int	stop;
 	t_rgb couleur;
-	(void)rgb;
 
-	i = 0;
+
 	col = 0;
-	stop = 0;
 	while (col < 3)
 	{
 		pass_space(line, &i);
-		ret = recup_col(line, &i, &stop);
-		i = len_num(&line[i]);
-		if (stop)
-		{
-			printf("passe ici when -----\n");
-			return (-1);
-		}
+		ret = recup_col(line, i);
 		store_rgb(ret, col, &couleur);
-		col++;
-		printf("ret vaut -%d-\n", ret);
-		printf("le char -%c-\n", line[i]);
-		if (line[i] == ',')
+		i += len_num(&line[i]);
+		if ((line[i] == '\n' || line[i] == '\0') && col == 2)
+			break ;
+		else if (line[i] == ',')
 			i++;
-		else if (line[i] != '\n' && line[i] != '\0')
-			return (error_message("!!!il manque une couleur!!!!", 0));
+		col++;
 	}
-		printf("une fois fini le r = -%d- : le g = -%d- : le b = -%d-\n", couleur.r, couleur.g, couleur.b);
-	//if (col )
-	// checker la couleur existe
-	// return 1 si c'est bon et -1 si erreur
+	(*rgb) = create_trgb(1, couleur.r, couleur.g, couleur.b);
 	return (1);
 }
 
@@ -72,15 +59,13 @@ int	ft_check_col(t_texture *texture, char *line)
 		return (error_message("Invalid caracters in colors", -1));
 	if (line[i] == 'F' && texture->f == false)
 	{
-		printf("la blou\n");
 		texture->f = true;		// le true vient apres avoir check la coul
-		//return (ft_store_FC(&line[i + 1], texture->fcl));
+		return (ft_store_FC(&line[i + 1], &texture->fcl, i + 1));
 	}
 	else if (line[i] == 'C' && texture->c == false)
 	{
-		printf("lou bli\n");
 		texture->c = true;		// le true vient apres avoir check la coul
-		//return (ft_store_FC(&line[i + 1], texture->ccl));
+		return (ft_store_FC(&line[i + 1], &texture->ccl, i + 1));
 	}
 	return (-1);
 }
