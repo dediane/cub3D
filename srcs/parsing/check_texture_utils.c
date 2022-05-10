@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:00:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 09:10:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:05:13 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	len_num(char *line)
 	int i;
 
 	i = 0;
-	while (line[i] != ',')
+	while (line[i] && line[i] != ',')
 		i++;
 	return (i);
 }

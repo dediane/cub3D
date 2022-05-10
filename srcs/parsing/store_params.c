@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/09 18:47:43 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:55:05 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ int	pass_col(char *line, t_env *env, int *len, int *stop)
 
 	col = ft_check_col(&env->texture, line);
 	if (col == -1)
-	{
-		(*stop) = 42;
-		return (error_message("the floor and the wall are incomplete", 0));
-	}
+		return ((*stop) = 42, 0);
 	finish_line(line, len);
 	return (1);
 }
@@ -48,24 +45,21 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 	char	*line;
 
 	line = NULL;
+	(void)env;
+	(void)stop;
 	while (1)
 	{
 		line = gnl(fd, nb_line, true);									//je recupere la ligne
 		if (!line)														//je check si c'est la fin du fichier 
-		{
-			printf("Condition qui intervient a la fin du fichier\n");
 			break ;
-		}
 		if (is_param(line))
 		{
 			if (!read_line(line, env, stop))
 				break ;
-			// maybe here we can check 6 lines only
 		}
 		else
 			secure_line(line);
 	}
-	secure_line(line);
 	close(fd);
 }
 
@@ -80,15 +74,12 @@ int	read_line(char *line, t_env *env, int *stop)
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
 		{
 			if (!pass_text(line, env, &i, stop))
-				return (0); // we want to break
+				return (secure_line(line), 0);
 		}
 		else if (line[i] == 'F' || line[i] == 'C')
 		{
 			if (!pass_col(line, env, &i, stop))
-			{
-				printf("!!!!on pas dans le break qui est sencer tout arreter!!!\n");
-				exit(0);
-			}
+				return (secure_line(line), 0);
 		}
 	}
 	secure_line(line);

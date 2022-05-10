@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 09:07:12 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:51:17 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_store_FC(char *line, unsigned int *rgb, int i)
 
 
 	col = 0;
-	while (col < 3)
+	while (col < 3 && line[i])
 	{
 		pass_space(line, &i);
 		ret = recup_col(line, i);
@@ -56,7 +56,7 @@ int	ft_check_col(t_texture *texture, char *line)
 
 	i = 0;
 	if (!is_num(line))
-		return (error_message("Invalid caracters in colors", -1));
+		return (-1);
 	if (line[i] == 'F' && texture->f == false)
 	{
 		texture->f = true;		// le true vient apres avoir check la coul

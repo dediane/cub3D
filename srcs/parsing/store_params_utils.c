@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:50:33 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/09 11:53:20 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:38:46 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	secure_line(char *line)
 
 void	pass_space(char *line, int *i)
 {
-	while(line[*i] && line[*i] == ' ')
+	while(line[*i] && (line[*i] == ' ' || line[(*i)] == '\t'))
 		(*i)++;
 }
 
