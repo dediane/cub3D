@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 15:17:11 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:46:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,5 @@ int	is_map(char *line)
 			return (error_message("There's a bad char going around\n", 0));	
 		i++;
 	}
-	printf("GGGGGGOOOOOOOOOOOOODDDDD\n");
-	printf("OKay c'est good pour cette line\n%s", line);
-	printf("GGGGGGOOOOOOOOOOOOODDDDD\n");
 	return (1);
 }

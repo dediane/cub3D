@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/10 15:24:20 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:48:14 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ int	open_fd(int fd, char *argv)
 		error_message("This is a directory", 0);
 		exit(0);
 	}
+	if (access(argv, R_OK) == -1)
+	{
+		error_message("We dont have the right to read the file", 0);
+		exit(0);
+	}
 	fd = open(argv, O_RDONLY);
 	return (fd);
 }
@@ -57,20 +62,25 @@ int	parsing(int ac, char **av, t_env *env)
 
 	fd = 0;
 	stop = 0;
-	if (ac != 2)														// check arg
+	if (ac != 2)															// check arg
 		return (error_message("usage: [./cub3D.c] [map.cub]", 0));
 	if (!extension(".cub", av[1], 4))										// check extension
 		return (error_message("bad file extension", 0));
-	fd = open_fd(fd, av[1]);											// open fd (en vrai cette fonction elle sert a rien)
-	if (!(ft_check_file(fd)))											// check open fd
+	fd = open_fd(fd, av[1]);												// check directory, right access and open file
+	if (!(ft_check_file(fd)))												// check open fd
 		return (error_message("file doesn't open", 0));
-	read_file(fd, &env->nb_lfile, env, &stop);
+	read_file(fd, &env->nb_lfile, env, &stop);								// check all params, bad char in map
 	if (stop || !env->texture.no_path || !env->texture.so_path \
-		|| !env->texture.ea_path || !env->texture.we_path || env->texture.f == 0 || env->texture.c == 0 || env->nb_lfile != 6)
-	{
-		printf("I AM IN RETURN 0 IN PARSING the parsing fail\n");
+		|| !env->texture.ea_path || !env->texture.we_path || \
+		env->texture.f == 0 || env->texture.c == 0 || env->nb_lfile != 6)
 		return (0);
-	}
+	// on peut checker l'access des files textures
+	if (!check_file(&env->texture))
+		return (error_message("We can't use the texture's files", 0));
+	// ici on chercher le nb max de la map
+	// on stock la map et on remplace les spaces par des '0'
+	// on check si la map est valide
+	// 		L-> si elle est fermé, un seul perso
 	printf("nb file after read is %d\n\n", env->nb_lfile);
 	printf("Fin de la lecture du fichier\n");
 	printf("alors on a ->\n");

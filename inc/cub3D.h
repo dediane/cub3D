@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 14:23:44 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:44:01 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ char	*gnl(int fd);
 
 //--check_color--
 int		is_num(char *line);
+int		check_file(t_texture *texture);
 
 //--check_map--
 int		ft_check_file(int fd);

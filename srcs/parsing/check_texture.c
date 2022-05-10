@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 15:20:21 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:40:40 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	ft_check_texture(t_texture *texture, char *line)
 //function to load a texture
 int	load_texture(t_env *env, t_img *img, char *path)
 {
-	//use access here to check the executon rights
 	img->img = mlx_xpm_file_to_image(env->params.mlx, path, \
 	&(img->width), &(img->height));
 	if (img->img)

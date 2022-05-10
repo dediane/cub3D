@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 15:22:16 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:43:18 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ int	is_num(char *line)
 	if (line[i] && line[i] != '\n')
 		return (error_message("to much params for colors", 0));
 	return (1);
+}
+
+int	check_file(t_texture *texture)
+{
+	if (access(texture->no_path, X_OK) == -1)
+		return (0);
+	else if (access(texture->so_path, X_OK) == -1)
+		return (0);
+	else if (access(texture->ea_path, X_OK) == -1)
+		return (0);
+	else if (access(texture->we_path, X_OK) == -1)
+		return (0);
+	else
+		return (1);
 }
