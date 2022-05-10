@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 12:49:33 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:23:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ int		parsing(int ac, char **av, t_env *env);
 //--store_map--
 int		is_empty(char *s);
 int		ft_store_map(char *path, t_env *env, int fd);
+int		is_map(char *line);
 
 //--store_params_utils--
 int		len_num(char *line);
@@ -229,6 +230,5 @@ void    draw_map(t_env *env, t_img *img);
 
 //--mlx_utils--
 unsigned int	create_trgb(int t, int r, int g, int b);
-
 
 #endif

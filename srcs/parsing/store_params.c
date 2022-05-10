@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 12:51:46 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:52:40 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,14 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 				break ;
 		}
 		else
+		{
+			if (!is_map(line))
+			{
+				secure_line(line);
+				break ;
+			}
 			secure_line(line);
+		}
 	}
 	close(fd);
 }
@@ -93,10 +100,10 @@ int	is_param(char *line)
 	pass_space(line, &i);
 	if (line[i] == '\n')
 		return (0);
-	if ((line[i] == 'N' && line[i + 1] && line[i + 1] == 'O') || \
-		(line[i] == 'S' && line[i + 1] && line[i + 1] == 'O') || \
-		(line[i] == 'E' && line[i + 1] && line[i + 1] == 'A') || \
-		(line[i] == 'W' && line[i + 1] && line[i + 1] == 'E') || \
+	if ((line[i] == 'N' && line[i + 1] && line[i + 1] == 'O' && line[i + 2] && line[i + 2] == ' ') || \
+		(line[i] == 'S' && line[i + 1] && line[i + 1] == 'O' && line[i + 2] && line[i + 2] == ' ') || \
+		(line[i] == 'E' && line[i + 1] && line[i + 1] == 'A' && line[i + 2] && line[i + 2] == ' ') || \
+		(line[i] == 'W' && line[i + 1] && line[i + 1] == 'E' && line[i + 2] && line[i + 2] == ' ') || \
 		(line[i] == 'F' && line[i + 1] && line[i + 1] == ' ') || \
 		(line[i] == 'C' && line[i + 1] && line[i + 1] == ' '))
 		return (1);

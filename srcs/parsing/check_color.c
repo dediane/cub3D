@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 12:04:14 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:05:40 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ int	is_num(char *line)
 	}
 	if (j < 3)
 		return (error_message("miss number in colors", 0));
+	pass_space(line, &i);
+	if (line[i] && line[i] != '\n')
+		return (error_message("to much params for colors", 0));
 	return (1);
 }

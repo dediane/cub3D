@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/10 12:33:46 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:00:55 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,3 +86,16 @@ int	parsing(int ac, char **av, t_env *env)
 	}
 	return (1);
 }
+
+/******
+
+	Dans le parsing de la map, on accepte:	les espaces ' '
+											'1'; '0'; 'N'
+											'E'; 'W'; 'S'
+
+	et dans le parsing de des params (NO text, SO text, EA text, WE text, F col, C col)
+											les espaces ' '
+											','; '\t' tabs et  
+											
+
+******/
