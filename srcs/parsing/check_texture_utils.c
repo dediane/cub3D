@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:00:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 12:38:37 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:02:09 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	recup_col(char *line, int i)
 		len++;
 	}
 	buf = ft_strndup(&line[j], len);
-	y = ft_check_int(buf);
+	y = ft_check_int(buf, &j);
+	if (j == -1)
+		return (-1);
 	free(buf);
 	return (y);
 }
@@ -57,23 +59,21 @@ void	ft_check(const char *str, int *i, int *k, int *sign)
 	}
 }
 
-void	ft_maxmin(long int *n)
+void	ft_maxmin(long int *n, int *stop)
 {
 	if ((*n) > 255)
 	{
-		printf("The number : %ld overtake the max of rgb value \n \
-		so we fixed at the value at 255\n", (*n));
-		(*n) = 255;
+		printf("The color value must be inferior to 255\n");
+		(*stop) = -1;
 	}
 	if ((*n) < 0)
 	{
-		printf("The number : %ld overtake the min of rgb value \n \
-		so we fixed at the value at 0\n", (*n));
-		(*n) = 0;
+		printf("The color value must be positive\n");
+		(*stop) = -1;
 	}
 }
 
-int	ft_check_int(char *str)
+int	ft_check_int(char *str, int *stop)
 {
 	long int	n;
 	int			sign;
@@ -91,6 +91,6 @@ int	ft_check_int(char *str)
 		i++;
 	}
 	n = n * sign;
-	ft_maxmin(&n);
+	ft_maxmin(&n, stop);
 	return (n);
 }

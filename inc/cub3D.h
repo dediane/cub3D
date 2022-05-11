@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 15:44:01 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:23:43 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,8 @@ int		check_wall_all_around(t_env *env, char **map);
 int		recup_col(char *line, int i);
 void	store_rgb(int ret, int col, t_rgb *couleur);
 void	ft_check(const char *str, int *i, int *k, int *sign);
-void	ft_maxmin(long int *n);
-int		ft_check_int(char *str);
+void	ft_maxmin(long int *n, int *stop);
+int		ft_check_int(char *str, int *stop);
 
 //--check_texture--
 int		ft_store_texture(char **path, char *line);
@@ -181,11 +181,16 @@ void	init_env(t_env *env);
 void	init_texture(t_texture *texture);
 void	ft_free(t_env *env);
 
+//--len_map--
+int		len_map(char *line);
+int		read_map(int fd, t_env *env);
+
 //--parsing--
 int		error_message(char *str, int ret);
 int		extension(char *ext, char *str, int len);
 int		open_fd(int fd, char *argv);
 int		parsing(int ac, char **av, t_env *env);
+int		parsing_2(t_env *env, char *path);
 
 //--store_map--
 int		is_empty(char *s);

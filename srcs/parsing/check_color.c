@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 15:43:18 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:45:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	is_num(char *line)
 	pass_space(line, &i);
 	if (line[i] == ',')
 		return (error_message("miss number in colors", 0));
-	while(line[i] && j <= 2)
+	while (line[i] && j <= 2)
 	{
 		pass_space(line, &i);
-		if ((line[i] >= '0' && line[i] <= '9') || (line[i] == '-' && line[i + 1] && line[i + 1]  >= '0' && line[i + 1] <= '9' ))
+		if (line[i] >= '0' && line[i] <= '9')
 		{
-			while((line[i] && line[i] >= '0' && line[i] <= '9') || (line[i] == '-' && line[i + 1] && line[i + 1]  >= '0' && line[i + 1] <= '9' ))
+			while (line[i] && line[i] >= '0' && line[i] <= '9')
 				i++;
 			j++;
 			num++;
@@ -60,7 +60,7 @@ int	check_file(t_texture *texture)
 	if (access(texture->no_path, X_OK) == -1)
 		return (0);
 	else if (access(texture->so_path, X_OK) == -1)
-		return (0);
+			return (0);
 	else if (access(texture->ea_path, X_OK) == -1)
 		return (0);
 	else if (access(texture->we_path, X_OK) == -1)

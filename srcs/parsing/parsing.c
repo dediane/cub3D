@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/10 15:48:14 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:06:33 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,23 @@ int	parsing(int ac, char **av, t_env *env)
 	if (!(ft_check_file(fd)))												// check open fd
 		return (error_message("file doesn't open", 0));
 	read_file(fd, &env->nb_lfile, env, &stop);								// check all params, bad char in map
-	if (stop || !env->texture.no_path || !env->texture.so_path \
-		|| !env->texture.ea_path || !env->texture.we_path || \
-		env->texture.f == 0 || env->texture.c == 0 || env->nb_lfile != 6)
+	if (stop)
 		return (0);
-	// on peut checker l'access des files textures
-	if (!check_file(&env->texture))
-		return (error_message("We can't use the texture's files", 0));
-	// ici on chercher le nb max de la map
+	if (env->nb_lfile != 6|| !env->texture.no_path || !env->texture.so_path \
+		|| !env->texture.ea_path || !env->texture.we_path || \
+		env->texture.f == 0 || env->texture.c == 0)
+		return (error_message("miss params", 0));
+			// on peut checker l'access des files textures
+	/*		if (!check_file(&env->texture))
+				return (error_message("We can't use the texture's files", 0));
+	*/
+	// ici on cherche le nb max de la map
 	// on stock la map et on remplace les spaces par des '0'
 	// on check si la map est valide
 	// 		L-> si elle est fermé, un seul perso
-	printf("nb file after read is %d\n\n", env->nb_lfile);
+
+	
+	printf("nb file after read is %d\n", env->nb_lfile);
 	printf("Fin de la lecture du fichier\n");
 	printf("alors on a ->\n");
 	printf("north path :%s", env->texture.no_path);
@@ -93,7 +98,22 @@ int	parsing(int ac, char **av, t_env *env)
 	printf("ceiling is  %d\n", env->texture.c);
 	printf("ceiling color is %u\n", env->texture.ccl);
 	return (1);
+	//return (parsing_2(env, av[1]));
 }
+
+int	parsing_2(t_env *env, char *path)
+{
+	int	fd;
+
+	fd = 0;
+	fd = open_fd(fd, path);												// check directory, right access and open file
+	if (!(ft_check_file(fd)))												// check open fd
+		return (error_message("file doesn't open", 0));
+	if (!read_map(fd, env))
+		return(0);
+	return (1);
+}
+
 //A ENLEVER QUAND ON PUSH 
 /******
 

@@ -6,7 +6,7 @@
 #    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/05/10 08:42:32 by bben-yaa         ###   ########.fr        #
+#    Updated: 2022/05/11 13:44:49 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	=	srcs/cub3d.c \
 			srcs/parsing/store_params.c \
 			srcs/parsing/store_params_utils.c \
 			srcs/parsing/init_env.c \
+			srcs/parsing/len_map.c \
 			srcs/win_utils.c \
 			srcs/raycasting.c \
 			srcs/raycasting_utils.c \

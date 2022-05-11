@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/10 15:40:40 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:20:09 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	ft_store_FC(char *line, unsigned int *rgb, int i)
 	{
 		pass_space(line, &i);
 		ret = recup_col(line, i);
+		if (ret == -1)
+			return (-1);
 		store_rgb(ret, col, &couleur);
 		i += len_num(&line[i]);
 		if ((line[i] == '\n' || line[i] == '\0') && col == 2)

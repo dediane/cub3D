@@ -1,0 +1,12 @@
+
+NO ./visual/wall.xpm
+SO ./visual/exit.xpm
+WE ./visual/wall_big_yellow_duck.xpm
+EA ./visual/coll.xpm
+
+C 255,200,150
+F 122,122,122
+
+11111111111111111
+10000011N10000001
+11111111111111111
