@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/11 14:06:33 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:45:52 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	parsing(int ac, char **av, t_env *env)
 	// on check si la map est valide
 	// 		L-> si elle est fermé, un seul perso
 
-	
+	printf("-----------------------------------------------------\n");	
 	printf("nb file after read is %d\n", env->nb_lfile);
 	printf("Fin de la lecture du fichier\n");
 	printf("alors on a ->\n");
@@ -97,20 +97,24 @@ int	parsing(int ac, char **av, t_env *env)
 	printf("floor color is %u\n", env->texture.fcl);
 	printf("ceiling is  %d\n", env->texture.c);
 	printf("ceiling color is %u\n", env->texture.ccl);
-	return (1);
-	//return (parsing_2(env, av[1]));
+	//return (1);
+	printf("-----------------------------------------------------\n");	
+	return (parsing_2(env, av[1]));
 }
 
 int	parsing_2(t_env *env, char *path)
 {
 	int	fd;
+	int	exit;
 
 	fd = 0;
+	exit = 0;
 	fd = open_fd(fd, path);												// check directory, right access and open file
 	if (!(ft_check_file(fd)))												// check open fd
 		return (error_message("file doesn't open", 0));
-	if (!read_map(fd, env))
-		return(0);
+	read_map(fd, env, &exit);
+	if (exit)
+		return (0);
 	return (1);
 }
 
