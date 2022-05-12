@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/12 11:36:17 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:45:06 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,14 @@ typedef struct s_ray
 {
 	t_vecdouble		cos_step;
 	t_vecdouble 	sin_step;
-	double		len_cos;
-	double		len_sin;
+	double			len_cos;
+	double			len_sin;
 }				t_ray;
 
 typedef struct s_env
 {
-	char		map[20][20];
+	char		maap[20][20];
+	char		**map;
 	int			nb_lfile;
 	int			height;
 	int			width;
@@ -152,6 +153,12 @@ char	*gnl(int fd);
 				// PARSING //
 				/////////////
 
+//--alloc_map--
+int		alloc_map(t_env *env, int fd, char *line);
+int		open_map(t_env *env, int fd);
+int		ft_len(char *line);
+void	copy_line(char *line, t_env *env, char *map);
+
 //--check_color--
 int		is_num(char *line);
 int		check_file(t_texture *texture);
@@ -183,6 +190,7 @@ void	ft_free(t_env *env);
 
 //--len_map--
 int		len_map(char *line);
+int		empty_line(char *line);
 int		read_map(int fd, t_env *env, int *exit);
 int		store_map(t_env *env, int fd, int *exit);
 int		store_width(char *line, int width);

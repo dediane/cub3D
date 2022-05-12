@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/09 11:36:51 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:11:04 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void 	randomise_map(t_env *env)
 		y = 0;
 		while (y < 20)
 		{
-			env->map[x][y] = 0;
+			env->maap[x][y] = 0;
 			if (rand() % 5 == 4)
-				env->map[x][y] = 1;
+				env->maap[x][y] = 1;
 			y++;
 		}
 		x++;
@@ -56,6 +56,8 @@ int main(int ac, char **av)
 	t_env env;
 
 	init_env(&env);
+	(void)ac;
+	(void)av;
 	if (!parsing(ac, av, &env))
 	{
 		ft_free(&env);
@@ -77,6 +79,8 @@ int main(int ac, char **av)
 	mlx_loop_hook(env.params.mlx, render_next_frame, &env);
 	mlx_loop(env.params.mlx);
 */
+	printf("debut free dans main\n");
 	ft_free(&env);
+	printf("fin free dans main\n");
 	return (0);
 }

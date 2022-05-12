@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/12 11:19:46 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:14:15 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 	{
 		if (c == '0')
 		{
-			if (!(check_around(env->map, x, y)))
+			if (!(check_around(env->maap, x, y)))
 				return (0);
 		}
 		return (1);

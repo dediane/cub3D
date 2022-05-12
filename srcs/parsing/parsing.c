@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/12 12:33:31 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:35:11 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,16 @@ int	parsing(int ac, char **av, t_env *env)
 	if (env->nb_lfile != 6|| !env->texture.no_path || !env->texture.so_path \
 		|| !env->texture.ea_path || !env->texture.we_path || \
 		env->texture.f == 0 || env->texture.c == 0)
+	{
+		printf("fail nbl file %d\n", env->nb_lfile);
+		printf("fail north path :%s\n", env->texture.no_path);
+		printf("fail south path :%s\n", env->texture.so_path);
+		printf("fail east path  :%s\n", env->texture.ea_path);
+		printf("fail weast path :%s\n", env->texture.we_path);
+		printf("fail floor is    %d\n", env->texture.f);
+		printf("fail ceiling is  %d\n", env->texture.c);
 		return (error_message("miss params", 0));
+	}
 			// on peut checker l'access des files textures
 	/*		if (!check_file(&env->texture))
 				return (error_message("We can't use the texture's files", 0));
@@ -115,12 +124,30 @@ int	parsing_2(t_env *env, char *path)
 	fd = 0;
 	exit = 0;
 	fd = open_fd(fd, path);												// check directory, right access and open file
+	(void)env;
 	if (!(ft_check_file(fd)))												// check open fd
 		return (error_message("file doesn't open", 0));
 	read_map(fd, env, &exit);
+	close (fd);
 	printf("exit existe ? %d\n", exit);
 	if (exit)
 		return (0);
+	fd = open_fd(fd, path);												// check directory, right access and open file
+	if (!(ft_check_file(fd)))												// check open fd
+		return (error_message("file doesn't open", 0));
+	if (!open_map(env, fd))
+	{
+		printf("IIIIIICCCCCIIIII le fail de open map\n");
+		return (0);
+	}
+
+	printf("ici on a fini de copier la map\n");
+	int i = 0;
+	while (env->map[i])
+	{
+		printf("la map :  [%s]\n", env->map[i]);
+		i++;
+	}
 	return (1);
 }
 

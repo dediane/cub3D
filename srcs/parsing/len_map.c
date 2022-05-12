@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 12:04:26 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/12 13:09:23 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:04:18 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int	store_width(char *line, int width)
 		i++;
 		temp_width++;
 	}
-	printf("la width de la line --%s--, vaut %d\n", line, temp_width);
 	if (temp_width > width)
 		return (temp_width);
 	else

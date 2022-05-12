@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/09 16:01:38 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:12:03 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_env(t_env *env)
 {
-	//env->map = NULL;
+	env->map = NULL;
 	env->nb_lfile = 0;
 	env->height = 0;
 	env->width = 0;
@@ -46,6 +46,9 @@ void	init_texture(t_texture *texture)
 
 void	ft_free(t_env *env)
 {
+	int	i;
+
+	i = 0;
 	if (env->texture.no_path)
 		free(env->texture.no_path);
 	if (env->texture.so_path)
@@ -54,4 +57,18 @@ void	ft_free(t_env *env)
 		free(env->texture.we_path);
 	if (env->texture.ea_path)
 		free(env->texture.ea_path);
+	printf("ici avant free map\n");
+	if (env->map)
+	{
+		printf("-----FREEEE MAAAAP----\n");
+		while (env->map[i])
+		{
+			printf("free map[%d]\n", i);
+			if (env->map[i])
+				free(env->map[i]);
+			i++;
+		}
+		free(env->map);
+	}
+	printf("ici apres free map\n");
 }
