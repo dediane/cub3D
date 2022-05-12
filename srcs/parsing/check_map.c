@@ -6,26 +6,26 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/06 11:25:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:19:46 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../inc/cub3D.h"
 
 
-//fonction pour check si map peut-etre ouverte
 
-//fonction pour parser la map
+//fonction pour check si map a la bonne extension
 		//fonction pour parser la map (textures & colors)
 				//fonction check si les textures existent et peuvent etre ouvertes
 
 				//fonction check si les couleurs de floor et ceiling sont valide
 
+//fonction pour check si map peut-etre ouverte
+//fonction pour parser la map
 		//fonction pour parser la map (1001)
 				//fonction check si la map ne contient que des caracteres valides
 				//fonction qui check si la map contient un seul player
 
-//fonction pour check si map a la bonne extension
 
 
 int	ft_check_file(int fd)

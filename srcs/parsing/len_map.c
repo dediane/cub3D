@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 12:04:26 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/11 16:55:09 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:09:23 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int read_map(int fd, t_env *env, int *exit)
 	char	*line;
 
 	line = NULL;
-	(void)env;
 	while (1)
 	{
 		line = gnl(fd);
@@ -49,16 +48,12 @@ int read_map(int fd, t_env *env, int *exit)
 				secure_line(line);
 			else
 			{
+				printf("Dans le debut de la map\n");
 				secure_line(line);
-				printf("here\n");
-				// debut autre fonction
-				// finish autre fonction
-				printf("Ici LA MAP FINI et len vaut %d\n", store_map(env, fd, exit));
-				break ;
+				return (store_map(env, fd, exit));
 			}
 		}
 	}
-	printf("on vient la avant\n");
 	return (1);
 }
 
@@ -69,7 +64,6 @@ int	store_map(t_env *env, int fd, int *exit)
 
 	len = 1;
 	line = NULL;
-	(void)env;
 	while(1)
 	{
 		line = gnl(fd);
@@ -79,20 +73,39 @@ int	store_map(t_env *env, int fd, int *exit)
 		{
 			(*exit) = 42;
 			secure_line(line);
-			// j'imagine qu'ici il y aura un free map
-			return (error_message("empty line in map", 0));
+			return (error_message("empty line present in map", 0));
 		}
 		else
 		{
+			env->width = store_width(line, env->width);
+			len++;
+			secure_line(line);
+		}
+	}
+	env->height = len;
+	return (0);
+}
 			// chercher la width la plus longue
 			// et tempis je recommecerais d'ouvrir le fichier pour stocker
 			// une fois la map allouer et la stocker
 			// une fois stocker parse la map
 			// une fois ca fait on passe a l'exec 
-			len++;
-		}
+
+int	store_width(char *line, int width)
+{
+	int	temp_width;
+	int	i;
+
+	i = 0;
+	temp_width = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		i++;
+		temp_width++;
 	}
-	env->height = len
-	printf("Ici on fini la map et len vaut %d\n", len);
-	return (len);
+	printf("la width de la line --%s--, vaut %d\n", line, temp_width);
+	if (temp_width > width)
+		return (temp_width);
+	else
+		return (width);
 }

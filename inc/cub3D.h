@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/11 16:37:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:36:17 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,7 @@ void	ft_free(t_env *env);
 int		len_map(char *line);
 int		read_map(int fd, t_env *env, int *exit);
 int		store_map(t_env *env, int fd, int *exit);
+int		store_width(char *line, int width);
 
 
 //--parsing--
