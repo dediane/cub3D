@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/12 16:12:03 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:02:48 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,17 @@ void	ft_free(t_env *env)
 		free(env->texture.we_path);
 	if (env->texture.ea_path)
 		free(env->texture.ea_path);
-	printf("ici avant free map\n");
 	if (env->map)
 	{
-		printf("-----FREEEE MAAAAP----\n");
 		while (env->map[i])
 		{
-			printf("free map[%d]\n", i);
 			if (env->map[i])
 				free(env->map[i]);
 			i++;
 		}
+		free(env->map[i]);
+		//free la derniere line null
 		free(env->map);
+		//free le tab de tab
 	}
-	printf("ici apres free map\n");
 }

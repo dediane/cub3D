@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/12 16:35:11 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:29:16 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,9 @@ int	parsing_2(t_env *env, char *path)
 	if (!(ft_check_file(fd)))												// check open fd
 		return (error_message("file doesn't open", 0));
 	if (!open_map(env, fd))
-	{
-		printf("IIIIIICCCCCIIIII le fail de open map\n");
 		return (0);
-	}
 
+	printf("----------------------------------\n");
 	printf("ici on a fini de copier la map\n");
 	int i = 0;
 	while (env->map[i])
@@ -148,6 +146,7 @@ int	parsing_2(t_env *env, char *path)
 		printf("la map :  [%s]\n", env->map[i]);
 		i++;
 	}
+	printf("est ce que la derniere existe -%s-\n", env->map[i]);
 	return (1);
 }
 
