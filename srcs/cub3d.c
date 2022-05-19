@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/19 14:32:01 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:36:03 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int main(int ac, char **av)
 	t_env env;
 
 	init_env(&env);
-	(void)ac;
-	(void)av;
 	if (!parsing(ac, av, &env))
 	{
 		ft_free(&env);
