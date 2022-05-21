@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/19 14:29:16 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:29:31 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ int	parsing_2(t_env *env, char *path)
 		i++;
 	}
 	printf("est ce que la derniere existe -%s-\n", env->map[i]);
+	if (!ft_check_walls(env, env->map))
+		return (0);
 	return (1);
 }
 

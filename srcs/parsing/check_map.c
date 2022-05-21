@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/21 14:10:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:42:47 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_check_file(int fd)
 	return (1);
 }
 
-int check_around(char map, int x, int y)
+int check_around(char **map, int x, int y)
 {
 	if ((map[x - 1][y] && (map[x - 1][y] != '0') && (map[x - 1][y] != '1')\
 	&& (map[x - 1][y] != 'S') && (map[x - 1][y] != 'W') && (map[x - 1][y] != 'N')\
@@ -78,10 +78,10 @@ int	check_wall_line(char *f_line)
 	int i;
 
 	i = 0;
-	pass_space(fline, &i);
+	printf("la line vaut %s\n", f_line);
+	pass_space(f_line, &i);
 	while (f_line[i])
 	{
-		pass_space(fline, &i);
 		if (f_line[i] != '1')
 			return (0);
 		i++;
@@ -96,24 +96,17 @@ int ft_check_walls(t_env *env, char **map)
 
 	x = -1;
 	if (!check_wall_line(map[++x]))
-		return (ft_putstr("Error\nMap must be surrounded by walls.\n"), 0);
+		return (error_message("Map must be surrounded by walls.", 0));
 	while (map[++x])
 	{
 		y = -1;
 		while (map[++y])
 		{
 			if (!(check_valid_char(env, map[x][y], x, y)))
-				return (ft_putstr("Error\nInvalid map, wrong caracters or open map.\n"), 0);
+				return (error_message("Invalid map, wrong caracters or open map.", 0));
 		}
 	}
-	if (!(check_wall_all_around(env, map)))
-		return (ft_putstr("Error\nMap must be surrounded by walls. \n"), 0);
+	if (!(check_wall_line(map[x - 1])))
+		return (error_message("Map must be surrounded by walls.", 0));
 	return (1);
-}
-
-
-
-
-/// On a une fonction qui check les chars et store la place du player with only one player
-/// On doit checker la premiere et la derniere line et que les mur soit == 1
-/// 
+} 
