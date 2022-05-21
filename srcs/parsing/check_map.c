@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/12 16:14:15 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/21 14:10:48 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_check_file(int fd)
 	return (1);
 }
 
-int check_around(char map[20][20], int x, int y)
+int check_around(char map, int x, int y)
 {
 	if ((map[x - 1][y] && (map[x - 1][y] != '0') && (map[x - 1][y] != '1')\
 	&& (map[x - 1][y] != 'S') && (map[x - 1][y] != 'W') && (map[x - 1][y] != 'N')\
@@ -58,7 +58,7 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 	{
 		if (c == '0')
 		{
-			if (!(check_around(env->maap, x, y)))
+			if (!(check_around(env->map, x, y)))
 				return (0);
 		}
 		return (1);
@@ -73,35 +73,23 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 	return (0);
 }
 
-/*int	check_wall_all_around(t_env *env, char **map)
+int	check_wall_line(char *f_line)
 {
-	int x;
-	int y;
-	int map_length;
-	int buf;
-	int buf2;
+	int i;
 
-	x = -1;
-	map_length = 0;
-	while (map[++x])
-		map_length++;
-	 
+	i = 0;
+	pass_space(fline, &i);
+	while (f_line[i])
+	{
+		pass_space(fline, &i);
+		if (f_line[i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
-	// check si premiere et derniere lignes sont que des 1 ou des espaces.
-	// check si premiere ligne en dessous espace == 1 et a gauche et a droite :
-	// 1 1
-	// 111
-
-	// 1  1
-	// 1111
-
-	// si pos = espace et pos + 1 = espace alors:
-	//check si pos (x + 1) = 1 et si pos (x -)
-}*/
-
-//x = hauteur (ligne)  latitude
-//y = largeur (position case)  longitude
-/*int ft_check_walls(t_env *env, char **map)
+int ft_check_walls(t_env *env, char **map)
 {
 	int x;
 	int y;
@@ -121,4 +109,11 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 	if (!(check_wall_all_around(env, map)))
 		return (ft_putstr("Error\nMap must be surrounded by walls. \n"), 0);
 	return (1);
-}*/
+}
+
+
+
+
+/// On a une fonction qui check les chars et store la place du player with only one player
+/// On doit checker la premiere et la derniere line et que les mur soit == 1
+/// 
