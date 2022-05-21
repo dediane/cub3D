@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:21:11 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/19 14:28:05 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:02:38 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,18 @@ int	alloc_map(t_env *env, int fd, char *line)
 		return (error_message("malloc fail", 0));
 	while (j < env->height)
 	{
-		if (j != 0)
+		if (j != 0 || j == env->height + 1)
 			line = gnl(fd);
+		/*else if (j == env->height + 1)
+		{
+			printf("here the last one\n");
+			env->map[j] = malloc(sizeof(char) * (env->width + 1));
+			if (env->map[j] == NULL)
+				return (error_message("malloc fail", 0));
+			copy_line("    ", env, env->map[j]);
+			j++;
+			break ;
+		}*/
 		if (!line)
 			break ;
 		else
@@ -61,6 +71,11 @@ int	alloc_map(t_env *env, int fd, char *line)
 			j++;
 		}
 	}
+	/*env->map[j] = malloc(sizeof(char) * (env->width + 1));
+	if (env->map[j] == NULL)
+		return (error_message("malloc fail", 0));
+	copy_line("    ", env, env->map[j]);
+	j++;*/
 	env->map[j] = NULL; //derniere liste
 	return (1);
 }

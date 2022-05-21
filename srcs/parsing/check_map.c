@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/21 15:42:47 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:02:48 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 		if (c == '0')
 		{
 			if (!(check_around(env->map, x, y)))
+			{
+				printf("icicic, pour char -%c- et x = %d et y = %d\n", c, x, y);
 				return (0);
+			}
 		}
 		return (1);
 	}
@@ -105,8 +108,12 @@ int ft_check_walls(t_env *env, char **map)
 			if (!(check_valid_char(env, map[x][y], x, y)))
 				return (error_message("Invalid map, wrong caracters or open map.", 0));
 		}
+		printf("MAP[%d] = -%s-\n", x, map[x]);	
 	}
-	if (!(check_wall_line(map[x - 1])))
-		return (error_message("Map must be surrounded by walls.", 0));
+	printf("on arrive ici avec map[%d] = -%s-\n", x, map[x]);
+	printf("et map[%d] = -%s-\n", x - 1, map[x]);
+	printf("et map[%d] = -%s-\n", x - 2, map[x]);
+	/*if (!(check_wall_line(map[x - 1])))
+		return (error_message("Map must be surrounded by walls.", 0));*/
 	return (1);
 } 
