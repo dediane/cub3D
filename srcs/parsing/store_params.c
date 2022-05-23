@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 15:11:49 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:49:34 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ int	read_line(char *line, t_env *env, int *stop)
 		else if (line[i] == 'F' || line[i] == 'C')
 		{
 			if (!pass_col(line, env, &i, stop))
+			{
+				error_message("miss Colors", 0);
 				return (secure_line(line), 0);
+			}
 		}
 	}
 	secure_line(line);
@@ -111,4 +114,3 @@ int	is_param(char *line)
 	else
 		return (0);
 }
-//&& line[i + 2] && line[i + 2] == ' '

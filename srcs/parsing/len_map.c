@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 12:04:26 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/12 16:04:18 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:50:41 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int read_map(int fd, t_env *env, int *exit)
 				secure_line(line);
 			else
 			{
-				printf("Dans le debut de la map\n");
 				secure_line(line);
 				return (store_map(env, fd, exit));
 			}

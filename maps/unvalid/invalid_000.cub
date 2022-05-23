@@ -1,4 +1,4 @@
-R 1080 720
+
 NO ./visual/wall.xpm
 SO ./visual/exit.xpm
 WE ./visual/wall_big_yellow_duck.xpm

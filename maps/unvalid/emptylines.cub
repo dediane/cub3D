@@ -1,4 +1,4 @@
-R 700 500
+
 NO ./parsing/visual/wall.xpm
 SO ./parsing/visual/exit.xpm
 WE ./parsing/visual/wall_big_yellow_duck.xpm

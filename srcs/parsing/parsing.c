@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/05/21 15:29:31 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:59:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,25 +75,11 @@ int	parsing(int ac, char **av, t_env *env)
 	if (env->nb_lfile != 6|| !env->texture.no_path || !env->texture.so_path \
 		|| !env->texture.ea_path || !env->texture.we_path || \
 		env->texture.f == 0 || env->texture.c == 0)
-	{
-		printf("fail nbl file %d\n", env->nb_lfile);
-		printf("fail north path :%s\n", env->texture.no_path);
-		printf("fail south path :%s\n", env->texture.so_path);
-		printf("fail east path  :%s\n", env->texture.ea_path);
-		printf("fail weast path :%s\n", env->texture.we_path);
-		printf("fail floor is    %d\n", env->texture.f);
-		printf("fail ceiling is  %d\n", env->texture.c);
 		return (error_message("miss params", 0));
-	}
-			// on peut checker l'access des files textures
-	/*		if (!check_file(&env->texture))
-				return (error_message("We can't use the texture's files", 0));
-	*/
-	// ici on cherche le nb max de la map
-	// on stock la map et on remplace les spaces par des '0'
-	// on check si la map est valide
-	// 		L-> si elle est fermé, un seul perso
 
+/*	if (!check_file(&env->texture))
+		return (error_message("We can't use the texture's files", 0));
+*/	
 	printf("----------------------first part-------------------------------\n");	
 	printf("nb file after read is %d\n", env->nb_lfile);
 	printf("Fin de la lecture du fichier\n");
@@ -107,13 +93,7 @@ int	parsing(int ac, char **av, t_env *env)
 	printf("ceiling is  %d\n", env->texture.c);
 	printf("ceiling color is %u\n", env->texture.ccl);
 	printf("-----------------------------------------------------\n");	
-	int		temporaire = parsing_2(env, av[1]);
-	printf("---------------------second part--------------------------------\n");
-	printf("map height equal to %d\n", env->height);
-	printf("map width equal to %d\n", env->width);
-	printf("temporaire %d\n", temporaire);
-	return (temporaire);
-	//return (parsing_2(env, av[1]));
+	return (parsing_2(env, av[1]));
 }
 
 int	parsing_2(t_env *env, char *path)
@@ -129,7 +109,6 @@ int	parsing_2(t_env *env, char *path)
 		return (error_message("file doesn't open", 0));
 	read_map(fd, env, &exit);
 	close (fd);
-	printf("exit existe ? %d\n", exit);
 	if (exit)
 		return (0);
 	fd = open_fd(fd, path);												// check directory, right access and open file
@@ -137,9 +116,6 @@ int	parsing_2(t_env *env, char *path)
 		return (error_message("file doesn't open", 0));
 	if (!open_map(env, fd))
 		return (0);
-
-	printf("----------------------------------\n");
-	printf("ici on a fini de copier la map\n");
 	int i = 0;
 	while (env->map[i])
 	{

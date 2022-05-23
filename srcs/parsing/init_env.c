@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/19 13:02:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:25:31 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,17 @@ void	ft_free(t_env *env)
 		while (env->map[i])
 		{
 			if (env->map[i])
+			{
 				free(env->map[i]);
+				env->map[i] = NULL;
+			}
 			i++;
 		}
 		free(env->map[i]);
+		env->map[i] = NULL;
 		//free la derniere line null
 		free(env->map);
+		env->map = NULL;
 		//free le tab de tab
 	}
 }
