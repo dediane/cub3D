@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/21 15:36:02 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:27:25 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ int		check_file(t_texture *texture);
 int		ft_check_file(int fd);
 int		check_around(char **map, int x, int y);
 int		check_valid_char(t_env *env, char c, int x, int y);
-int		check_wall_line(char *f_line);
+int		check_wall_line(char *f_line, int width);
 //int		check_wall_all_around(t_env *env, char **map);
 int		ft_check_walls(t_env *env, char **map);
 

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:21:11 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/23 08:44:31 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:22:05 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	alloc_map(t_env *env, int fd, char *line)
 			break ;
 		else
 		{
-			env->map[j] = malloc(sizeof(char) * (env->width + 1));
+			env->map[j] = malloc(sizeof(char) * (env->width));
 			if (env->map[j] == NULL)
 				return (error_message("malloc fail", 0));
 			copy_line(line, env, env->map[j]);
@@ -99,14 +99,14 @@ void	copy_line(char *line, t_env *env, char *map)
 	len = ft_len(line);
 	while (i < env->width)
 	{
-		if (!line[i] )
+		if (!line[i])
 		{
 			while (i < env->width)
 			{
 				map[i] = ' ';
 				i++;
 			}
-			map[i] = '\0';
+			break ;
 		}
 		else if (line[i] && line[i] == '\n')
 		{
@@ -115,15 +115,6 @@ void	copy_line(char *line, t_env *env, char *map)
 				map[i] = ' ';
 				i++;
 			}
-			printf("i vaut %d\n", i);
-			map[i] = '\0';
-			i++;
-			map[i] = '\0';
-			i++;
-			map[i] = '\0';
-			printf("on passe dans le break pour %s\n", line);
-			printf("et map[36] vaut --%c--\n", map[36]);
-			len = -42;
 			break;
 		}
 		else
@@ -133,7 +124,5 @@ void	copy_line(char *line, t_env *env, char *map)
 		}
 		i++;
 	}
-	printf("len vaut %d\n", len);
-	printf("AT THE END %d\n", i);
 	map[i] = '\0';
 }
