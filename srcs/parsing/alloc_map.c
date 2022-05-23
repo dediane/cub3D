@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:21:11 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/21 16:02:38 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/23 08:44:31 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	copy_line(char *line, t_env *env, char *map)
 	len = ft_len(line);
 	while (i < env->width)
 	{
-		if (!line[i])
+		if (!line[i] )
 		{
 			while (i < env->width)
 			{
@@ -115,6 +115,15 @@ void	copy_line(char *line, t_env *env, char *map)
 				map[i] = ' ';
 				i++;
 			}
+			printf("i vaut %d\n", i);
+			map[i] = '\0';
+			i++;
+			map[i] = '\0';
+			i++;
+			map[i] = '\0';
+			printf("on passe dans le break pour %s\n", line);
+			printf("et map[36] vaut --%c--\n", map[36]);
+			len = -42;
 			break;
 		}
 		else
@@ -124,5 +133,7 @@ void	copy_line(char *line, t_env *env, char *map)
 		}
 		i++;
 	}
+	printf("len vaut %d\n", len);
+	printf("AT THE END %d\n", i);
 	map[i] = '\0';
 }
