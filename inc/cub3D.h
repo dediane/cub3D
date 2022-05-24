@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/23 10:27:25 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:53:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,13 @@ int		open_map(t_env *env, int fd);
 int		ft_len(char *line);
 void	copy_line(char *line, t_env *env, char *map);
 
+//--alloc_map2--
+int		malloc_fail(char *line);
+void	ft_copy(int *i, t_env *env, char *map);
+
 //--check_color--
 int		is_num(char *line);
+int		is_num2(char *line, int *i, int *j, int *num);
 int		check_file(t_texture *texture);
 
 //--check_map--
@@ -181,7 +186,7 @@ int		ft_check_int(char *str, int *stop);
 
 //--check_texture--
 int		ft_store_texture(char **path, char *line);
-int		ft_store_FC(char *line, unsigned int *rgb, int i);
+int		ft_store_fc(char *line, unsigned int *rgb, int i);
 int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_texture(t_env *env, t_img *img, char *path);

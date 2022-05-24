@@ -6,11 +6,11 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/11 16:17:37 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:53:35 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../inc/cub3D.h"
+#include "../../inc/cub3D.h"
 
 //store texture path
 int	ft_store_texture(char **path, char *line)
@@ -18,15 +18,15 @@ int	ft_store_texture(char **path, char *line)
 	int	i;
 
 	i = 0;
-	ft_memmove(&line[i], &line[i] + 3, ft_strlen(&line[i]));	//a revoir ici
+	ft_memmove(&line[i], &line[i] + 3, ft_strlen(&line[i]));
 	pass_space(line, &i);
 	*path = ft_strdup(&line[i]);
 	return (1);
 }
 
-
+//a revoir l.21
 //store color fot floor and ceiling
-int	ft_store_FC(char *line, unsigned int *rgb, int i)
+int	ft_store_fc(char *line, unsigned int *rgb, int i)
 {
 	int	col;
 	int	ret;
@@ -62,12 +62,12 @@ int	ft_check_col(t_texture *texture, char *line)
 	if (line[i] == 'F' && texture->f == false)
 	{
 		texture->f = true;		// le true vient apres avoir check la coul
-		return (ft_store_FC(&line[i + 1], &texture->fcl, i + 1));
+		return (ft_store_fc(&line[i + 1], &texture->fcl, i + 1));
 	}
 	else if (line[i] == 'C' && texture->c == false)
 	{
 		texture->c = true;		// le true vient apres avoir check la coul
-		return (ft_store_FC(&line[i + 1], &texture->ccl, i + 1));
+		return (ft_store_fc(&line[i + 1], &texture->ccl, i + 1));
 	}
 	return (-1);
 }

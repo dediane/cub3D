@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:44:40 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/11 15:56:07 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:20:08 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ int	is_map(char *line)
 					line[i] == 'W' || line[i] == '\n')
 					i++;
 				else
-					return (error_message("There's a bad char going around", 0));
+					return (error_message("There's a bad char present in map", 0));
 			}
 			return (1);
 		}
 		else
-			return (error_message("There's a bad char going around", 0));
+			return (error_message("There's a bad char present in file", 0));
 		i++;
 	}
 	return (1);
