@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/25 18:30:15 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:34:11 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,9 +260,12 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //Minimap
 void	ft_init_minimap(t_env *env);
-void   ft_minimap(t_env *env);
-//void ft_minimap(t_env *env);
-int	draw_minimap(t_env *env, int countX, int countY);
+void	ft_minimap(t_env *env);
+int	draw_minimap(t_env *env);
+int	draw_wall(t_env *env);
+// int	draw_wall(t_env *env, int countX, int countY);
+
+
 
 //cub3d
 t_img make_image(void *mlx, int width, int height);

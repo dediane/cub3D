@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/25 19:08:10 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:41:05 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,6 @@ int main(int ac, char **av)
 	
 	//init de la map en 2d
 	ft_init_minimap(&env);
-
-
-	
-	printf("Largeur de map -> %d\n", env.width);
-	printf("Hauteur de map-> %d\n", env.height);
 
 	
 	mlx_hook(env.params.mlx_win, 33, 1L << 17, quit_program, &env);
