@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/24 15:53:21 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:30:15 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ typedef struct s_env
 	int			ppos;
 	t_params	params;
 	t_img		img;
+	t_img 		minimap;
 	t_texture	texture;
 	t_ray		ray;
 	t_rot		rot;
@@ -255,5 +256,15 @@ void    draw_map(t_env *env, t_img *img);
 
 //--mlx_utils--
 unsigned int	create_trgb(int t, int r, int g, int b);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+//Minimap
+void	ft_init_minimap(t_env *env);
+void   ft_minimap(t_env *env);
+//void ft_minimap(t_env *env);
+int	draw_minimap(t_env *env, int countX, int countY);
+
+//cub3d
+t_img make_image(void *mlx, int width, int height);
 
 #endif

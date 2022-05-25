@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
+#    By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/05/24 13:40:20 by bben-yaa         ###   ########.fr        #
+#    Updated: 2022/05/25 16:49:51 by ddecourt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS	=	srcs/cub3d.c \
 			srcs/raycasting_utils.c \
 			srcs/get_next_line/get_next_line.c \
 			srcs/get_next_line/get_next_line_utils.c \
-			srcs/mlx_utils.c
+			srcs/mlx_utils.c \
+			srcs/minimap.c \
 
 
 OBJS	= ${SRCS:.c=.o}
@@ -49,7 +50,7 @@ RM = rm -f
 $(NAME): $(OBJS)
 		make -C libft
 		make -C mlx
-		$(CC) $(CFLAGS) $(OBJS)  -Imlx -Lmlx -lmlx -I -L./libft/ -Imlx -lXext -lX11 -lm ./libft/libft.a -o ${NAME}
+		$(CC) $(CFLAGS) $(OBJS) -Imlx -Lmlx -lmlx -I -L./libft/ -Imlx -lXext -lX11 -lm ./libft/libft.a -o ${NAME}
 
 all:	${NAME}
 
