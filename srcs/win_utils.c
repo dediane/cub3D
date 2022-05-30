@@ -13,5 +13,17 @@ int keypress(int key, t_env *env)
 {
 	if (key == ESC)
 		quit_program(env);
+	else if (key == LEFT)
+		printf("LEFT OK\n");
+	else if (key == RIGHT)
+		printf("RIGHT OK\n");
+	else if (key == UP)
+		printf("UP OK\n");
+	else if (key == DOWN)
+		printf("DOWN OK\n");
+	else if (key == ARROW_LEFT)
+		printf("ARROW_LEFT OK\n");
+	else if (key == ARROW_RIGHT)
+		printf("ARROW_RIGHT OK\n");
 	return(0);
 }

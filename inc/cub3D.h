@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/25 20:34:11 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:45:05 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define CUB3D_H
 
 # define ESC 0xff1b
+# define UP 0x0077
+# define RIGHT 0x0064
+# define LEFT 0x0061
+# define DOWN 0x0073
+# define ARROW_RIGHT 0xFF53
+# define ARROW_LEFT 0xFF51
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
@@ -260,11 +267,8 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //Minimap
 void	ft_init_minimap(t_env *env);
-void	ft_minimap(t_env *env);
 int	draw_minimap(t_env *env);
 int	draw_wall(t_env *env);
-// int	draw_wall(t_env *env, int countX, int countY);
-
 
 
 //cub3d
