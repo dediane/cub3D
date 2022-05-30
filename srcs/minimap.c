@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:35:37 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/30 12:47:32 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:05:00 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 
 void	ft_init_minimap(t_env *env)
 {
-	env->minimap = make_image(env->params.mlx, env->params.res_x / 4, \
-	env->params.res_y / 4);
-	env->minimap.width = env->params.res_x / 4;
-	printf("env->minimap.width = %d\n", env->minimap.width);
-	printf("env->minimap.height = %d\n", env->minimap.height);
-	printf("env->params.res_x = %d\n", env->params.res_x);
-	printf("env->params.res_y = %d\n", env->params.res_y);
-	printf("Largeur de map -> %d\n", env->width);
-	printf("Hauteur de map-> %d\n", env->height);
-	env->minimap.height = env->params.res_y / 4;
-	env->minimap.ratio = env->minimap.width / env->width;
-	printf("ratio-> %d\n", env->minimap.ratio);
+	int ratio;
+	ratio = env->ppi/5;
+	env->minimap = make_image(env->params.mlx, env->width * ratio, env->height * ratio); \
+	env->minimap.ratio = ratio;
+	env->minimap.width = env->width * env->minimap.ratio;
+	env->minimap.height = env->width * env->minimap.ratio;
 	draw_minimap(env);
 }
 
@@ -46,6 +40,37 @@ void	ft_draw_square_minimap(t_env *env, int x, int y, int color)
 		i++;
 	}
 }
+
+/*void	ft_draw_square_background(t_env *env, int x, int y, int color)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (++i < env->ppi)
+	{
+		j = -1;
+		while(++j < env->ppi)
+			my_mlx_pixel_put(&env->img, i + x, j + y, color);
+	}
+}*/
+
+/*int draw_background(t_env *env)
+{
+	int y;
+	int x;
+
+	y = -1;
+	while (++y < env->height)
+	{
+		x = -1;
+		while (++x < env->width)
+			ft_draw_square_background(env, x * env->ppi, y * env->ppi, create_trgb(1,255,255,255));
+	}
+	
+	
+	return (0);
+}*/
 
 int	draw_minimap(t_env *env)
 {
@@ -70,7 +95,7 @@ int	draw_minimap(t_env *env)
 				y * env->minimap.ratio, create_trgb(1, 161, 108, 213));
 			else
 				ft_draw_square_minimap(env, x * env->minimap.ratio, y * env->minimap.ratio, \
-				create_trgb(1, 0, 0, 0));
+				create_trgb(1, 255, 255, 255));
 		}
 	}
 	return (0);
