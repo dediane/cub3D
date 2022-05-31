@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/30 18:01:47 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:47:11 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,50 +83,63 @@ typedef struct s_texture
 	unsigned int	ccl;
 }				t_texture;
 
-//pour gérer les rotations
-typedef struct s_rot
-{
-	double angle;
-	double cos;
-	double sin;
-}				t_rot;
-
 //vecteurs
 typedef struct s_vec
 {
-	int x;
-	int y;
+	int			dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	int			diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double		planx; //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
+	double		plany; //vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 }				t_vec;
 
-typedef struct s_vec_double
+typedef struct s_pos
 {
-	double x;
-	double y;
-}				t_vec_double;
+	double x; //position x du joueur
+	double y; //position y du joueur
+}				t_pos;
 
-typedef struct s_shape
+/*typedef struct s_shape
 {
 	int x;
 	int y;
 	int width;
 	int height;
-}				t_shape;
+}				t_shape;*/
+
+typedef struct s_distance
+{
+	double		sidex; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
+	double		sidey; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
+	double		deltax; //distance que rayon parcours entre chaque point d'intersection vertical
+	double		deltay; //distance que le rayon parcours entre chaque point d'intersection horizontal
+	double		playerwall; // distance du joueur au mur
+}				t_distance;
 
 //structure d'intervalle du raycasting
-typedef struct s_ray
+typedef struct s_camera
 {
-	t_vec_double		cos_step;
-	t_vec_double 		sin_step;
-	double			len_cos;
-	double			len_sin;
-}				t_ray;
+	double		raydirx; //calcul de direction x du rayon
+	double		raydiry; //calcul de direction y du rayon
+	double		camera; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+}				t_camera;
 
-typedef struct s_rparams
+typedef struct	s_ray
 {
-	double px;
-	double py;
-	double yaw;
-}				t_rparams;
+	t_vec		vec;
+	t_camera	camera;
+	t_distance	distance;
+	t_pos		pos;
+
+	int			stepx; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
+	int			stepy; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
+	int			hit; // 1 si un mur a ete touche, 0 sinon
+	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
+	
+	int			lineheight; //hauteur de la ligne a dessiner
+	int			drawstart; //position de debut ou il faut dessiner
+	int			drawend; //position de fin ou il faut dessiner
+	int			x; //permet de parcourir tous les rayons
+}					t_ray;
 
 typedef struct s_env
 {
@@ -144,10 +157,6 @@ typedef struct s_env
 	t_img 		minimap;
 	t_texture	texture;
 	t_ray		ray;
-	t_rot		rot;
-	t_vec		vec;
-	t_vec_double	vec_double;
-	t_rparams	ray_params;
 }				t_env;
 
 				///////////////////
@@ -256,15 +265,10 @@ int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);
 
 //--raycasting--
-void raycasting_1(t_env *env, t_img *img);
-int		render_next_frame(t_env *env);
-void	cast_forward(t_ray *ray, t_ray step);
+
 
 //--raycasting_utils--
-void rect(t_img *img, t_shape shape, int color);
-double square(t_vec_double vector);
-t_ray	init_ray(t_rot * rot, double x, double y);
-int		check_colide(t_ray ray, t_env *env, t_rot rot, bool up);
+
 
 //--mlx_utils--
 unsigned int	create_trgb(int t, int r, int g, int b);
@@ -275,6 +279,7 @@ void	ft_init_minimap(t_env *env);
 int	draw_minimap(t_env *env);
 int	draw_wall(t_env *env);
 int draw_background(t_env *env);
+void	draw_stripe(t_env *env);
 
 
 //cub3d
