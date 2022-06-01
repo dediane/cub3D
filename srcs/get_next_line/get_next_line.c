@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 11:31:24 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/10 12:40:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:30:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ char	*gnl(int fd)
 	static char		*ret_str;
 	char			buff[5 + 1];
 	int				ret;
-
 
 	while (ft_strclen(ret_str, '\n') == -1)
 	{
