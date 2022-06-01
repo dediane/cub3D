@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/19 14:36:03 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/30 17:52:44 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,10 @@ int	show_image(t_env *env)
 {
 	mlx_put_image_to_window(env->params.mlx, \
 	env->params.mlx_win, env->img.img, 0, 0);
-	return (1);
-}
 
-void 	randomise_map(t_env *env)
-{
-	int x;
-	int y;
-	x = 0;
-	while (x < 20)
-	{
-		y = 0;
-		while (y < 20)
-		{
-			env->maap[x][y] = 0;
-			if (rand() % 5 == 4)
-				env->maap[x][y] = 1;
-			y++;
-		}
-		x++;
-	}
+	mlx_put_image_to_window(env->params.mlx, \
+	env->params.mlx_win, env->minimap.img, 0, 0);
+	return (1);
 }
 
 t_img make_image(void *mlx, int width, int height)
@@ -63,22 +47,36 @@ int main(int ac, char **av)
 		return (1);
 	}
 	printf("parsing good\n");
-
+	//printf("MAP -> %s\n", env.map[0]);
+	
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.res_x, &env.params.res_y);
 	env.params.res_x /= 1.5;
-	env.params.res_y /= 1.5;
-	env.params.mlx_win = mlx_new_window(env.params.mlx, env.params.res_x/1.5, env.params.res_y/1.5, "Cub3d");
-	//env.params.mlx_win = mlx_new_window(env.params.mlx, 600, 600, "Cub3d");
+	env.ppi = env.params.res_x / env.width;
+	env.params.res_x = env.width * env.ppi;
+	env.params.res_y = env.height * env.ppi;
+	env.params.mlx_win = mlx_new_window(env.params.mlx, env.params.res_x, env.params.res_y, "Cub3D");
 	env.img = make_image(env.params.mlx, env.params.res_x, env.params.res_y);
+	
+
+	//init nouvelle structure rparams
+	env.ray_params.px = 10.3;
+	env.ray_params.py = 10.3;
+	env.ray_params.yaw = M_PI * -.88;
+
+	
+	//init de la map en 2d
+	ft_init_minimap(&env);
+	print_all_datas(&env);
+
+	
+	mlx_loop_hook(env.params.mlx, render_next_frame, &env);
+	//mlx_loop_hook(env.params.mlx, show_image , &env);
 	mlx_hook(env.params.mlx_win, 33, 1L << 17, quit_program, &env);
 	mlx_hook(env.params.mlx_win, 2, 1L << 0, keypress, &env);
-	randomise_map(&env);
-	mlx_loop_hook(env.params.mlx, render_next_frame, &env);
 	mlx_loop(env.params.mlx);
 
-	printf("debut free dans main\n");
+
 	ft_free(&env);
-	printf("fin free dans main\n");
 	return (0);
 }

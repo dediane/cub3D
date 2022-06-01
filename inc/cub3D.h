@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/24 15:53:21 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:01:47 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define CUB3D_H
 
 # define ESC 0xff1b
+# define UP 0x0077
+# define RIGHT 0x0064
+# define LEFT 0x0061
+# define DOWN 0x0073
+# define ARROW_RIGHT 0xFF53
+# define ARROW_LEFT 0xFF51
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
@@ -91,11 +98,11 @@ typedef struct s_vec
 	int y;
 }				t_vec;
 
-typedef struct s_vecdouble
+typedef struct s_vec_double
 {
 	double x;
 	double y;
-}				t_vecdouble;
+}				t_vec_double;
 
 typedef struct s_shape
 {
@@ -108,11 +115,18 @@ typedef struct s_shape
 //structure d'intervalle du raycasting
 typedef struct s_ray
 {
-	t_vecdouble		cos_step;
-	t_vecdouble 	sin_step;
+	t_vec_double		cos_step;
+	t_vec_double 		sin_step;
 	double			len_cos;
 	double			len_sin;
 }				t_ray;
+
+typedef struct s_rparams
+{
+	double px;
+	double py;
+	double yaw;
+}				t_rparams;
 
 typedef struct s_env
 {
@@ -127,11 +141,13 @@ typedef struct s_env
 	int			ppos;
 	t_params	params;
 	t_img		img;
+	t_img 		minimap;
 	t_texture	texture;
 	t_ray		ray;
 	t_rot		rot;
 	t_vec		vec;
-	t_vecdouble	vecdouble;
+	t_vec_double	vec_double;
+	t_rparams	ray_params;
 }				t_env;
 
 				///////////////////
@@ -240,20 +256,30 @@ int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);
 
 //--raycasting--
-t_ray	init_ray(t_rot * rot, double x, double y);
-void	raycasting(t_env *env, t_img *img);
+void raycasting_1(t_env *env, t_img *img);
 int		render_next_frame(t_env *env);
 void	cast_forward(t_ray *ray, t_ray step);
 
 //--raycasting_utils--
-void	get_pixel(t_img *img, int x, int y);
-void	set_pixel(t_img *img, int x, int y, int color);
-void	rect(t_img *img, t_shape shape, int color);
-double	calc_sqrtlen(t_vecdouble v);
-void    draw_map(t_env *env, t_img *img);
-
+void rect(t_img *img, t_shape shape, int color);
+double square(t_vec_double vector);
+t_ray	init_ray(t_rot * rot, double x, double y);
+int		check_colide(t_ray ray, t_env *env, t_rot rot, bool up);
 
 //--mlx_utils--
 unsigned int	create_trgb(int t, int r, int g, int b);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+//Minimap
+void	ft_init_minimap(t_env *env);
+int	draw_minimap(t_env *env);
+int	draw_wall(t_env *env);
+int draw_background(t_env *env);
+
+
+//cub3d
+t_img make_image(void *mlx, int width, int height);
+
+int print_all_datas(t_env *env);
 
 #endif
