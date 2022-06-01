@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/31 16:14:49 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:03:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int main(int ac, char **av)
 	////INIT VALUE RAYCASTING
 	ft_init_ray(&env);
 	int x = 0;
-	while( x < env->params.res_x)
+	while( x < env.params.res_x)
 	{
 		env.ray.camera.camera = 2 * x / (double)env.params.res_x - 1;
 		env.ray.camera.raydirx = env.ray.vec.dirx + env.ray.vec.planx * env.ray.camera.camera;
