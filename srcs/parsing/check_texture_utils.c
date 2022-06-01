@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:00:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/11 16:02:09 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:42:23 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	recup_col(char *line, int i)
 	y = 0;
 	j = i;
 	len = 0;
-	while((line[i] >= '0' && line[i] <= '9') || line[i] == '-')
+	while ((line[i] >= '0' && line[i] <= '9') || line[i] == '-')
 	{
 		i++;
 		len++;
@@ -44,7 +44,6 @@ void	store_rgb(int ret, int col, t_rgb *couleur)
 	else if (col == 2)
 		couleur->b = ret;
 }
-
 
 void	ft_check(const char *str, int *i, int *k, int *sign)
 {

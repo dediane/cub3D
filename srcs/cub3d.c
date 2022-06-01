@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/31 16:14:49 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:25:35 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@ int main(int ac, char **av)
 	if (!parsing(ac, av, &env))
 	{
 		ft_free(&env);
-		printf("parsing fail\n");
 		return (1);
 	}
-	printf("parsing good\n");
-	//printf("MAP -> %s\n", env.map[0]);
 	
 	env.params.mlx = mlx_init();
 	mlx_get_screen_size(env.params.mlx, &env.params.res_x, &env.params.res_y);
@@ -86,7 +83,7 @@ int main(int ac, char **av)
 	////INIT VALUE RAYCASTING
 	ft_init_ray(&env);
 	int x = 0;
-	while( x < env->params.res_x)
+	while( x < env.params.res_x)
 	{
 		env.ray.camera.camera = 2 * x / (double)env.params.res_x - 1;
 		env.ray.camera.raydirx = env.ray.vec.dirx + env.ray.vec.planx * env.ray.camera.camera;

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/23 13:25:31 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:49:10 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ void	init_env(t_env *env)
 	env->nb_lfile = 0;
 	env->height = 0;
 	env->width = 0;
-	env->ppi = 0;				// voir avec diane
-	env->count = 0;				// voir avec diane (nb pas ?)
+	env->ppi = 0;
+	env->count = 0;
 	env->spawn_pos[0] = 0;
 	env->spawn_pos[1] = 0;
 	env->ppos = 0;
-	//env->img = NULL;
 	init_texture(&env->texture);
 }
 
@@ -33,7 +32,7 @@ void	init_texture(t_texture *texture)
 	texture->so_path = NULL;
 	texture->we_path = NULL;
 	texture->ea_path = NULL;
-	texture->fd_no = 0; 
+	texture->fd_no = 0;
 	texture->fd_so = 0;
 	texture->fd_we = 0;
 	texture->fd_ea = 0;
@@ -41,14 +40,33 @@ void	init_texture(t_texture *texture)
 	texture->c = false;
 	texture->fcl = 0;
 	texture->ccl = 0;
-	// j'ai pas init les *img des no, so, we, ea
 }
 
-void	ft_free(t_env *env)
+void	ft_free_map(char **map)
 {
 	int	i;
 
 	i = 0;
+	if (map)
+	{
+		while (map[i])
+		{
+			if (map[i])
+			{
+				free(map[i]);
+				map[i] = NULL;
+			}
+			i++;
+		}
+		free(map[i]);
+		map[i] = NULL;
+		free(map);
+		map = NULL;
+	}
+}
+
+void	ft_free(t_env *env)
+{
 	if (env->texture.no_path)
 		free(env->texture.no_path);
 	if (env->texture.so_path)
@@ -57,22 +75,5 @@ void	ft_free(t_env *env)
 		free(env->texture.we_path);
 	if (env->texture.ea_path)
 		free(env->texture.ea_path);
-	if (env->map)
-	{
-		while (env->map[i])
-		{
-			if (env->map[i])
-			{
-				free(env->map[i]);
-				env->map[i] = NULL;
-			}
-			i++;
-		}
-		free(env->map[i]);
-		env->map[i] = NULL;
-		//free la derniere line null
-		free(env->map);
-		env->map = NULL;
-		//free le tab de tab
-	}
+	ft_free_map(env->map);
 }

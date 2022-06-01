@@ -6,21 +6,21 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 12:04:26 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/23 14:50:41 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:50:42 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-int len_map(char *line)
+int	len_map(char *line)
 {
 	(void)line;
 	return (0);
 }
 
-int empty_line(char *line)
+int	empty_line(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	pass_space(line, &i);
@@ -30,7 +30,7 @@ int empty_line(char *line)
 		return (0);
 }
 
-int read_map(int fd, t_env *env, int *exit)
+int	read_map(int fd, t_env *env, int *exit)
 {
 	char	*line;
 
@@ -63,7 +63,7 @@ int	store_map(t_env *env, int fd, int *exit)
 
 	len = 1;
 	line = NULL;
-	while(1)
+	while (1)
 	{
 		line = gnl(fd);
 		if (!line)

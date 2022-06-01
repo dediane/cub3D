@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:50:33 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/12 12:42:48 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:16:53 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	len_num(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] && line[i] != ',')
@@ -37,9 +37,9 @@ void	pass_space(char *line, int *i)
 		(*i)++;
 }
 
-void    finish_line(char *line, int *i)
+void	finish_line(char *line, int *i)
 {
-	while(line[*i])
+	while (line[*i])
 		(*i)++;
 }
 

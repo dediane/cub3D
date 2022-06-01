@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:26:13 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/24 14:53:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:23:53 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ void	ft_copy(int *i, t_env *env, char *map)
 		map[(*i)] = ' ';
 		(*i)++;
 	}
+}
+
+int	error_message(char *str, int ret)
+{
+	printf("Error: %s\n", str);
+	return (ret);
 }

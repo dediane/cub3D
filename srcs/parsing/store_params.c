@@ -6,13 +6,11 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/23 14:49:34 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:15:50 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
-
-
 
 int	pass_text(char *line, t_env *env, int *len, int *stop)
 {
@@ -39,6 +37,26 @@ int	pass_col(char *line, t_env *env, int *len, int *stop)
 	return (1);
 }
 
+int	rread_file(char *line, int *nb_line, t_env *env, int *stop)
+{
+	if (is_param(line))
+	{
+		(*nb_line)++;
+		if (!read_line(line, env, stop))
+			return (1);
+	}
+	else
+	{
+		if (!is_map(line))
+		{
+			(*stop) = 42;
+			secure_line(line);
+			return (1);
+		}
+		secure_line(line);
+	}
+	return (0);
+}
 
 void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 {
@@ -47,25 +65,11 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 	line = NULL;
 	while (1)
 	{
-		line = gnl(fd);													//je recupere la ligne
-		if (!line)														//je check si c'est la fin du fichier 
+		line = gnl(fd);
+		if (!line)
 			break ;
-		if (is_param(line))
-		{
-			(*nb_line)++;
-			if (!read_line(line, env, stop))
-				break ;
-		}
-		else
-		{
-			if (!is_map(line))
-			{
-				(*stop) = 42;
-				secure_line(line);
-				break ;
-			}
-			secure_line(line);
-		}
+		if (rread_file(line, nb_line, env, stop))
+			break ;
 	}
 	close(fd);
 }
@@ -75,10 +79,11 @@ int	read_line(char *line, t_env *env, int *stop)
 	int	i;
 
 	i = 0;
-	while(line[i])
+	while (line[i])
 	{
 		pass_space(line, &i);
-		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E'\
+			|| line[i] == 'W')
 		{
 			if (!pass_text(line, env, &i, stop))
 				return (secure_line(line), 0);
@@ -94,23 +99,4 @@ int	read_line(char *line, t_env *env, int *stop)
 	}
 	secure_line(line);
 	return (1);
-}
-
-int	is_param(char *line)
-{
-	int	i;
-
-	i = 0;
-	pass_space(line, &i);
-	if (line[i] == '\n')
-		return (0);
-	if ((line[i] == 'N' && line[i + 1] && line[i + 1] == 'O' && line[i + 2] && line[i + 2] == ' ') || \
-		(line[i] == 'S' && line[i + 1] && line[i + 1] == 'O' && line[i + 2] && line[i + 2] == ' ') || \
-		(line[i] == 'E' && line[i + 1] && line[i + 1] == 'A' && line[i + 2] && line[i + 2] == ' ') || \
-		(line[i] == 'W' && line[i + 1] && line[i + 1] == 'E' && line[i + 2] && line[i + 2] == ' ') || \
-		(line[i] == 'F' && line[i + 1] && line[i + 1] == ' ') || \
-		(line[i] == 'C' && line[i + 1] && line[i + 1] == ' '))
-		return (1);
-	else
-		return (0);
 }

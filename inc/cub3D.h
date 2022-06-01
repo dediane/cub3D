@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/31 15:47:11 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:24:09 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ void	copy_line(char *line, t_env *env, char *map);
 //--alloc_map2--
 int		malloc_fail(char *line);
 void	ft_copy(int *i, t_env *env, char *map);
+int		error_message(char *str, int ret);
 
 //--check_color--
 int		is_num(char *line);
@@ -219,6 +220,7 @@ int		load_texture(t_env *env, t_img *img, char *path);
 //--init_env--
 void	init_env(t_env *env);
 void	init_texture(t_texture *texture);
+void	ft_free_map(char **map);
 void	ft_free(t_env *env);
 
 //--len_map--
@@ -230,7 +232,6 @@ int		store_width(char *line, int width);
 
 
 //--parsing--
-int		error_message(char *str, int ret);
 int		extension(char *ext, char *str, int len);
 int		open_fd(int fd, char *argv);
 int		parsing(int ac, char **av, t_env *env);
@@ -238,8 +239,9 @@ int		parsing_2(t_env *env, char *path);
 
 //--store_map--
 int		is_empty(char *s);
-int		ft_store_map(char *path, t_env *env, int fd);
+int		in_map(char *line, int i);
 int		is_map(char *line);
+int		is_param(char *line);
 
 //--store_params_utils--
 int		len_num(char *line);
@@ -251,9 +253,9 @@ int		load_all_textures(t_env *env);
 //--store_params--
 int		pass_text(char *line, t_env *env, int *len, int *stop);
 int		pass_col(char *line, t_env *env, int *len, int *stop);
+int		rread_file(char *line, int *nb_line, t_env *env, int *stop);
 void	read_file(int fd, int *nb_line, t_env *env, int *stop);
 int		read_line(char *line, t_env *env, int *stop);
-int		is_param(char *line);
 
 
 				//////////
