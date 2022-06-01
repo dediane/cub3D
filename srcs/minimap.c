@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:35:37 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/31 15:42:22 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:59:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_init_minimap(t_env *env)
 	env->minimap.ratio = ratio;
 	env->minimap.width = env->width * env->minimap.ratio;
 	env->minimap.height = env->width * env->minimap.ratio;
-	draw_minimap(env);
-	draw_background(env);
-	draw_stripe(env);
+	// draw_minimap(env);
+	// draw_background(env);
+	//draw_stripe(env);
 }
 
 void	draw_stripe(t_env *env)

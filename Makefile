@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/05/31 15:53:10 by ddecourt         ###   ########.fr        #
+#    Updated: 2022/06/01 16:25:15 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,13 @@ SRCS	=	srcs/cub3d.c \
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= Cub3D
+NAME	= cub3d
 
 HEADER	= mlx/mlx.h 
 
 CC		= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g #-fsanitize=address
 
 RM = rm -f
 

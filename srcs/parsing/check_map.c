@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/24 15:22:15 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:28:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 	{
 		env->spawn_pos[0] = x;
 		env->spawn_pos[1] = y;
+		env->ray.mapx = x;
+		env->ray.mapy = y;
 		env->ppos = 1;
 		return (1);
 	}

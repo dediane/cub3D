@@ -1,0 +1,16 @@
+NO textures/bansky.xpm
+SO textures/flowerwall.xpm
+WE textures/wall.xpm
+EA textures/wall42.xpm
+
+F    56 , 5, 5
+C    89, 64, 78
+
+111111
+100001
+100001
+100001
+100001
+100001
+10N001
+111111

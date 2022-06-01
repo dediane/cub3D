@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/31 15:47:11 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:27:19 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,6 @@ typedef struct s_pos
 	double y; //position y du joueur
 }				t_pos;
 
-/*typedef struct s_shape
-{
-	int x;
-	int y;
-	int width;
-	int height;
-}				t_shape;*/
-
 typedef struct s_distance
 {
 	double		sidex; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
@@ -130,6 +122,8 @@ typedef struct	s_ray
 	t_distance	distance;
 	t_pos		pos;
 
+	int 		mapx;
+	int 		mapy;
 	int			stepx; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
 	int			stepy; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int			hit; // 1 si un mur a ete touche, 0 sinon
@@ -265,6 +259,13 @@ int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);
 
 //--raycasting--
+void	ft_init_ray(t_env *env);
+void    init_ray2(t_env *env, int x);
+void	calculate_step(t_env *env);
+void    wall(t_env *env);
+void	stripe(t_env *env);
+void	draw(t_env *env);
+void	raycasting(t_env *env);
 
 
 //--raycasting_utils--
