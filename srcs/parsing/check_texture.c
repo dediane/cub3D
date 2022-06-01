@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/24 15:53:35 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:33:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_store_texture(char **path, char *line)
 	int	i;
 
 	i = 0;
-	ft_memmove(&line[i], &line[i] + 3, ft_strlen(&line[i]));
 	pass_space(line, &i);
 	*path = ft_strdup(&line[i]);
 	return (1);

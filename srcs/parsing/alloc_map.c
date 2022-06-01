@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:21:11 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/24 14:53:05 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:33:37 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	alloc_map(t_env *env, int fd, char *line)
 			break ;
 		else
 		{
-			env->map[j] = malloc(sizeof(char) * (env->width));
+			env->map[j] = malloc(sizeof(char) * (env->width + 1));
 			if (env->map[j] == NULL)
 				return (malloc_fail(line));
 			copy_line(line, env, env->map[j]);
