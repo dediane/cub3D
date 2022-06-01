@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 18:37:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:12:29 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_init_ray(t_env *env)
 {
 	env->ray.pos.x = env->spawn_pos[1];//* env->ppi + (env->ppi / 2);
 	env->ray.pos.y = env->spawn_pos[0]; //* env->ppi + (env->ppi / 2);
-	env->ray.vec.dirx= 0;
+	env->ray.vec.dirx= -0.2;
 	env->ray.vec.diry= 1;
-	env->ray.vec.planx= 1;
-	env->ray.vec.plany= 0;
+	env->ray.vec.planx= 0;
+	env->ray.vec.plany= 0.66;
 	env->ray.hit = 0;
 }
 
@@ -75,7 +75,7 @@ void    wall(t_env *env)
             env->ray.mapy += env->ray.stepy;
             env->ray.side = 1;           
         }
-        if (env->map[(int)env->ray.pos.y][(int)env->ray.pos.x] > 0)
+        if (env->map[env->ray.mapy][env->ray.mapx] > 0)
             env->ray.hit = 1;
 		else
 			env->ray.hit = 0;
@@ -121,22 +121,22 @@ void	draw(t_env *env)
 	int y;
 	
 	y = 0;
-	/*while (y < env->ray.drawstart)
+	while (y < env->ray.drawstart)
 	{
 		my_mlx_pixel_put(&env->img, env->ray.x, y, 0xF25991);
 		y++;
-	}*/
+	}
 	y = env->ray.drawstart;
 	while (y < env->ray.drawend)
 	{
 		my_mlx_pixel_put(&env->img, env->ray.x, y, 0x6822EC);
 		y++;
 	}
-	// while (y < env->params.res_y)
-	// {
-	// 	my_mlx_pixel_put(&env->img, env->ray.x, y, 0x66D882);
-	// 	y++;
-	// }
+	while (y < env->params.res_y)
+	{
+		my_mlx_pixel_put(&env->img, env->ray.x, y, 0x66D882);
+		y++;
+	}
 }
 
 void raycasting(t_env *env)

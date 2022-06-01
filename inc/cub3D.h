@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 17:27:19 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:14:31 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ typedef struct s_texture
 //vecteurs
 typedef struct s_vec
 {
-	int			dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	int			diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double			dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double			diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double		planx; //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
 	double		plany; //vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 }				t_vec;
@@ -144,7 +144,9 @@ typedef struct s_env
 	int			width;
 	int			ppi;
 	int			count;
-	int			spawn_pos[2];
+	double		spawn_pos[2];
+	double		pposx;
+	double		pposy;
 	int			ppos;
 	t_params	params;
 	t_img		img;
