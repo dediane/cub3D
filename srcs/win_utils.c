@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 21:24:14 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:36:20 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,24 @@ int	quit_program(t_env *env)
 	free(env->params.mlx);
 	write(1, "Goodbye!\n", 9);
 	exit(1);
+}
+
+static void	up(t_env *env)
+{
+	double speed = 0.3;
+	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
+		env->pposx += env->ray.vec.dirx * speed;
+	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
+		env->pposy += env->ray.vec.diry * speed;
+}
+
+static void	down(t_env *env)
+{
+	double speed = 0.3;
+	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
+		env->pposx -= env->ray.vec.dirx * speed;
+	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
+		env->pposy -= env->ray.vec.diry * speed;
 }
 
 static void	right(t_env *env)
@@ -67,10 +85,14 @@ int keypress(int key, t_env *env)
 		right(env);
 		printf("RIGHT OK\n");
 	}
-	else if (key == UP)
+	else if (key == UP) {
+		up(env);
 		printf("UP OK\n");
-	else if (key == DOWN)
+	}
+	else if (key == DOWN) {
 		printf("DOWN OK\n");
+		down(env);
+	}
 	else if (key == ARROW_LEFT)
 		printf("ARROW_LEFT OK\n");
 	else if (key == ARROW_RIGHT)

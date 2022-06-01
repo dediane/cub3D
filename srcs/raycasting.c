@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 21:12:29 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:35:18 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_init_ray(t_env *env)
 {
+	env->pposx = env->spawn_pos[1];
+	env->pposy = env->spawn_pos[0];
 	env->ray.pos.x = env->spawn_pos[1];//* env->ppi + (env->ppi / 2);
 	env->ray.pos.y = env->spawn_pos[0]; //* env->ppi + (env->ppi / 2);
 	env->ray.vec.dirx= -0.2;
@@ -28,8 +30,10 @@ void    init_ray2(t_env *env, int x)
     env->ray.camera.camera = 2 * x / (double)env->params.res_x - 1;
     env->ray.camera.raydirx = env->ray.vec.dirx + env->ray.vec.planx * env->ray.camera.camera;
     env->ray.camera.raydiry = env->ray.vec.diry + env->ray.vec.plany * env->ray.camera.camera;
-	env->ray.mapx = (int)env->ray.pos.x;
-	env->ray.mapy = (int)env->ray.pos.y;
+	env->ray.mapx = (int)env->pposx;
+	env->ray.mapy = (int)env->pposy;
+	env->ray.pos.x = env->pposx;//* env->ppi + (env->ppi / 2);
+	env->ray.pos.y = env->pposy;
     env->ray.distance.deltax = sqrt(1 + (env->ray.camera.raydiry * env->ray.camera.raydiry) / (env->ray.camera.raydirx * env->ray.camera.raydirx));
     env->ray.distance.deltay = sqrt(1 + (env->ray.camera.raydirx * env->ray.camera.raydirx) / (env->ray.camera.raydiry * env->ray.camera.raydiry));
 	env->ray.hit = 0;
