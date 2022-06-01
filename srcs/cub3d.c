@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/30 17:52:44 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:14:49 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,25 @@ t_img make_image(void *mlx, int width, int height)
 	return(img);
 }
 
+int     render_next_frame(t_env *env)
+{
+    mlx_put_image_to_window(env->params.mlx, env->params.mlx_win, env->img.img, 0, 0);
+	mlx_put_image_to_window(env->params.mlx, env->params.mlx_win, env->minimap.img, 0, 0);
+    mlx_do_sync(env->params.mlx);
+
+	return 0;
+}
+
+void	ft_init_ray(t_env *env)
+{
+	env->ray.pos.x = env->spawn_pos[0] * env->ppi + (env->ppi / 2);
+	env->ray.pos.y =  env->spawn_pos[1] * env->ppi + (env->ppi / 2);
+	env->ray.vec.dirx= -1;
+	env->ray.vec.diry= 0;
+	env->ray.vec.planx= 0;
+	env->ray.vec.plany= 0.66;
+}
+
 int main(int ac, char **av)
 {
 	t_env env;
@@ -57,17 +76,26 @@ int main(int ac, char **av)
 	env.params.res_y = env.height * env.ppi;
 	env.params.mlx_win = mlx_new_window(env.params.mlx, env.params.res_x, env.params.res_y, "Cub3D");
 	env.img = make_image(env.params.mlx, env.params.res_x, env.params.res_y);
-	
 
-	//init nouvelle structure rparams
-	env.ray_params.px = 10.3;
-	env.ray_params.py = 10.3;
-	env.ray_params.yaw = M_PI * -.88;
-
-	
 	//init de la map en 2d
 	ft_init_minimap(&env);
 	print_all_datas(&env);
+
+	
+
+	////INIT VALUE RAYCASTING
+	ft_init_ray(&env);
+	int x = 0;
+	while( x < env->params.res_x)
+	{
+		env.ray.camera.camera = 2 * x / (double)env.params.res_x - 1;
+		env.ray.camera.raydirx = env.ray.vec.dirx + env.ray.vec.planx * env.ray.camera.camera;
+		env.ray.camera.raydiry = env.ray.vec.diry + env.ray.vec.plany * env.ray.camera.camera;
+		x++;
+	}
+
+	
+
 
 	
 	mlx_loop_hook(env.params.mlx, render_next_frame, &env);

@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/05/30 15:45:15 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:05:55 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,13 @@ int print_all_datas(t_env *env)
     printf("env->ppos = %d\n", env->ppos);
     printf("env->params.res_x = %d\n", env->params.res_x);
     printf("env->params.res_y = %d\n", env->params.res_y);
-    printf("env->rot.angle = %f\n", env->rot.angle);
-    printf("env->rot.cos = %f\n", env->rot.cos);
-    printf("env->rot.sin = %f\n", env->rot.sin);
-    printf("env->vec.x = %d\n", env->vec.x);
-    printf("env->vec.y = %d\n", env->vec.y);
+    printf("env->ray.pos.x = %f\n", env->ray.pos.x);
+	printf("env->ray.pos.y = %f\n", env->ray.pos.y);
+	printf("env->ray.vec.drix= %d\n", env->ray.vec.dirx);
+	printf("env->ray.vec.driy= %d\n", env->ray.vec.diry);
+	printf("env->ray.vec.planx= %f\n", env->ray.vec.planx);
+	printf("env->ray.vec.plany= %f\n", env->ray.vec.plany);
+	
+	
     return (1);
 }

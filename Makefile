@@ -6,7 +6,7 @@
 #    By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/05/30 17:54:21 by ddecourt         ###   ########.fr        #
+#    Updated: 2022/05/31 15:53:10 by ddecourt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ HEADER	= mlx/mlx.h
 
 CC		= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 RM = rm -f
 
