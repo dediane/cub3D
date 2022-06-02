@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 12:24:09 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/02 18:54:26 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ typedef struct s_texture
 //vecteurs
 typedef struct s_vec
 {
-	int			dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	int			diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double			dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double			diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double		planx; //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
 	double		plany; //vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 }				t_vec;
@@ -97,14 +97,6 @@ typedef struct s_pos
 	double x; //position x du joueur
 	double y; //position y du joueur
 }				t_pos;
-
-/*typedef struct s_shape
-{
-	int x;
-	int y;
-	int width;
-	int height;
-}				t_shape;*/
 
 typedef struct s_distance
 {
@@ -130,6 +122,8 @@ typedef struct	s_ray
 	t_distance	distance;
 	t_pos		pos;
 
+	int 		mapx;
+	int 		mapy;
 	int			stepx; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
 	int			stepy; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int			hit; // 1 si un mur a ete touche, 0 sinon
@@ -150,7 +144,9 @@ typedef struct s_env
 	int			width;
 	int			ppi;
 	int			count;
-	int			spawn_pos[2];
+	double		spawn_pos[2];
+	double		pposx;
+	double		pposy;
 	int			ppos;
 	t_params	params;
 	t_img		img;
@@ -267,6 +263,13 @@ int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);
 
 //--raycasting--
+void	ft_init_ray(t_env *env);
+void    init_ray2(t_env *env, int x);
+void	calculate_step(t_env *env);
+void    wall(t_env *env);
+void	stripe(t_env *env);
+void	draw(t_env *env);
+void	raycasting(t_env *env);
 
 
 //--raycasting_utils--
