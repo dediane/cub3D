@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 20:21:22 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:46:28 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	stripe(t_env *env)
 void	draw(t_env *env)
 {
 	int	y;
+	int	color;
 
 	y = 0;
 	while (y < env->ray.drawstart)
@@ -95,7 +96,10 @@ void	draw(t_env *env)
 	}
 	while (y < env->ray.drawend)
 	{
-		my_mlx_pixel_put(&env->img, env->ray.x, y, 0x6822EC);
+		color = 0x6822EC;
+		if (env->ray.side == 0)
+			color /= 2;
+		my_mlx_pixel_put(&env->img, env->ray.x, y, color);
 		y++;
 	}
 	while (y < env->params.res_y)

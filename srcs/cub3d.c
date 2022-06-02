@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 19:51:52 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:39:59 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int main(int ac, char **av)
 	env.img = make_image(env.params.mlx, env.params.res_x, env.params.res_y);
 	//init de la map en 2d
 	//ft_init_minimap(&env);
-	print_all_datas(&env);
 
 	ft_init_ray(&env);
 	raycasting(&env);

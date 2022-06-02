@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 20:16:39 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:22:54 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@
 # include <stdbool.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-
-
-//maps de test avant parsing
-//char mapi[20][20];
 
 typedef struct s_params
 {
@@ -86,8 +82,8 @@ typedef struct s_texture
 //vecteurs
 typedef struct s_vec
 {
-	double			dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	double			diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double		dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double		diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double		planx; //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
 	double		plany; //vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 }				t_vec;
@@ -137,7 +133,6 @@ typedef struct	s_ray
 
 typedef struct s_env
 {
-	char		maap[20][20];
 	char		**map;
 	int			nb_lfile;
 	int			height;
@@ -147,6 +142,8 @@ typedef struct s_env
 	double		spawn_pos[2];
 	double		speed;
 	double		rotspeed;
+	double		oldplanex;
+	double		olddirx;
 	int			ppos;
 	t_params	params;
 	t_img		img;
@@ -196,7 +193,6 @@ int		check_around(char **map, int x, int y);
 int		check_valid_char(t_env *env, char c, int x, int y);
 int		check_wall_line(char *f_line, int width);
 void	player_pos(char c, t_env *env);
-//int		check_wall_all_around(t_env *env, char **map);
 int		ft_check_walls(t_env *env, char **map);
 
 
