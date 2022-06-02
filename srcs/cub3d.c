@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 18:55:07 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:51:52 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int main(int ac, char **av)
 	}
 	
 	env.params.mlx = mlx_init();
-	env.params.res_x = 1600;
-	env.params.res_y = 1200;
+	env.params.res_x = 1280;
+	env.params.res_y = 960;
 	env.ppi = env.params.res_x / env.width;
 	env.params.mlx_win = mlx_new_window(env.params.mlx, env.params.res_x, env.params.res_y, "Cub3D");
 	env.img = make_image(env.params.mlx, env.params.res_x, env.params.res_y);

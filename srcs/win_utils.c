@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 17:19:56 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/02 20:23:27 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,54 +23,64 @@ int	quit_program(t_env *env)
 
 static void	up(t_env *env)
 {
-	double speed = 0.3;
-	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
-		env->pposx += env->ray.vec.dirx * speed;
-	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
-		env->pposy += env->ray.vec.diry * speed;
+	//if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
+		env->ray.pos.x += env->ray.vec.dirx * env->speed;
+	//if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
+		env->ray.pos.y += env->ray.vec.diry * env->speed;
 }
 
 static void	down(t_env *env)
 {
-	double speed = 0.3;
 	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
-		env->pposx -= env->ray.vec.dirx * speed;
+		env->ray.pos.x-= env->ray.vec.dirx * env->speed;
 	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
-		env->pposy -= env->ray.vec.diry * speed;
+		env->ray.pos.y -= env->ray.vec.diry * env->speed;
 }
 
 static void	left(t_env *env)
 {
-
-	double rotspeed = 0.2;
-	double oldplanex;
-	double olddirix  = env->ray.vec.dirx;
-	env->ray.vec.dirx = env->ray.vec.dirx * cos(-rotspeed) - env->ray.vec.diry *
-	sin(-rotspeed);
-	env->ray.vec.diry = olddirix * sin(-rotspeed) + env->ray.vec.diry *
-	cos(-rotspeed);
-	oldplanex = env->ray.vec.planx;
-	env->ray.vec.planx = env->ray.vec.planx * cos(-rotspeed) - env->ray.vec.plany *
-	sin(-rotspeed);
-	env->ray.vec.plany = oldplanex * sin(-rotspeed) + env->ray.vec.plany *
-	cos(-rotspeed);
+	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
+		//env->ray.pos.x-= env->ray.vec.dirx * env->speed;
+	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
+		env->ray.pos.y -= env->ray.vec.diry * env->speed;
 }
 
 static void	right(t_env *env)
 {
+	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
+		//env->ray.pos.x-= env->ray.vec.dirx * env->speed;
+	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
+		env->ray.pos.y += env->ray.vec.diry * env->speed;
+}
 
-	double rotspeed = 0.2;
+static void	arrow_left(t_env *env)
+{
 	double oldplanex;
 	double olddirix  = env->ray.vec.dirx;
-	env->ray.vec.dirx = env->ray.vec.dirx * cos(rotspeed) - env->ray.vec.diry *
-	sin(rotspeed);
-	env->ray.vec.diry = olddirix * sin(rotspeed) + env->ray.vec.diry *
-	cos(rotspeed);
+	env->ray.vec.dirx = env->ray.vec.dirx * cos(-env->rotspeed) - env->ray.vec.diry *
+	sin(-env->rotspeed);
+	env->ray.vec.diry = olddirix * sin(-env->rotspeed) + env->ray.vec.diry *
+	cos(-env->rotspeed);
 	oldplanex = env->ray.vec.planx;
-	env->ray.vec.planx = env->ray.vec.planx * cos(rotspeed) - env->ray.vec.plany *
-	sin(rotspeed);
-	env->ray.vec.plany = oldplanex * sin(rotspeed) + env->ray.vec.plany *
-	cos(rotspeed);
+	env->ray.vec.planx = env->ray.vec.planx * cos(-env->rotspeed) - env->ray.vec.plany *
+	sin(-env->rotspeed);
+	env->ray.vec.plany = oldplanex * sin(-env->rotspeed) + env->ray.vec.plany *
+	cos(-env->rotspeed);
+}
+
+static void	arrow_right(t_env *env)
+{
+	double oldplanex;
+	double olddirix  = env->ray.vec.dirx;
+	env->ray.vec.dirx = env->ray.vec.dirx * cos(env->rotspeed) - env->ray.vec.diry *
+	sin(env->rotspeed);
+	env->ray.vec.diry = olddirix * sin(env->rotspeed) + env->ray.vec.diry *
+	cos(env->rotspeed);
+	oldplanex = env->ray.vec.planx;
+	env->ray.vec.planx = env->ray.vec.planx * cos(env->rotspeed) - env->ray.vec.plany *
+	sin(env->rotspeed);
+	env->ray.vec.plany = oldplanex * sin(env->rotspeed) + env->ray.vec.plany *
+	cos(env->rotspeed);
 }
 
 int keypress(int key, t_env *env)
@@ -78,12 +88,12 @@ int keypress(int key, t_env *env)
 	if (key == ESC)
 		quit_program(env);
 	else if (key == LEFT){
-		printf("LEFT OK\n");
 		left(env);
+		printf("LEFT OK\n");
+
 	}
 	else if (key == RIGHT) {
 		right(env);
-		printf("RIGHT OK\n");
 	}
 	else if (key == UP) {
 		up(env);
@@ -94,9 +104,9 @@ int keypress(int key, t_env *env)
 		down(env);
 	}
 	else if (key == ARROW_LEFT)
-		printf("ARROW_LEFT OK\n");
+		arrow_left(env);
 	else if (key == ARROW_RIGHT)
-		printf("ARROW_RIGHT OK\n");
+		arrow_right(env);
 	else
 		return (0);
 	mlx_destroy_image(env->params.mlx, env->img.img);

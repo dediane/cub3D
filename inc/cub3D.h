@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 19:02:22 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/02 20:16:39 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,8 @@ typedef struct s_env
 	int			ppi;
 	int			count;
 	double		spawn_pos[2];
-	double		pposx;
-	double		pposy;
+	double		speed;
+	double		rotspeed;
 	int			ppos;
 	t_params	params;
 	t_img		img;
@@ -264,16 +264,15 @@ int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);
 
 //--raycasting--
-void	ft_init_ray(t_env *env);
-void    init_ray2(t_env *env, int x);
 void	calculate_step(t_env *env);
 void    wall(t_env *env);
 void	stripe(t_env *env);
 void	draw(t_env *env);
 void	raycasting(t_env *env);
 
-
 //--raycasting_utils--
+void	ft_init_ray(t_env *env);
+void    init_ray2(t_env *env, int x);
 
 
 //--mlx_utils--
