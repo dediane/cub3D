@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 22:22:54 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 01:11:43 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ typedef struct s_env
 	double		oldplanex;
 	double		olddirx;
 	int			ppos;
+	int			texy;
+	int			texx;
 	t_params	params;
 	t_img		img;
 	t_img 		minimap;
@@ -209,6 +211,7 @@ int		ft_store_fc(char *line, unsigned int *rgb, int i);
 int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_texture(t_env *env, t_img *img, char *path);
+int		check_path_files(t_env *env);
 
 //--init_env--
 void	init_env(t_env *env);
@@ -269,6 +272,7 @@ void	raycasting(t_env *env);
 //--raycasting_utils--
 void	ft_init_ray(t_env *env);
 void    init_ray2(t_env *env, int x);
+int		get_texture_color(t_env *env, t_img img);
 
 
 //--mlx_utils--
