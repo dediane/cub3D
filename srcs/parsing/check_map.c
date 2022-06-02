@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 17:28:44 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:02:57 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,30 @@ int	check_around(char **map, int x, int y)
 	return (1);
 }
 
+void	player_pos(char c, t_env *env)
+{
+	if (c == 'N')
+	{
+		env->ray.vec.diry = -1;
+		env->ray.vec.planx = 0.66;
+	}
+	if (c == 'S')
+	{
+		env->ray.vec.diry = 1;
+		env->ray.vec.planx = -0.66;
+	}
+	if (c == 'W')
+	{
+		env->ray.vec.dirx = -1;
+		env->ray.vec.plany = -0.66;
+	}
+	if (c == 'E')
+	{
+		env->ray.vec.dirx = 1;
+		env->ray.vec.plany = 0.66;
+	}
+}
+
 int	check_valid_char(t_env *env, char c, int x, int y)
 {
 	if (c == ' ')
@@ -64,6 +88,7 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 		env->ray.mapx = x;
 		env->ray.mapy = y;
 		env->ppos = 1;
+		player_pos(c, env);
 		return (1);
 	}
 	return (0);

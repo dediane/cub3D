@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 11:49:10 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/02 18:58:01 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,35 @@ void	init_env(t_env *env)
 	env->spawn_pos[0] = 0;
 	env->spawn_pos[1] = 0;
 	env->ppos = 0;
+	env->ray.mapx = 0;
+	env->ray.mapy = 0;
+	env->ray.stepx = 0;
+	env->ray.stepx = 0;
+	env->ray.hit = 0;
+	env->ray.side = 0;
 	init_texture(&env->texture);
+}
+
+void	init_ray(t_env *env)
+{
+	env->ray.lineheight = 0;
+	env->ray.drawstart = 0;
+	env->ray.drawend = 0;
+	env->ray.x = 0;
+	env->ray.vec.dirx = 0;
+	env->ray.vec.diry = 0;
+	env->ray.vec.planx = 0;
+	env->ray.vec.plany = 0;
+	env->ray.pos.x = 0;
+	env->ray.pos.y = 0;
+	env->ray.camera.raydirx = 0;
+	env->ray.camera.raydiry = 0;
+	env->ray.camera.camera = 0;
+	env->ray.distance.sidex = 0;
+	env->ray.distance.sidey = 0;
+	env->ray.distance.deltax = 0;
+	env->ray.distance.deltay = 0;
+	env->ray.distance.playerwall = 0;
 }
 
 void	init_texture(t_texture *texture)
