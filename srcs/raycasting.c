@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 21:35:18 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/02 18:06:52 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_init_ray(t_env *env)
 	env->pposy = env->spawn_pos[0];
 	env->ray.pos.x = env->spawn_pos[1];//* env->ppi + (env->ppi / 2);
 	env->ray.pos.y = env->spawn_pos[0]; //* env->ppi + (env->ppi / 2);
-	env->ray.vec.dirx= -0.2;
-	env->ray.vec.diry= 1;
-	env->ray.vec.planx= 0;
-	env->ray.vec.plany= 0.66;
+	env->ray.vec.dirx= 0;
+	env->ray.vec.diry= -1;
+	env->ray.vec.planx= 0.66;
+	env->ray.vec.plany= 0;
 	env->ray.hit = 0;
 }
 
@@ -79,36 +79,37 @@ void    wall(t_env *env)
             env->ray.mapy += env->ray.stepy;
             env->ray.side = 1;           
         }
-        if (env->map[env->ray.mapy][env->ray.mapx] > 0)
+        if (env->map[env->ray.mapy][env->ray.mapx] == '1')
             env->ray.hit = 1;
 		else
 			env->ray.hit = 0;
     }
 }
 
-// void   stripe(t_env *env)
-// {
-//     if (env->ray.side == 0)
-// 		env->ray.distance.playerwall = env->ray.distance.sidex - env->ray.distance.deltax;
-// 	else
-// 		env->ray.distance.playerwall = env->ray.distance.sidey - env->ray.distance.deltay;
-// 	//calculate height of line to draw on screen
-// 	env->ray.lineheight = (int)(env->params.res_y / env->ray.distance.playerwall);
-// 	//calculate lowest and highest pixel to fill in current stripe
-// 	env->ray.drawstart = -env->ray.lineheight / 2 + env->params.res_y / 2;
-// 	if (env->ray.drawstart < 0)
-// 		env->ray.drawstart = 0;
-// 	env->ray.drawend = env->ray.lineheight / 2 + env->params.res_y / 2;
-// 	if(env->ray.drawend >= env->params.res_y)
-// 		env->ray.drawend = env->params.res_y - 1;
-// }
+/*void   stripe(t_env *env)
+{
+    if (env->ray.side == 0)
+		env->ray.distance.playerwall = env->ray.distance.sidex - env->ray.distance.deltax;
+	else
+		env->ray.distance.playerwall = env->ray.distance.sidey - env->ray.distance.deltay;
+	//calculate height of line to draw on screen
+	env->ray.lineheight = (int)(env->params.res_y / env->ray.distance.playerwall);
+	//calculate lowest and highest pixel to fill in current stripe
+	env->ray.drawstart = -env->ray.lineheight / 2 + env->params.res_y / 2;
+	if (env->ray.drawstart < 0)
+		env->ray.drawstart = 0;
+	env->ray.drawend = env->ray.lineheight / 2 + env->params.res_y / 2;
+	if(env->ray.drawend >= env->params.res_y)
+		env->ray.drawend = env->params.res_y - 1;
+}*/
 
 void   stripe(t_env *env)
 {
     if (env->ray.side == 0)
-		env->ray.distance.playerwall = env->ray.mapx - env->ray.pos.x + (1 - env->ray.stepx / 2) / env->ray.camera.raydirx;
+	
+		env->ray.distance.playerwall = ((double)env->ray.mapx - env->ray.pos.x + (1 - (double)env->ray.stepx) / 2) / env->ray.camera.raydirx;
 	else
-		env->ray.distance.playerwall = env->ray.mapy - env->ray.pos.y + (1 - env->ray.stepy / 2) / env->ray.camera.raydiry;
+		env->ray.distance.playerwall = ((double)env->ray.mapy - env->ray.pos.y + (1 - (double)env->ray.stepy) / 2) / env->ray.camera.raydiry;
 	//calculate height of line to draw on screen
 	env->ray.lineheight = (int)(env->params.res_y / env->ray.distance.playerwall);
 	//calculate lowest and highest pixel to fill in current stripe
@@ -130,7 +131,7 @@ void	draw(t_env *env)
 		my_mlx_pixel_put(&env->img, env->ray.x, y, 0xF25991);
 		y++;
 	}
-	y = env->ray.drawstart;
+	//y = env->ray.drawstart;
 	while (y < env->ray.drawend)
 	{
 		my_mlx_pixel_put(&env->img, env->ray.x, y, 0x6822EC);

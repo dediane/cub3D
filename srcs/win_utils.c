@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/01 21:36:20 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/02 17:19:56 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	down(t_env *env)
 		env->pposy -= env->ray.vec.diry * speed;
 }
 
-static void	right(t_env *env)
+static void	left(t_env *env)
 {
 
 	double rotspeed = 0.2;
@@ -56,7 +56,7 @@ static void	right(t_env *env)
 	cos(-rotspeed);
 }
 
-static void	left(t_env *env)
+static void	right(t_env *env)
 {
 
 	double rotspeed = 0.2;
