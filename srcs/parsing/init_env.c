@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 18:58:01 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:01:56 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_env(t_env *env)
 	env->ray.hit = 0;
 	env->ray.side = 0;
 	init_texture(&env->texture);
+	init_ray(env);
 }
 
 void	init_ray(t_env *env)
