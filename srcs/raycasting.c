@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 15:30:10 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:49:40 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	wall(t_env *env)
 			env->ray.side = 1;
 		}
 		if (env->map[env->ray.mapy][env->ray.mapx] == '1')
-			env->ray.hit = 1;			
+			env->ray.hit = 1;
 		else
 			env->ray.hit = 0;
 	}
@@ -83,27 +83,25 @@ void	stripe(t_env *env)
 		env->ray.drawend = env->params.res_y - 1;
 }
 
-/*static t_img find_texture(t_env *env)
+static t_img get_texture(t_env *env)
 {
-	int y = env->ray.camera.raydiry;
-	int x = env->ray.camera.raydirx;
 
-	if(x > 1 && y >= 1)
+	if (env->ray.side == 1 && env->ray.vec.diry < 0)
 		return (env->texture.no_texture);
-	if(x < 1 && y < 0)
+	if (env->ray.side == 1 && env->ray.vec.diry > 0)
 		return (env->texture.so_texture);
-	if(x < 0 && y > 1)
+	if (env->ray.side == 0 && env->ray.vec.dirx < 0)
 		return (env->texture.ea_texture);
-	if(x > 1 && y < 0)
+	if (env->ray.side == 0 && env->ray.vec.dirx > 0)
 		return (env->texture.we_texture);
 	return (env->texture.no_texture);
-}*/
+}
 
 void	draw(t_env *env)
 {
 	int	y;
 	int	color;
-	//int	d;
+	int	d;
 
 	y = 0;
 	while (y < env->ray.drawstart)
@@ -113,28 +111,30 @@ void	draw(t_env *env)
 	}
 	while (y < env->ray.drawend)
 	{
-		// t_img current_texture;
-		
-		// if (env->ray.side == 0)
-		// 	current_texture = env->texture.so_texture;
-		// else
-		// 	current_texture = env->texture.ea_texture;
-		//find_texture(env); //get right texture - not functionnal yet;			
+		t_img current_texture;
+
+		current_texture = get_texture(env);
 		
 		//draw la texture
-		/*d = y * 256 - env->params.res_y * 128 + env->ray.lineheight * 128;
+		d = y * 256 - env->params.res_y * 128 + env->ray.lineheight * 128;
 		env->texy = (((d * current_texture.width) /
 		env->ray.lineheight) / 256);
 		color = get_texture_color(env, current_texture);
 		my_mlx_pixel_put(&env->img, env->ray.x, y, color);
-		y++;*/
+		y++;
 		//color = 0xff98a9;
 		//color = 0X81DEFF;
-		color = 0x6822EC;
-		if (env->ray.side == 0)
-			color /= 2;
-		my_mlx_pixel_put(&env->img, env->ray.x, y, color);
-		y++;
+		// color = 0x6822EC;
+		// if (env->ray.side == 1 && env->ray.vec.diry < 0)
+		// 	color = 0x6822EC;
+		// if (env->ray.side == 1 && env->ray.vec.diry > 0)
+		// 	color /= 6;
+		// if (env->ray.side == 0 && env->ray.vec.dirx < 0)
+		// 	color /= 2;
+		// if (env->ray.side == 0 && env->ray.vec.dirx > 0)
+		// 	color /= 4;
+		// my_mlx_pixel_put(&env->img, env->ray.x, y, color);
+		// y++;
 	}
 	while (y < env->params.res_y)
 	{
