@@ -3,8 +3,8 @@ SO textures/flowerwall.xpm
 WE textures/wall.xpm
 EA textures/wall42.xpm
 
-F    56 , 5, 5
-C    89, 64, 78
+F    203,245,174
+C    159,232,255
 
 11111111
 10000001

@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 22:59:11 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:08:41 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	quit_program(t_env *env)
 
 static void	up(t_env *env)
 {
-	//if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
+	//if (!env->map[(int)(env->ray.pos.y)][(int)(env->ray.pos.x + env->ray.vec.dirx * env->speed)])
 		env->ray.pos.x += env->ray.vec.dirx * env->speed;
-	//if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
+	//if (!env->map[(int)(env->ray.pos.y + env->ray.vec.diry * env->speed)][(int)(env->ray.pos.x)])
 		env->ray.pos.y += env->ray.vec.diry * env->speed;
 }
 
@@ -40,18 +40,16 @@ static void	down(t_env *env)
 
 static void	left(t_env *env)
 {
-	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
-		//env->ray.pos.x-= env->ray.vec.dirx * env->speed;
-	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
-		env->ray.pos.y -= env->ray.vec.diry * env->speed;
+		//if (env->)
+		env->ray.pos.x += env->ray.vec.diry * env->speed;
+		env->ray.pos.y -= env->ray.vec.dirx * env->speed;
 }
 
 static void	right(t_env *env)
 {
-	// if (!env->map[(int)(env->pposy)][(int)(env->pposx + env->ray.vec.dirx * speed)])
-		//env->ray.pos.x-= env->ray.vec.dirx * env->speed;
-	// if (!env->map[(int)(env->pposy + env->ray.vec.diry * speed)][(int)(env->pposx)])
-		env->ray.pos.y += env->ray.vec.diry * env->speed;
+		//if (env->)
+		env->ray.pos.x -= env->ray.vec.diry * env->speed;
+		env->ray.pos.y += env->ray.vec.dirx * env->speed;
 }
 
 static void	arrow_left(t_env *env)

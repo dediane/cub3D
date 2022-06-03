@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/cub3d",
-            "args": ["/mnt/nfs/homes/bben-yaa/Desktop/cub3D/maps/ezmap2.cub"],
+            "args": ["/mnt/nfs/homes/ddecourt/Cub3d/maps/ezmap2.cub"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
