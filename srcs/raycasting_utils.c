@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 12:00:18 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/03 13:31:56 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ void	ft_init_ray(t_env *env)
 	load_all_textures(env);
 	env->ray.pos.x = env->spawn_pos[1];
 	env->ray.pos.y = env->spawn_pos[0];
-	env->ray.vec.dirx = 0;
-	env->ray.vec.diry = -1;
-	env->ray.vec.planx = 0.66;
-	env->ray.vec.plany = 0;
 	env->ray.hit = 0;
 	env->speed = 0.2;
 	env->rotspeed = 0.2;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:04:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 22:39:59 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:29:04 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int main(int ac, char **av)
 	mlx_hook(env.params.mlx_win, 33, 1L << 17, quit_program, &env);
 	mlx_hook(env.params.mlx_win, 2, 1L << 0, keypress, &env);
 	mlx_loop(env.params.mlx);
-
-
 	ft_free(&env);
 	return (0);
 }
