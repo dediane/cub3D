@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 12:19:19 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:02:52 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ int		load_texture(t_env *env, t_img *img, char *path);
 
 //--init_env--
 void	init_env(t_env *env);
+void	init_ray(t_env *env);
 void	init_texture(t_texture *texture);
 void	ft_free_map(char **map);
 void	ft_free(t_env *env);
