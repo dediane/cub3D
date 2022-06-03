@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 01:21:32 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:24:53 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	draw(t_env *env)
 	y = 0;
 	while (y < env->ray.drawstart)
 	{
-		my_mlx_pixel_put(&env->img, env->ray.x, y, 0xF25991);
+		my_mlx_pixel_put(&env->img, env->ray.x, y, env->texture.ccl);
 		y++;
 	}
 	while (y < env->ray.drawend)
@@ -132,7 +132,7 @@ void	draw(t_env *env)
 	}
 	while (y < env->params.res_y)
 	{
-		my_mlx_pixel_put(&env->img, env->ray.x, y, 0x66D882);
+		my_mlx_pixel_put(&env->img, env->ray.x, y, env->texture.fcl);
 		y++;
 	}
 }

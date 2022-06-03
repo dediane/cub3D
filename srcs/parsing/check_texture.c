@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 12:04:57 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:19:26 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_store_texture(char **path, char *line)
 
 //a revoir l.21
 //store color fot floor and ceiling
-int	ft_store_fc(char *line, unsigned int *rgb, int i)
+int	ft_store_fc(char *line, int *rgb, int i)
 {
 	int		col;
 	int		ret;
@@ -46,7 +46,7 @@ int	ft_store_fc(char *line, unsigned int *rgb, int i)
 			i++;
 		col++;
 	}
-	(*rgb) = create_trgb(1, couleur.r, couleur.g, couleur.b);
+	(*rgb) = create_trgb(0, couleur.r, couleur.g, couleur.b);
 	return (1);
 }
 

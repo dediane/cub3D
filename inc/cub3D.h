@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 12:06:21 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:19:19 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ typedef struct s_texture
 	int				fd_we;
 	int				fd_ea;
 	bool			f;
-	unsigned int	fcl;
+	int				fcl;
 	bool			c;
-	unsigned int	ccl;
+	int				ccl;
 }				t_texture;
 
 //vecteurs
@@ -208,7 +208,7 @@ int		ft_check_int(char *str, int *stop);
 
 //--check_texture--
 int		ft_store_texture(char **path, char *line);
-int		ft_store_fc(char *line, unsigned int *rgb, int i);
+int		ft_store_fc(char *line, int *rgb, int i);
 int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_texture(t_env *env, t_img *img, char *path);
