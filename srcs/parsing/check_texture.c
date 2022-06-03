@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:31 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/02 23:48:31 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:04:57 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,30 +99,6 @@ int	ft_check_texture(t_texture *texture, char *line)
 	return (error_message("texture are not valid", -1));
 }
 
-int check_path_files(t_env *env)
-{
-	if (open(env->texture.no_path, O_RDONLY) == -1)
-	{
-		printf("Error path\n");
-		exit(1);
-	}
-	if (open(env->texture.so_path, O_RDONLY) == -1)
-	{
-		printf("Error path\n");
-		exit(1);
-	}
-	if (open(env->texture.we_path, O_RDONLY) == -1)
-	{
-		printf("Error path\n");
-		exit(1);
-	}
-	if (open(env->texture.ea_path, O_RDONLY) == -1)
-	{
-		printf("Error path\n");
-		exit(1);
-	}
-	return (0);
-}
 //function to load a texture
 int	load_texture(t_env *env, t_img *img, char *path)
 {

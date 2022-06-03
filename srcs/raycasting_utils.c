@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 01:10:44 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:00:18 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_init_ray(t_env *env)
 {
-	check_path_files(env);
 	load_all_textures(env);
 	env->ray.pos.x = env->spawn_pos[1];
 	env->ray.pos.y = env->spawn_pos[0];

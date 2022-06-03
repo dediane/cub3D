@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/05/24 15:07:53 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:05:43 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,41 @@ int	check_file(t_texture *texture)
 		return (0);
 	else
 		return (1);
+}
+
+int	check_path_files(t_env *env)
+{
+	if (open(env->texture.no_path, O_RDONLY) == -1)
+		return (error_message("Path NO can't be open", 0));
+	if (open(env->texture.so_path, O_RDONLY) == -1)
+		return (error_message("Path SO can't be open", 0));
+	if (open(env->texture.we_path, O_RDONLY) == -1)
+		return (error_message("Path WE can't be open", 0));
+	if (open(env->texture.ea_path, O_RDONLY) == -1)
+		return (error_message("Path EA can't be open", 0));
+	return (1);
+}
+
+void	player_pos(char c, t_env *env)
+{
+	if (c == 'N')
+	{
+		env->ray.vec.diry = -1;
+		env->ray.vec.planx = 0.66;
+	}
+	if (c == 'S')
+	{
+		env->ray.vec.diry = 1;
+		env->ray.vec.planx = -0.66;
+	}
+	if (c == 'W')
+	{
+		env->ray.vec.dirx = -1;
+		env->ray.vec.plany = -0.66;
+	}
+	if (c == 'E')
+	{
+		env->ray.vec.dirx = 1;
+		env->ray.vec.plany = 0.66;
+	}
 }

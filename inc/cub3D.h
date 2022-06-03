@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 01:11:43 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:06:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,13 +188,14 @@ int		error_message(char *str, int ret);
 int		is_num(char *line);
 int		is_num2(char *line, int *i, int *j, int *num);
 int		check_file(t_texture *texture);
+int		check_path_files(t_env *env);
+void	player_pos(char c, t_env *env);
 
 //--check_map--
 int		ft_check_file(int fd);
 int		check_around(char **map, int x, int y);
 int		check_valid_char(t_env *env, char c, int x, int y);
 int		check_wall_line(char *f_line, int width);
-void	player_pos(char c, t_env *env);
 int		ft_check_walls(t_env *env, char **map);
 
 
@@ -211,7 +212,6 @@ int		ft_store_fc(char *line, unsigned int *rgb, int i);
 int		ft_check_col(t_texture *texture, char *line);
 int		ft_check_texture(t_texture *texture, char *line);
 int		load_texture(t_env *env, t_img *img, char *path);
-int		check_path_files(t_env *env);
 
 //--init_env--
 void	init_env(t_env *env);
