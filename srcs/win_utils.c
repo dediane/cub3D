@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 18:36:05 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:37:07 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,41 @@ int	quit_program(t_env *env)
 
 static void	up(t_env *env)
 {
-	if ((env->map[(int)(env->ray.pos.x + env->ray.vec.dirx * env->speed)] \
-	[(int)(env->ray.pos.y)]) == '0')
+	// if ((env->map[(int)(env->ray.pos.x + env->ray.vec.dirx * env->speed)] \
+	// [(int)(env->ray.pos.y)]) == '0')
 		env->ray.pos.x += env->ray.vec.dirx * env->speed;
-	if ((env->map[(int)(env->ray.pos.x)] \
-	[(int)(env->ray.pos.y + env->ray.vec.diry * env->speed)]) == '0')
+	// if ((env->map[(int)(env->ray.pos.x)] \
+	// [(int)(env->ray.pos.y + env->ray.vec.diry * env->speed)]) == '0')
 		env->ray.pos.y += env->ray.vec.diry * env->speed;
 }
 
 static void	down(t_env *env)
 {
-	if (env->map[(int)(env->ray.pos.x - env->ray.vec.dirx * env->speed)] \
-	[(int)(env->ray.pos.y)] == '0')
+	// if (env->map[(int)(env->ray.pos.x - env->ray.vec.dirx * env->speed)] \
+	// [(int)(env->ray.pos.y)] == '0')
 		env->ray.pos.x -= env->ray.vec.dirx * env->speed;
-	if (env->map[(int)(env->ray.pos.x)] \
-	[(int)(env->ray.pos.y - env->ray.vec.diry * env->speed)] == '0')
+	// if (env->map[(int)(env->ray.pos.x)] \
+	// [(int)(env->ray.pos.y - env->ray.vec.diry * env->speed)] == '0')
 		env->ray.pos.y -= env->ray.vec.diry * env->speed;
 }
 
 static void	left(t_env *env)
 {
-	if (env->map[(int)(env->ray.pos.y)] \
-	[(int)(env->ray.pos.x + env->ray.vec.diry * env->speed)] == '0')
+	// if (env->map[(int)(env->ray.pos.y)] \
+	// [(int)(env->ray.pos.x + env->ray.vec.diry * env->speed)] == '0')
 		env->ray.pos.x += env->ray.vec.diry * env->speed;
-	if (env->map[(int)(env->ray.pos.y - env->ray.vec.dirx * env->speed)] \
-	[(int)(env->ray.pos.x)] == '0')
+	// if (env->map[(int)(env->ray.pos.y - env->ray.vec.dirx * env->speed)] \
+	// [(int)(env->ray.pos.x)] == '0')
 		env->ray.pos.y -= env->ray.vec.dirx * env->speed;
 }
 
 static void	right(t_env *env)
 {
-	if (env->map[(int)(env->ray.pos.y)] \
-	[(int)(env->ray.pos.x - env->ray.vec.diry * env->speed)] == '0')
+	// if (env->map[(int)(env->ray.pos.y)] \
+	// [(int)(env->ray.pos.x - env->ray.vec.diry * env->speed)] == '0')
 		env->ray.pos.x -= env->ray.vec.diry * env->speed;
-	if (env->map[(int)(env->ray.pos.y + env->ray.vec.dirx * env->speed)] \
-	[(int)(env->ray.pos.x)] == '0')
+	// if (env->map[(int)(env->ray.pos.y + env->ray.vec.dirx * env->speed)] \
+	// [(int)(env->ray.pos.x)] == '0')
 		env->ray.pos.y += env->ray.vec.dirx * env->speed;
 }
 
