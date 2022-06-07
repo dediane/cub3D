@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 13:31:56 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:17:28 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,49 @@ void	init_ray2(t_env *env, int x)
 	env->ray.hit = 0;
 }
 
-int		get_texture_color(t_env *env, t_img img)
+int	get_texture_color(t_env *env, t_img img)
 {
 	int		index;
 	int		ptr;
 	double	wall;
-	
+
 	if (env->ray.side == 0)
-		wall = env->ray.pos.y + env->ray.distance.playerwall * env->ray.camera.raydiry;
+		wall = env->ray.pos.y + env->ray.distance.playerwall * \
+		env->ray.camera.raydiry;
 	else
-		wall = env->ray.pos.x + env->ray.distance.playerwall * env->ray.camera.raydirx;
+		wall = env->ray.pos.x + env->ray.distance.playerwall * \
+		env->ray.camera.raydirx;
 	wall -= floor(wall);
 	env->texx = wall * img.width;
 	if (env->ray.side == 0 && env->ray.camera.raydirx > 0)
 		env->texx = img.width - env->texx - 1;
 	if (env->ray.side == 1 && env->ray.camera.raydiry < 0)
 		env->texx = img.width - env->texx - 1;
-	
-	index = (env->texy * img.line_length) + (env->texx *
+	index = (env->texy * img.line_length) + (env->texx * \
 	img.bits_per_pixel / 8);
 	ptr = *(int *)&img.addr[index];
 	return (ptr);
+}
+
+void	draw_texture(t_env *env, int y, t_img current_texture)
+{
+	int	d;
+
+	d = y * 256 - env->params.res_y * 128 + env->ray.lineheight * 128;
+	env->texy = (((d * current_texture.width) / \
+	env->ray.lineheight) / 256);
+	return ;
+}
+
+t_img	get_texture(t_env *env)
+{
+	if (env->ray.side == 1 && env->ray.camera.raydiry < 0)
+		return (env->texture.no_texture);
+	if (env->ray.side == 1 && env->ray.camera.raydiry > 0)
+		return (env->texture.so_texture);
+	if (env->ray.side == 0 && env->ray.camera.raydirx < 0)
+		return (env->texture.ea_texture);
+	if (env->ray.side == 0 && env->ray.camera.raydirx > 0)
+		return (env->texture.we_texture);
+	return (env->texture.no_texture);
 }

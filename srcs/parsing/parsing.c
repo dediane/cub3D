@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/06/07 17:12:35 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:28:06 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ int	parsing_2(t_env *env, char *path)
 		return (0);
 	if (!ft_check_walls(env, env->map))
 		return (0);
-	//if (!check_path_files(env))
-	//	return (0);
+	if (!check_path_files(env))
+		return (0);
 	print_all(env);
 	return (1);
 }
