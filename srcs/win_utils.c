@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 20:34:48 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/07 21:17:44 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	arrow_left(t_env *env)
 	env->ray.vec.plany * sin(-env->rotspeed);
 	env->ray.vec.plany = env->oldplanex * sin(-env->rotspeed) + \
 	env->ray.vec.plany * cos(-env->rotspeed);
+	env->change = 1;
 }
 
 void	arrow_right(t_env *env)
@@ -47,6 +48,7 @@ void	arrow_right(t_env *env)
 	env->ray.vec.plany * sin(env->rotspeed);
 	env->ray.vec.plany = env->oldplanex * sin(env->rotspeed) + \
 	env->ray.vec.plany * cos(env->rotspeed);
+	env->change = 1;
 }
 
 int	keypress(int key, t_env *env)
@@ -54,41 +56,35 @@ int	keypress(int key, t_env *env)
 	if (key == ESC)
 		quit_program(env);
 	else if (key == LEFT)
-		left(env);
+		env->key.left = 1;
 	else if (key == RIGHT)
-		right(env);
+		env->key.right = 1;
 	else if (key == UP)
-		up(env);
+		env->key.up = 1;
 	else if (key == DOWN)
-		down(env);
+		env->key.down = 1;
 	else if (key == ARROW_LEFT)
-		arrow_left(env);
+		env->key.arrow_left = 1;
 	else if (key == ARROW_RIGHT)
-		arrow_right(env);
-	else
-		return (0);
-	mlx_destroy_image(env->params.mlx, env->img.img);
-	env->img = make_image(env->params.mlx, env->params.res_x, \
-	env->params.res_y);
-	raycasting(env);
+		env->key.arrow_right = 1;
 	return (0);
 }
 
-/*int keyrelease(int key, t_env *env)
+int	keyrelease(int key, t_env *env)
 {
 	if (key == ESC)
 		quit_program(env);
 	else if (key == LEFT)
-		printf("LEFT OK\n");
+		env->key.left = 0;
 	else if (key == RIGHT)
-		printf("RIGHT OK\n");
+		env->key.right = 0;
 	else if (key == UP)
-		printf("UP OK\n");
+		env->key.up = 0;
 	else if (key == DOWN)
-		printf("DOWN OK\n");
+		env->key.down = 0;
 	else if (key == ARROW_LEFT)
-		printf("ARROW_LEFT OK\n");
+		env->key.arrow_left = 0;
 	else if (key == ARROW_RIGHT)
-		printf("ARROW_RIGHT OK\n");
-	return(0);
-}*/
+		env->key.arrow_right = 0;
+	return (0);
+}

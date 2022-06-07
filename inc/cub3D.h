@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 20:39:23 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/07 21:31:33 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,16 @@ typedef struct s_ray
 	int			x;
 }					t_ray;
 
+typedef struct s_key
+{
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			arrow_left;
+	int			arrow_right;
+}					t_key;
+
 typedef struct s_env
 {
 	char		**map;
@@ -154,6 +164,8 @@ typedef struct s_env
 	int			ppos;
 	int			texy;
 	int			texx;
+	int			change;
+	t_key		key;
 	t_params	params;
 	t_img		img;
 	t_img		minimap;
@@ -265,6 +277,7 @@ int				read_line(char *line, t_env *env, int *stop);
 //--win_utils--
 int				quit_program(t_env *env);
 int				keypress(int key, t_env *env);
+int				keyrelease(int key, t_env *env);
 void			arrow_left(t_env *env);
 void			arrow_right(t_env *env);
 
@@ -295,5 +308,6 @@ void			left(t_env *env);
 //cub3d
 t_img			make_image(void *mlx, int width, int height);
 int				show_image(t_env *env);
-
+void			get_position(t_env *env);
+void			init_hook(t_env *env);
 #endif
