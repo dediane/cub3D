@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 19:27:01 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:34:48 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	quit_program(t_env *env)
 	exit(1);
 }
 
-static void	arrow_left(t_env *env)
+void	arrow_left(t_env *env)
 {
 	env->olddirx = env->ray.vec.dirx;
 	env->ray.vec.dirx = env->ray.vec.dirx * cos(-env->rotspeed) - \
@@ -35,7 +35,7 @@ static void	arrow_left(t_env *env)
 	env->ray.vec.plany * cos(-env->rotspeed);
 }
 
-static void	arrow_right(t_env *env)
+void	arrow_right(t_env *env)
 {
 	env->olddirx = env->ray.vec.dirx;
 	env->ray.vec.dirx = env->ray.vec.dirx * cos(env->rotspeed) - \

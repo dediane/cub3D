@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 20:29:00 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:39:23 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,6 +265,8 @@ int				read_line(char *line, t_env *env, int *stop);
 //--win_utils--
 int				quit_program(t_env *env);
 int				keypress(int key, t_env *env);
+void			arrow_left(t_env *env);
+void			arrow_right(t_env *env);
 
 //--raycasting--
 void			calculate_step(t_env *env);
@@ -272,24 +274,17 @@ void			wall(t_env *env);
 void			stripe(t_env *env);
 void			draw(t_env *env);
 void			raycasting(t_env *env);
-t_img			get_texture(t_env *env);
-void			draw_texture(t_env *env, int y, t_img current_texture);
 
 //--raycasting_utils--
 void			ft_init_ray(t_env *env);
 void			init_ray2(t_env *env, int x);
 int				get_texture_color(t_env *env, t_img img);
+t_img			get_texture(t_env *env);
+void			draw_texture(t_env *env, int y, t_img current_texture);
 
 //--mlx_utils--
 unsigned int	create_trgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
-
-//Minimap
-void			ft_init_minimap(t_env *env);
-int				draw_minimap(t_env *env);
-int				draw_wall(t_env *env);
-int				draw_background(t_env *env);
-void			draw_stripe(t_env *env);
 
 //move
 void			right(t_env *env);
@@ -299,7 +294,6 @@ void			left(t_env *env);
 
 //cub3d
 t_img			make_image(void *mlx, int width, int height);
-
-int				print_all_datas(t_env *env);
+int				show_image(t_env *env);
 
 #endif
