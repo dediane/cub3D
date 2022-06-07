@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/04 12:24:03 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:56:27 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	draw(t_env *env)
 {
 	int	y;
 	int	color;
-	//int	d;
+	int	d;
 
 	y = 0;
 	while (y < env->ray.drawstart)
@@ -121,25 +121,25 @@ void	draw(t_env *env)
 		current_texture = get_texture(env);
 		
 		//draw la texture
-		// d = y * 256 - env->params.res_y * 128 + env->ray.lineheight * 128;
-		// env->texy = (((d * current_texture.width) /
-		// env->ray.lineheight) / 256);
-		// color = get_texture_color(env, current_texture);
-		// my_mlx_pixel_put(&env->img, env->ray.x, y, color);
-		// y++;
-		color = 0xff98a9;
-		color = 0X81DEFF;
-		color = 0x6822EC;
-		if (env->ray.side == 1 && env->ray.camera.raydiry < 0)
-			color = 0x6822EC;
-		if (env->ray.side == 1 && env->ray.camera.raydiry > 0)
-			color = 0X81DEFF;
-		if (env->ray.side == 0 && env->ray.camera.raydirx < 0)
-			color = 0xff98a9;
-		if (env->ray.side == 0 && env->ray.camera.raydirx > 0)
-			color /= 2;
+		d = y * 256 - env->params.res_y * 128 + env->ray.lineheight * 128;
+		env->texy = (((d * current_texture.width) /
+		env->ray.lineheight) / 256);
+		color = get_texture_color(env, current_texture);
 		my_mlx_pixel_put(&env->img, env->ray.x, y, color);
 		y++;
+		// color = 0xff98a9;
+		// color = 0X81DEFF;
+		// color = 0x6822EC;
+		// if (env->ray.side == 1 && env->ray.camera.raydiry < 0)
+		// 	color = 0x6822EC;
+		// if (env->ray.side == 1 && env->ray.camera.raydiry > 0)
+		// 	color = 0X81DEFF;
+		// if (env->ray.side == 0 && env->ray.camera.raydirx < 0)
+		// 	color = 0xff98a9;
+		// if (env->ray.side == 0 && env->ray.camera.raydirx > 0)
+		// 	color /= 2;
+		// my_mlx_pixel_put(&env->img, env->ray.x, y, color);
+		// y++;
 	}
 	while (y < env->params.res_y)
 	{

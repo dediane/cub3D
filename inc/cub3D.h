@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 16:02:52 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:16:17 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,9 @@ int		read_line(char *line, t_env *env, int *stop);
 //--win_utils--
 int		quit_program(t_env *env);
 int		keypress(int key, t_env *env);
+void	up(t_env *env);
+void	down(t_env *env);
+void	left(t_env *env);
 
 //--raycasting--
 void	calculate_step(t_env *env);
