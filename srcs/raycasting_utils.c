@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/08 18:50:08 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:10:48 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	get_texture_color(t_env *env, t_img img)
 		wall = env->ray.pos.x + env->ray.distance.playerwall * \
 		env->ray.camera.raydirx;
 	wall -= floor(wall);
-	env->texx = wall * img.width;
+	env->texx = wall * (double)img.width;
 	if (env->ray.side == 0 && env->ray.camera.raydirx > 0)
 		env->texx = img.width - env->texx - 1;
 	if (env->ray.side == 1 && env->ray.camera.raydiry < 0)
