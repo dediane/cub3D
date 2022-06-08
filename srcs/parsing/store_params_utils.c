@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:50:33 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/06/01 12:16:53 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:38:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	finish_line(char *line, int *i)
 //load all textures images
 int	load_all_textures(t_env *env)
 {
-	load_texture(env, &(env->texture.no_texture), env->texture.no_path);
-	load_texture(env, &(env->texture.so_texture), env->texture.so_path);
-	load_texture(env, &(env->texture.we_texture), env->texture.we_path);
-	load_texture(env, &(env->texture.ea_texture), env->texture.ea_path);
+	load_texture(env, &(env->texture.text[0]), env->texture.no_path);	//No
+	load_texture(env, &(env->texture.text[1]), env->texture.so_path);	//So
+	load_texture(env, &(env->texture.text[2]), env->texture.we_path);	//We
+	load_texture(env, &(env->texture.text[3]), env->texture.ea_path);	//Ea
 	return (0);
 }

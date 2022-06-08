@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 21:31:33 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:37:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ typedef struct s_texture
 	char			*so_path;
 	char			*we_path;
 	char			*ea_path;
-	t_img			no_texture;
-	t_img			so_texture;
-	t_img			we_texture;
-	t_img			ea_texture;
+	t_img			text[4];
+	// t_img			no_texture;
+	// t_img			so_texture;
+	// t_img			we_texture;
+	// t_img			ea_texture;
 	int				fd_no;
 	int				fd_so;
 	int				fd_we;
@@ -291,7 +292,8 @@ void			raycasting(t_env *env);
 //--raycasting_utils--
 void			ft_init_ray(t_env *env);
 void			init_ray2(t_env *env, int x);
-int				get_texture_color(t_env *env, t_img img);
+int				get_texture2(t_env *env);
+void			get_texture_color(t_env *env, int id, double *step, double *texpos);
 t_img			get_texture(t_env *env);
 void			draw_texture(t_env *env, int y, t_img current_texture);
 

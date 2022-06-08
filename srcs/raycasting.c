@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 19:16:10 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:52:07 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,10 @@ void	stripe(t_env *env)
 void	draw(t_env *env)
 {
 	int		y;
-	int		color;
-	t_img	current_texture;
+	//t_img	current_texture;
+	int		id;
+	double	step;
+	double	texpos;
 
 	y = 0;
 	while (y < env->ray.drawstart)
@@ -95,12 +97,18 @@ void	draw(t_env *env)
 		my_mlx_pixel_put(&env->img, env->ray.x, y, env->texture.ccl);
 		y++;
 	}
+	y = env->ray.drawstart;
+	id = get_texture2(env);
+	//draw_texture(env, y, env->texture.text[id]);
+	get_texture_color(env, id, &step, &texpos);
 	while (y < env->ray.drawend)
 	{
-		current_texture = get_texture(env);
-		draw_texture(env, y, current_texture);
-		color = get_texture_color(env, current_texture);
-		my_mlx_pixel_put(&env->img, env->ray.x, y, color);
+		env->texy = (int)texpos & (env->texture.text[id].height - 1);
+		texpos += step;
+		*(unsigned int *)(env->img.addr + (y * env->img.line_length + env->ray.x * 4))\
+		= *(unsigned int *)(env->texture.text[id].addr + env->texy * \
+		env->texture.text[id].line_length + env->texx * 4);
+		//my_mlx_pixel_put(&env->img, env->ray.x, y, color);
 		y++;
 	}
 	while (y < env->params.res_y)
