@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 21:31:33 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:31:59 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,4 +310,7 @@ t_img			make_image(void *mlx, int width, int height);
 int				show_image(t_env *env);
 void			get_position(t_env *env);
 void			init_hook(t_env *env);
+
+int				minimap(t_env *env);
+
 #endif

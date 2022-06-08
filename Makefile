@@ -6,7 +6,7 @@
 #    By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:40:58 by ddecourt          #+#    #+#              #
-#    Updated: 2022/06/07 20:37:26 by ddecourt         ###   ########.fr        #
+#    Updated: 2022/06/08 18:30:32 by ddecourt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	=	srcs/cub3d.c \
 			srcs/get_next_line/get_next_line_utils.c \
 			srcs/mlx_utils.c \
 			srcs/move.c \
+			srcs/minimap.c \
 
 
 OBJS	= ${SRCS:.c=.o}
@@ -40,7 +41,7 @@ HEADER	= mlx/mlx.h
 
 CC		= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
 
 RM = rm -f
 

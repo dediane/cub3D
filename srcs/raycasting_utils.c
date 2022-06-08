@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 19:17:28 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:50:08 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	draw_texture(t_env *env, int y, t_img current_texture)
 {
 	int	d;
 
-	d = y * 256 - env->params.res_y * 128 + env->ray.lineheight * 128;
+	d = y * current_texture.height - env->params.res_y * (current_texture.width / 2) + env->ray.lineheight * (current_texture.width / 2);
 	env->texy = (((d * current_texture.width) / \
-	env->ray.lineheight) / 256);
+	env->ray.lineheight) / current_texture.height);
 	return ;
 }
 
