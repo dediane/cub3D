@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:45:12 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/07 21:17:44 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:19:45 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	quit_program(t_env *env)
 {
+	destroy_image(env);
+	mlx_destroy_image(env->params.mlx, env->img.img);
 	mlx_destroy_window(env->params.mlx, env->params.mlx_win);
 	mlx_destroy_display(env->params.mlx);
 	free(env->params.mlx);
+	ft_free(env);
 	write(1, "Goodbye!\n", 9);
 	exit(1);
 }

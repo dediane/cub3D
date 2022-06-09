@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:20:50 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 11:52:01 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:21:42 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,16 @@ int	max(int a, int b)
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+void	destroy_image(t_env *env)
+{
+	if (env->texture.no_texture.img)
+		mlx_destroy_image(env->params.mlx, env->texture.no_texture.img);
+	if (env->texture.so_texture.img)
+		mlx_destroy_image(env->params.mlx, env->texture.so_texture.img);
+	if (env->texture.we_texture.img)
+		mlx_destroy_image(env->params.mlx, env->texture.we_texture.img);
+	if (env->texture.ea_texture.img)
+		mlx_destroy_image(env->params.mlx, env->texture.ea_texture.img);
 }

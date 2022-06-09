@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 12:14:56 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:51:39 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,7 @@ unsigned int	create_trgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int				min(int a, int b);
 int				max(int a, int b);
+void			destroy_image(t_env *env);
 
 //move
 void			right(t_env *env);
@@ -315,5 +316,6 @@ void			get_position(t_env *env);
 void			init_hook(t_env *env);
 
 int				minimap(t_env *env);
+void			ft_init_minimap(t_env *env);
 
 #endif

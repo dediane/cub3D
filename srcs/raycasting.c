@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:15:42 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 11:55:06 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:23:07 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	draw(t_env *env)
 		my_mlx_pixel_put(&env->img, env->ray.x, y, env->texture.fcl);
 		y++;
 	}
-	minimap(env);
 }
 
 void	raycasting(t_env *env)

@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:33:32 by user42            #+#    #+#             */
-/*   Updated: 2022/06/07 19:28:06 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:14:37 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,6 @@ int	parsing(int ac, char **av, t_env *env)
 	return (parsing_2(env, av[1]));
 }
 
-void	print_all(t_env *env)
-{
-	int	i;
-
-	i = 0;
-	printf("----------------------parinsing-------------------------------\n");
-	printf("nb file after read is %d\n", env->nb_lfile);
-	printf("Fin de la lecture du fichier\n");
-	printf("alors on a ->\n");
-	printf("north path :%s\n", env->texture.no_path);
-	printf("south path :%s\n", env->texture.so_path);
-	printf("east path  :%s\n", env->texture.ea_path);
-	printf("weast path :%s\n", env->texture.we_path);
-	printf("floor is    %d\n", env->texture.f);
-	printf("floor color is %u\n", env->texture.fcl);
-	printf("ceiling is  %d\n", env->texture.c);
-	printf("ceiling color is %u\n", env->texture.ccl);
-	printf("-----------------------------------------------------\n");
-	while (env->map[i])
-	{
-		printf("la map :  [%s]\n", env->map[i]);
-		i++;
-	}
-}
-
 int	parsing_2(t_env *env, char *path)
 {
 	int	fd;
@@ -122,6 +97,5 @@ int	parsing_2(t_env *env, char *path)
 		return (0);
 	if (!check_path_files(env))
 		return (0);
-	print_all(env);
 	return (1);
 }
