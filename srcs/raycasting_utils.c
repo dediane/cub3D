@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 11:39:22 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 11:51:27 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,11 @@ int	get_texture_color(t_env *env, t_img img)
 		wall = env->ray.pos.x + env->ray.distance.playerwall * \
 		env->ray.camera.raydirx;
 	wall -= floor(wall);
-
 	env->texx = wall * (double)img.width;
-
 	if (env->ray.side == 0 && env->ray.camera.raydirx < 0)
 		env->texx = img.width - env->texx - 1;
 	if (env->ray.side == 1 && env->ray.camera.raydiry > 0)
 		env->texx = img.width - env->texx - 1;
-	
 	index = (env->texy * (img.line_length)) + (env->texx * \
 	img.bits_per_pixel / 8);
 	ptr = *(int *)&img.addr[max(0, min(index, img.width * img.height * 8))];
@@ -71,7 +68,9 @@ void	draw_texture(t_env *env, int y, t_img current_texture)
 {
 	int	d;
 
-	d = y * current_texture.height - env->params.res_y * (current_texture.width / 2) + env->ray.lineheight * (current_texture.width / 2);
+	d = y * current_texture.height - env->params.res_y * \
+	(current_texture.width / 2) + env->ray.lineheight * \
+	(current_texture.width / 2);
 	env->texy = (((d * current_texture.width) / \
 	env->ray.lineheight) / current_texture.height);
 	return ;

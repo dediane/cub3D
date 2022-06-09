@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:20:50 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 11:28:38 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 11:52:01 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int min(int a, int b)
+int	min(int a, int b)
 {
 	if (a > b)
 		return (b);
 	return (a);
 }
 
-int max(int a, int b)
+int	max(int a, int b)
 {
 	if (a > b)
 		return (a);
