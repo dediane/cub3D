@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 11:49:45 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 12:14:56 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ typedef struct s_env
 	int			texy;
 	int			texx;
 	int			change;
+	char		pos;
 	t_key		key;
 	t_params	params;
 	t_img		img;
