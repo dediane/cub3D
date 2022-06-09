@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/03 12:05:33 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/09 18:29:25 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ int	ft_check_file(int fd)
 
 int	check_around(char **map, int x, int y)
 {
-	if ((map[x - 1][y] && (map[x - 1][y] != '0') && (map[x - 1][y] != '1') \
-	&& (map[x - 1][y] != 'S') && (map[x - 1][y] != 'W') && \
-	(map[x - 1][y] != 'N') && (map[x - 1][y] != 'E')) || \
+	if ((map[x - 1][y] && (map[x - 1][y] != '0') \
+	&& (map[x - 1][y] != '1') \
+	&& (map[x - 1][y] != 'S') \
+	&& (map[x - 1][y] != 'W') \
+	&& (map[x - 1][y] != 'N') \
+	&& (map[x - 1][y] != 'E')) || \
 	(map[x + 1][y] && (map[x + 1][y] != '0') \
 	&& (map[x + 1][y] != '1') && (map[x + 1][y] != 'S') \
 	&& (map[x + 1][y] != 'W') && (map[x + 1][y] != 'N') \
@@ -101,6 +104,8 @@ int	ft_check_walls(t_env *env, char **map)
 				return (error_message("Open map or wrong players", 0));
 			y++;
 		}
+		if (!ft_check_end(map[x]))
+			return (error_message("Map must be surrounded by walls.", 0));
 		x++;
 	}
 	if (!(check_wall_line(map[x], env->width)))

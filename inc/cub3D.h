@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 17:32:48 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/09 18:29:56 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ void			copy_line(char *line, t_env *env, char *map);
 int				malloc_fail(char *line);
 void			ft_copy(int *i, t_env *env, char *map);
 int				error_message(char *str, int ret);
+int				ft_check_end(char *map);
 
 //--check_color--
 int				is_num(char *line);
