@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 14:51:39 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/09 17:32:48 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ typedef struct s_env
 	t_key		key;
 	t_params	params;
 	t_img		img;
-	t_img		minimap;
 	t_texture	texture;
 	t_ray		ray;
 }				t_env;
@@ -314,8 +313,5 @@ t_img			make_image(void *mlx, int width, int height);
 int				show_image(t_env *env);
 void			get_position(t_env *env);
 void			init_hook(t_env *env);
-
-int				minimap(t_env *env);
-void			ft_init_minimap(t_env *env);
 
 #endif
