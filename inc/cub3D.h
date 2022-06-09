@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:05:05 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/08 18:31:59 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/09 11:30:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,6 +298,8 @@ void			draw_texture(t_env *env, int y, t_img current_texture);
 //--mlx_utils--
 unsigned int	create_trgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int min(int a, int b);
+int max(int a, int b);
 
 //move
 void			right(t_env *env);

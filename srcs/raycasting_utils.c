@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:03:27 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/08 19:10:48 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/09 11:39:22 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,17 @@ int	get_texture_color(t_env *env, t_img img)
 		wall = env->ray.pos.x + env->ray.distance.playerwall * \
 		env->ray.camera.raydirx;
 	wall -= floor(wall);
+
 	env->texx = wall * (double)img.width;
-	if (env->ray.side == 0 && env->ray.camera.raydirx > 0)
+
+	if (env->ray.side == 0 && env->ray.camera.raydirx < 0)
 		env->texx = img.width - env->texx - 1;
-	if (env->ray.side == 1 && env->ray.camera.raydiry < 0)
+	if (env->ray.side == 1 && env->ray.camera.raydiry > 0)
 		env->texx = img.width - env->texx - 1;
-	index = (env->texy * img.line_length) + (env->texx * \
+	
+	index = (env->texy * (img.line_length)) + (env->texx * \
 	img.bits_per_pixel / 8);
-	ptr = *(int *)&img.addr[index];
+	ptr = *(int *)&img.addr[max(0, min(index, img.width * img.height * 8))];
 	return (ptr);
 }
 
