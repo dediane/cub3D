@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:57 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 18:29:25 by ddecourt         ###   ########.fr       */
+/*   Updated: 2022/06/10 09:40:30 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	check_valid_char(t_env *env, char c, int x, int y)
 	}
 	else if ((c == 'N' || c == 'S' || c == 'W' || c == 'E') && env->ppos == 0)
 	{
+		if (!(check_around(env->map, x, y)))
+			return (0);
 		env->spawn_pos[0] = x;
 		env->spawn_pos[1] = y;
 		env->ray.mapx = x;
