@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/09 12:15:03 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/10 07:56:32 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	init_env(t_env *env)
 
 void	init_ray(t_env *env)
 {
-	env->pos = 0;
 	env->ray.lineheight = 0;
 	env->ray.drawstart = 0;
 	env->ray.drawend = 0;

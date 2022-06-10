@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:00:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/06/01 11:42:23 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/10 07:54:00 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	recup_col(char *line, int i)
 	y = ft_check_int(buf, &j);
 	if (j == -1)
 		return (-1);
-	free(buf);
 	return (y);
 }
 
@@ -91,5 +90,6 @@ int	ft_check_int(char *str, int *stop)
 	}
 	n = n * sign;
 	ft_maxmin(&n, stop);
+	free(str);
 	return (n);
 }

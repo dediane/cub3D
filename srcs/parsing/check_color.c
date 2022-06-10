@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:16:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/06/09 12:15:23 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/10 07:56:35 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,4 @@ void	player_pos(char c, t_env *env)
 		env->ray.vec.dirx = 1;
 		env->ray.vec.plany = 0.66;
 	}
-	env->pos = c;
 }
