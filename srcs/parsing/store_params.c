@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:24:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/06/01 12:15:50 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/10 08:56:27 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,16 @@ void	read_file(int fd, int *nb_line, t_env *env, int *stop)
 		if (!line)
 			break ;
 		if (rread_file(line, nb_line, env, stop))
-			break ;
+		{
+			while (1)
+			{
+				line = gnl(fd);
+				if (!line)
+					break ;
+				secure_line(line);
+			}
+			return ;
+		}
 	}
 	close(fd);
 }
