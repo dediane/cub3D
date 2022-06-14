@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:58:02 by ddecourt          #+#    #+#             */
-/*   Updated: 2022/06/10 07:56:32 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:02:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_env(t_env *env)
 	env->width = 0;
 	env->ppi = 0;
 	env->count = 0;
-	env->spawn_pos[0] = 0;
-	env->spawn_pos[1] = 0;
+	env->spawn_pos[0] = 0.5;
+	env->spawn_pos[1] = 0.5;
 	env->ppos = 0;
 	env->ray.mapx = 0;
 	env->ray.mapy = 0;
